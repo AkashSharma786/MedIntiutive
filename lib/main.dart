@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'pages/login_page.dart';
+import 'pages/profile_page.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -15,12 +16,12 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primaryColor: Colors.deepPurple,
-        highlightColor: Color.fromARGB(255, 119, 3, 252),
+        highlightColor: const Color.fromARGB(255, 119, 3, 252),
         
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoginPage(),
+      home:  const Profile(),
     );
   }
 }

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_application_1/material_styles/custom_text_field.dart';
 import '../material_styles/button.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -20,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
 
-        children:[ Container(
+        children:[ SizedBox(
           width: MediaQuery.of(context).size.width * 0.6,
           height: MediaQuery.of(context).size.height,
           
@@ -29,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
 
-                Text(
+                const Text(
 
                   "Login",
                   style: TextStyle(
@@ -80,10 +79,33 @@ class _LoginPageState extends State<LoginPage> {
           width: MediaQuery.of(context).size.width * 0.4,
           height: MediaQuery.of(context).size.height,
           
+          
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/login.png"),
+              fit: BoxFit.fitWidth,
+              opacity: 0.5,
+            ),
+            
+            borderRadius: BorderRadius.only(
+      
+              bottomLeft: Radius.circular(100),
+
+              
+            ),
+            gradient: LinearGradient(
+              colors: [Color.fromARGB(255, 39, 3, 141), Color.fromARGB(248, 91, 231, 250)],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+            
+           
+          ),
+          
 
           
           child: ShaderMask(
-            shaderCallback: (bounds) => LinearGradient(
+            shaderCallback: (bounds) => const LinearGradient(
               colors:  [ Color.fromARGB(248, 91, 231, 250), Color.fromARGB(255, 39, 3, 141), Color.fromARGB(255, 243, 164, 17)],
               
               ).createShader(
@@ -94,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(
+                const Text(
                   "MedIntiutive",
                   style: TextStyle(
                     fontSize: 50,
@@ -114,29 +136,6 @@ class _LoginPageState extends State<LoginPage> {
 
               ],
             ),
-          ),
-          
-          
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/login.jpg"),
-              fit: BoxFit.fitWidth,
-              opacity: 0.5,
-            ),
-            
-            borderRadius: BorderRadius.only(
-      
-              bottomLeft: Radius.circular(100),
-
-              
-            ),
-            gradient: LinearGradient(
-              colors: [Color.fromARGB(255, 39, 3, 141), Color.fromARGB(248, 91, 231, 250)],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-            
-           
           ),
         )
         

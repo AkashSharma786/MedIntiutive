@@ -4,7 +4,7 @@ class MyButtonStyle extends StatefulWidget {
   String text;
   double width;
   double height;
-  MyButtonStyle({Key? key, required this.text, required this.width, required this.height}):super(key: key);
+  MyButtonStyle({super.key, required this.text, required this.width, required this.height});
   @override
   _MyButtonStyleState createState() => _MyButtonStyleState();
 }
@@ -23,7 +23,7 @@ class _MyButtonStyleState extends State<MyButtonStyle> {
             width: widget.width,
             height: widget.height,
             decoration: BoxDecoration(
-              gradient: LinearGradient(
+              gradient: const LinearGradient(
                 colors: [Color.fromARGB(255, 39, 3, 141), Color.fromARGB(248, 91, 231, 250)],
                 transform: GradientRotation(0.8),
               ),
@@ -34,7 +34,7 @@ class _MyButtonStyleState extends State<MyButtonStyle> {
               
               child: Text(
                 widget.text,
-                style: TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white),
               ),
             ),
           ),
