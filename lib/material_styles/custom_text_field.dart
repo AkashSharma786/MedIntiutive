@@ -10,18 +10,18 @@ class CustomTextField extends StatelessWidget {
 
 
   const CustomTextField({
-    Key? key,
+    super.key,
     required this.hintText,
     required this.controller,
     required this.width,
     required this.height,
     this.myLabel
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return 
-    Container(
+    SizedBox(
       width: width,
       height: height,
       child: TextField(
@@ -31,7 +31,7 @@ class CustomTextField extends StatelessWidget {
         decoration: InputDecoration(
           labelText:myLabel ,
           hintText: hintText,
-          border: OutlineInputBorder(
+          border: const OutlineInputBorder(
             
             borderSide: BorderSide(width: 2,),
           ),
