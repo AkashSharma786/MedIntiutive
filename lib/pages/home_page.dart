@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/billing_page.dart';
 import 'package:flutter_application_1/pages/profile_page.dart';
 import 'package:flutter_application_1/pages/login_page.dart';
 
@@ -17,11 +18,13 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _views = [
     const Center(child: Text('Home View')),
-    const Center(child: Profile()),
+
+    const Center(child: BillingPage()),
     const Center(child: LoginPage()),
     const Center(child: Text('Settings View')),
     const Center(child: Text('Settings View')),
     const Center(child: Text('Settings View')),
+    const Center(child: Profile()),
 
   ];
 
@@ -68,10 +71,10 @@ class _HomePageState extends State<HomePage> {
 
               NavigationRailDestination(
                 icon: Icon(
-                  Icons.credit_card,
+                  Icons.article,
                   color: Colors.black,
                 ),
-                label: Text('Login', style: TextStyle(color: Colors.black)),
+                label: Text('Bill', style: TextStyle(color: Colors.black)),
               ),
               NavigationRailDestination(
                 icon: Icon(
@@ -108,6 +111,18 @@ class _HomePageState extends State<HomePage> {
                 label:
                     Text('Notification', style: TextStyle(color: Colors.black)),
               ),
+
+              NavigationRailDestination(
+                icon: Icon(
+                  Icons.person,
+                  color: Colors.black,
+                ),
+                label:
+                    Text('Notification', style: TextStyle(color: Colors.black)),
+              ),
+
+
+
             ],
           ),
           Expanded(
