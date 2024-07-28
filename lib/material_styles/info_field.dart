@@ -20,21 +20,21 @@ class InfoField extends StatelessWidget {
                               children: [
                                 const SizedBox(height: 5,),
                                 
-                                Container(
+                                SizedBox(
                                   width: constraints.maxWidth * 0.98,
                                   height: constraints.maxHeight*0.9,
                                   
                                   child: Row(
                                     children: [
-                                      Container(
+                                      SizedBox(
                                         width:  constraints.maxWidth * 0.25,
                                         height:  constraints.maxHeight *0.9,
                                        
 
                                         child: Text(
-                                          this.field,
+                                          field,
 
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             color: Color.fromARGB(221, 56, 56, 56),
                                             fontSize: 20,
 
@@ -47,15 +47,15 @@ class InfoField extends StatelessWidget {
 
 
                                       const SizedBox(width: 5,),
-                                      Container(
+                                      SizedBox(
         
                                         width:  constraints.maxWidth * 0.71,
                                         height:  constraints.maxHeight * 0.9,
                                         
                                           child: Text(
-                                          this.value,
+                                          value,
 
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: Color.fromARGB(255, 39, 3, 141),
                                             fontSize: 20,

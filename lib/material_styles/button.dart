@@ -4,7 +4,11 @@ class MyButtonStyle extends StatefulWidget {
   String text;
   double width;
   double height;
-  MyButtonStyle({super.key, required this.text, required this.width, required this.height});
+  MyButtonStyle(
+      {super.key,
+      required this.text,
+      required this.width,
+      required this.height});
   @override
   _MyButtonStyleState createState() => _MyButtonStyleState();
 }
@@ -12,35 +16,37 @@ class MyButtonStyle extends StatefulWidget {
 class _MyButtonStyleState extends State<MyButtonStyle> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-          
-     
-          child: InkWell(
-            onTap: (){},
-            borderRadius: BorderRadius.circular(18.0),
-            child:Ink(
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        maxHeight: widget.height,
+        maxWidth: widget.width,
 
-            width: widget.width,
-            height: widget.height,
-            decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [Color.fromARGB(255, 39, 3, 141), Color.fromARGB(248, 91, 231, 250)],
-                transform: GradientRotation(0.8),
-              ),
-              borderRadius: BorderRadius.circular(18.0),
+      ),
+
+    
+      child: Container(
+        decoration: BoxDecoration(
+           gradient: const LinearGradient(
+              colors: [Color.fromARGB(255, 39, 3, 141), Color.fromARGB(248, 91, 231, 250)],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
             ),
-            child: Center(
-              
-              
-              child: Text(
-                widget.text,
-                style: const TextStyle(color: Colors.white),
-              ),
-            ),
-          ),
-          ),
+          borderRadius: BorderRadius.circular(30),
+        ),
         
-      
+       
+        child: InkWell(
+          onTap: () {
+            print("Button Clicked");
+          },
+          child: Center(
+            child: Text(
+              widget.text,
+              style: const TextStyle(color: Colors.white),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
