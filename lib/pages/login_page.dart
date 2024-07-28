@@ -20,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
 
         children:[ SizedBox(
-          width: MediaQuery.of(context).size.width * 0.6,
+          width: MediaQuery.of(context).size.width * 0.5,
           height: MediaQuery.of(context).size.height,
           
           child: Center(
@@ -78,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
 
         Container(
           
-          width: MediaQuery.of(context).size.width * 0.4,
+          width: MediaQuery.of(context).size.width * 0.41,
           height: MediaQuery.of(context).size.height,
           
           

@@ -132,7 +132,7 @@ class _ProfileState extends State<Profile> {
                               )),
                             ),
                             const SizedBox(height: 10),
-                            Container(
+                            SizedBox(
                               width: screenWidth * 0.1,
                               height: screenHeight * 0.07,
                               child: MyButtonStyle(

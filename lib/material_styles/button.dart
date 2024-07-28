@@ -4,21 +4,21 @@ class MyButtonStyle extends StatefulWidget {
   String text;
   double width;
   double height;
-<<<<<<< HEAD
+
   final VoidCallback onTap;
-=======
->>>>>>> akash
+
+
   MyButtonStyle(
       {super.key,
       required this.text,
       required this.width,
-<<<<<<< HEAD
+
       required this.height,
       required this.onTap
       });
-=======
-      required this.height});
->>>>>>> akash
+
+     
+
   @override
   _MyButtonStyleState createState() => _MyButtonStyleState();
 }
@@ -47,11 +47,9 @@ class _MyButtonStyleState extends State<MyButtonStyle> {
        
         child: InkWell(
           onTap: () {
-<<<<<<< HEAD
+
             widget.onTap();
-=======
-            print("Button Clicked");
->>>>>>> akash
+       
           },
           child: Center(
             child: Text(

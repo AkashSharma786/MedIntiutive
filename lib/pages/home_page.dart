@@ -6,6 +6,8 @@ import 'package:flutter_application_1/pages/login_page.dart';
 
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -14,12 +16,12 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   final List<Widget> _views = [
-    Center(child: Text('Home View')),
-    Center(child: Profile()),
-    Center(child: LoginPage()),
-    Center(child: Text('Settings View')),
-    Center(child: Text('Settings View')),
-    Center(child: Text('Settings View')),
+    const Center(child: Text('Home View')),
+    const Center(child: Profile()),
+    const Center(child: LoginPage()),
+    const Center(child: Text('Settings View')),
+    const Center(child: Text('Settings View')),
+    const Center(child: Text('Settings View')),
 
   ];
 
@@ -52,26 +54,26 @@ class _HomePageState extends State<HomePage> {
               });
             },
             labelType: NavigationRailLabelType.selected,
-            destinations: [
+            destinations: const [
               
               NavigationRailDestination(
-                icon: const Icon(
+                icon: Icon(
                   Icons.home_max_outlined,
                   color: Colors.black,
                 ),
                 label:
-                    const Text('Home', style: TextStyle(color: Colors.black)),
+                    Text('Home', style: TextStyle(color: Colors.black)),
               ),
 
 
-              const NavigationRailDestination(
+              NavigationRailDestination(
                 icon: Icon(
                   Icons.credit_card,
                   color: Colors.black,
                 ),
                 label: Text('Login', style: TextStyle(color: Colors.black)),
               ),
-              const NavigationRailDestination(
+              NavigationRailDestination(
                 icon: Icon(
                   Icons.storage,
                   color: Colors.black,
@@ -80,7 +82,7 @@ class _HomePageState extends State<HomePage> {
               ),
 
 
-              const NavigationRailDestination(
+              NavigationRailDestination(
                 icon: Icon(
                   Icons.shopping_cart_outlined,
                   color: Colors.black,
@@ -89,7 +91,7 @@ class _HomePageState extends State<HomePage> {
               ),
 
 
-              const NavigationRailDestination(
+              NavigationRailDestination(
                 icon: Icon(
                   Icons.money,
                   color: Colors.black,
@@ -98,7 +100,7 @@ class _HomePageState extends State<HomePage> {
               ),
 
 
-              const NavigationRailDestination(
+              NavigationRailDestination(
                 icon: Icon(
                   Icons.notification_add_outlined,
                   color: Colors.black,
