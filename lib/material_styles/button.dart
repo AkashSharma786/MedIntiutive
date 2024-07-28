@@ -1,10 +1,12 @@
+
 import 'package:flutter/material.dart';
 
 class MyButtonStyle extends StatefulWidget {
   String text;
   double width;
   double height;
-  MyButtonStyle({super.key, required this.text, required this.width, required this.height, required Null Function() onTap});
+  final VoidCallback onTap;
+  MyButtonStyle({super.key, required this.text, required this.width, required this.height, required this.onTap});
   @override
   _MyButtonStyleState createState() => _MyButtonStyleState();
 }
@@ -16,7 +18,10 @@ class _MyButtonStyleState extends State<MyButtonStyle> {
           
      
           child: InkWell(
-            onTap: (){},
+            onTap: (){
+
+              widget.onTap();
+            },
             borderRadius: BorderRadius.circular(18.0),
             child:Ink(
 

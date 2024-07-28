@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/material_styles/custom_text_field.dart';
-import 'package:flutter_application_1/pages/home_page.dart';
 import '../material_styles/button.dart';
 
 class LoginPage extends StatefulWidget {
@@ -61,9 +60,12 @@ class _LoginPageState extends State<LoginPage> {
                 text: "Login",
                 width: 200,
                 height: 50,
-                onTap: () {
-                  const MyHomepage();
-                },
+                onTap : (){
+                  Navigator.pop(context);
+                }
+                
+
+                
               ),
             ],
           ),
