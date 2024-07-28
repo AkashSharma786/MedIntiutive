@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/profile_page.dart';
+import 'package:flutter_application_1/pages/login_page.dart';
 
 
 
@@ -13,8 +15,8 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _views = [
     Center(child: Text('Home View')),
-    Center(child: Text('Profile View')),
-    Center(child: Text('Settings View')),
+    Center(child: Profile()),
+    Center(child: LoginPage()),
     Center(child: Text('Settings View')),
     Center(child: Text('Settings View')),
     Center(child: Text('Settings View')),
@@ -67,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                   Icons.credit_card,
                   color: Colors.black,
                 ),
-                label: Text('Billing', style: TextStyle(color: Colors.black)),
+                label: Text('Login', style: TextStyle(color: Colors.black)),
               ),
               const NavigationRailDestination(
                 icon: Icon(
