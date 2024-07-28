@@ -19,9 +19,8 @@ class _LoginPageState extends State<LoginPage> {
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
 
-        children:[ 
-          SizedBox(
-          width: MediaQuery.of(context).size.width * 0.5,
+        children:[ SizedBox(
+          width: MediaQuery.of(context).size.width * 0.6,
           height: MediaQuery.of(context).size.height,
           
           child: Center(
