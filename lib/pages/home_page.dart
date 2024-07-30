@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/billing_page.dart';
 import 'package:flutter_application_1/pages/profile_page.dart';
 import 'package:flutter_application_1/pages/login_page.dart';
+import 'package:flutter_application_1/pages/management_page.dart';
 
 
 
@@ -21,7 +22,7 @@ class _HomePageState extends State<HomePage> {
 
     const Center(child: BillingPage()),
     const Center(child: LoginPage()),
-    const Center(child: Text('Settings View')),
+    const Center(child: ManagementPage()),
     const Center(child: Text('Settings View')),
     const Center(child: Text('Settings View')),
     const Center(child: Profile()),
