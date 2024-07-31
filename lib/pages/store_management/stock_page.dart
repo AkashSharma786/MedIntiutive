@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ExpensePage extends StatefulWidget {
+class StockPage extends StatefulWidget {
 
-  const ExpensePage({super.key});
+  const StockPage({super.key});
 
   @override
-  State<ExpensePage> createState() => _ExpensePageState();
+  State<StockPage> createState() => _StockPageState();
   
 }
 
-class _ExpensePageState extends State<ExpensePage> {
+class _StockPageState extends State<StockPage> {
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -20,14 +20,14 @@ class _ExpensePageState extends State<ExpensePage> {
         Container(
           width: screenSize.width,
           height: 50,
-          color: const Color.fromARGB(255, 209, 219, 228),
+          color: Colors.amber,
         ),
 
         Container(
           width: screenSize.width,
           height: screenSize.height-160,
-          color: Colors.cyan,
-          child: Text("Expense Page",),
+          color: Colors.teal,
+          child: Text("Stock Page",),
         )
 
 

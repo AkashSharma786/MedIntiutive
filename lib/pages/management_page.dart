@@ -1,5 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/material_styles/drop_down_button.dart';
+import 'package:flutter_application_1/pages/store_management/employees_page.dart';
+import 'package:flutter_application_1/pages/store_management/expense_page.dart';
+import 'package:flutter_application_1/pages/store_management/medicine_page.dart';
+import 'package:flutter_application_1/pages/store_management/orders_page.dart';
+import 'package:flutter_application_1/pages/store_management/sections/employees_section.dart';
+import 'package:flutter_application_1/pages/store_management/sections/expense_section.dart';
+import 'package:flutter_application_1/pages/store_management/sections/medicine_section.dart';
+import 'package:flutter_application_1/pages/store_management/sections/orders_section.dart';
+import 'package:flutter_application_1/pages/store_management/sections/stock_section.dart';
+import 'package:flutter_application_1/pages/store_management/sections/supplier_section.dart';
+import 'package:flutter_application_1/pages/store_management/stock_page.dart';
+import 'package:flutter_application_1/pages/store_management/supplier_page.dart';
 
 class ManagementPage extends StatefulWidget {
   const ManagementPage({super.key});
@@ -36,59 +48,95 @@ class _ManagementState extends State<ManagementPage> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
 
-    List<String> list = ["Medicine", "Stock", "Orders", "Supplier", "Expense"];
     Size screenSize = MediaQuery.of(context).size;
     
-    return  DefaultTabController(
-        initialIndex: 0,
+    return DefaultTabController(
         length: 6,
         child: Scaffold(
           appBar: AppBar(
-            title: Center(child: const Text('Store Management')),
-
-            bottom:  PreferredSize(
-              preferredSize: Size( screenSize.width, 100),
-              child:  Column(
+            bottom: PreferredSize(
+              preferredSize: Size(screenSize.width, 54),
+              child: Column(
                 children: [
-
-                TabBar(
-                    controller: _tabController,
-                    indicatorSize: TabBarIndicatorSize.tab,
-                    indicator: const BoxDecoration(
-                      color: Colors.cyan,
-                    ),
-                    
-                    
-                    tabs: [
-                      Tab(child:
-                       Text("Medicine")),
-                      Tab(child:  Text("Medicine"),),
-                      Tab(child:  Text("Stock"),),
-                      Tab(child:  Text("Orders"),),
-                      Tab(child:  Text("Supplier"),),
-                      Tab(child:  Text("Expense"),),
-                    
-                    ],
-                  ),
+                  Container(
+              height: 40,
+              child: const Text('Store Management',
               
-                
-                   
-                
-                  Text(_tabController.index.toString()),
+              style: TextStyle( 
+                fontSize: 16
+              ),
+              ),
+            ),
+                  Container(
+                    height: 30,
+                    child: TabBar(
+                      indicatorSize: TabBarIndicatorSize.tab,
+                      controller: _tabController,
+                        
+                        
+                        
+                    
+                        indicator: const BoxDecoration(
+                          color: Colors.cyan,
+                        ),
+                        
+                        
+                        tabs: [
+                          Tab(child:  Text("Medicine")),
+                          Tab(child:  Text("Employees"),),
+                          Tab(child:  Text("Supplier"),),
+                          Tab(child:  Text("Orders"),),
+                          Tab(child:  Text("Stock"),),
+                          Tab(child:  Text("Expense"),),
+                        
+                        ],
+                    ),
+                  ),
+
+                  
+                    Builder(
+                      builder: (context) {
+                        switch(_tabController.index){
+                          case 0:
+                            return MedicineSection();
+                          case 1:
+                            return EmployeesSection();
+                          case 2:
+                            return SupplierSection();
+                          case 3:
+                            return OrdersSection();
+                          case 4:
+                            return StockSection();
+                          case 5:
+                            return ExpenseSection();
+                          default:
+                            return  Text("Medicine");
+                        }
+                      }
+                    ),
+
+                    
                 ],
               ),
             ),
+
             
+
+
           ),
-          body: const TabBarView(
+          body:  TabBarView(
+            controller: _tabController,
             children: [
-              Icon(Icons.directions_car),
-              Icon(Icons.directions_transit),
-              Icon(Icons.directions_bike),
-              Text("kfjkf"),
-              Text("dkfjfkfjdfjfkdfjsdf"),
-              Text("kfjfkkfjfkfjfkjfklfjfklfsklfjfkfj"),
-            ],
+             
+
+
+              MedicinePage(),
+              EmployeesPage(),
+              SupplierPage(),
+              OrdersPage(),
+              StockPage(),
+              ExpensePage(),
+            ]
           ),
         ),
       );
