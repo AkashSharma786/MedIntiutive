@@ -34,12 +34,12 @@ class _SupplierSectionState extends State<SupplierSection> {
               onPressed: () {
                 widget.whichButtonClicked(3);
               },
-              child: Text('Delete ')),
+              child: Text('Edit')),
           OutlinedButton(
               onPressed: () {
                 widget.whichButtonClicked(4);
               },
-              child: Text('View')),
+              child: Text('Delete')),
         ],
       ),
     );

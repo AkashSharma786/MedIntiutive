@@ -20,20 +20,17 @@ class StockPageState extends State<StockPage> {
     Size screenSize = MediaQuery.of(context).size;
     return Column(
       children: [
-        Container(
-          width: screenSize.width,
-          height: 50,
-          color: Colors.amber,
-          child: Text(
-            "$currentClickedButton",
-          ),
-        ),
-        Container(
-          width: screenSize.width,
-          height: screenSize.height - 160,
-          color: Colors.teal,
-          child: Text(
-            "Stock Page",
+        
+
+
+        Expanded(
+          child: Container(
+            width: screenSize.width,
+            
+            color: Colors.teal,
+            child: Text(
+              "Stock Page",
+            ),
           ),
         )
       ],

@@ -20,22 +20,46 @@ class ExpensePageState extends State<ExpensePage> {
     Size screenSize = MediaQuery.of(context).size;
     return Column(
       children: [
-        Container(
-          width: screenSize.width,
-          height: 50,
-          color: const Color.fromARGB(255, 209, 219, 228),
-          child: Text(
-            "$currentClickedButton",
+
+          Builder(builder: (context){
+            switch(currentClickedButton){
+              case 4:
+                return Container(
+                  width: screenSize.width,
+                  height: 50,
+                  color: Colors.deepPurple,
+                  child: Text(
+                    "Expense Page",
+                  ),
+                );
+                default :
+                return SizedBox();
+
+            }
+          }
           ),
-        ),
-        Container(
-          width: screenSize.width,
-          height: screenSize.height - 146,
-          color: Colors.cyan,
-          child: Text(
-            "Expense Page",
+
+
+
+
+            
+
+        
+
+
+        Expanded(
+          child: Container(
+            width: screenSize.width,
+            
+            color: Colors.cyan,
+            child: Text(
+              "Expense Page",
+            ),
           ),
         )
+
+
+
       ],
     );
   }

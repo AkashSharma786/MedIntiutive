@@ -35,11 +35,7 @@ class _MedicineSectionState extends State<MedicineSection> {
                 widget.whichButtonClicked(3);
               },
               child: Text('Delete')),
-          OutlinedButton(
-              onPressed: () {
-                widget.whichButtonClicked(4);
-              },
-              child: Text('View')),
+          
         ],
       ),
     );

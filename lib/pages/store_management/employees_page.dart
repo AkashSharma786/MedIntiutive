@@ -21,14 +21,18 @@ class EmployeesPageState extends State<EmployeesPage> {
     Size screenSize = MediaQuery.of(context).size;
     return Column(
       children: [
-        Container(
-          width: screenSize.width,
-          height: 50,
-          color: Colors.blue,
-          child: Text(
-            "$currentClickedButton",
-          ),
-        ),
+        
+         
+            Container(
+              width: screenSize.width,
+              height: 50,
+              color: Colors.blue,
+              child: Text(
+                "$currentClickedButton",
+              ),
+            ),
+          
+        
         Container(
           width: screenSize.width,
           height: screenSize.height - 146,

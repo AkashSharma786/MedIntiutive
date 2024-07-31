@@ -29,7 +29,7 @@ class _OrdersSectionState extends State<OrdersSection> {
               onPressed: () {
                 widget.whichButtonClicked(2);
               },
-              child: Text('View')),
+              child: Text('Modify Order')),
           OutlinedButton(
               onPressed: () {
                 widget.whichButtonClicked(3);

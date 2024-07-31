@@ -29,7 +29,7 @@ class _StockSectionState extends State<StockSection> {
               onPressed: () {
                 widget.whichButtonClicked(2);
               },
-              child: Text('View Desending')),
+              child: Text('Stock Desending')),
           OutlinedButton(
               onPressed: () {
                 widget.whichButtonClicked(3);
