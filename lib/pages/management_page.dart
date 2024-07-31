@@ -20,9 +20,9 @@ class ManagementPage extends StatefulWidget {
   State<ManagementPage> createState() => _ManagementState();
 }
 
-class _ManagementState extends State<ManagementPage> with SingleTickerProviderStateMixin {
-
-   late TabController _tabController;
+class _ManagementState extends State<ManagementPage>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
 
   @override
   void initState() {
@@ -32,9 +32,7 @@ class _ManagementState extends State<ManagementPage> with SingleTickerProviderSt
       if (_tabController.indexIsChanging) {
         print("Selected Tab Index: ${_tabController.index}");
       }
-      setState(() {
-        
-      });
+      setState(() {});
     });
   }
 
@@ -44,102 +42,84 @@ class _ManagementState extends State<ManagementPage> with SingleTickerProviderSt
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
-
     Size screenSize = MediaQuery.of(context).size;
-    
+
     return DefaultTabController(
-        length: 6,
-        child: Scaffold(
-          appBar: AppBar(
-            bottom: PreferredSize(
-              preferredSize: Size(screenSize.width, 54),
-              child: Column(
-                children: [
-                  Container(
-              height: 40,
-              child: const Text('Store Management',
-              
-              style: TextStyle( 
-                fontSize: 16
-              ),
-              ),
-            ),
-                  Container(
-                    height: 30,
-                    child: TabBar(
-                      indicatorSize: TabBarIndicatorSize.tab,
-                      controller: _tabController,
-                        
-                        
-                        
-                    
-                        indicator: const BoxDecoration(
-                          color: Colors.cyan,
-                        ),
-                        
-                        
-                        tabs: [
-                          Tab(child:  Text("Medicine")),
-                          Tab(child:  Text("Employees"),),
-                          Tab(child:  Text("Supplier"),),
-                          Tab(child:  Text("Orders"),),
-                          Tab(child:  Text("Stock"),),
-                          Tab(child:  Text("Expense"),),
-                        
-                        ],
-                    ),
+      length: 6,
+      child: Scaffold(
+        appBar: AppBar(
+          bottom: PreferredSize(
+            preferredSize: Size(screenSize.width, 40),
+            child: Column(
+              children: [
+                Container(
+                  height: 26,
+                  child: const Text(
+                    'Store Management',
+                    style: TextStyle(fontSize: 15),
                   ),
-
-                  
-                    Builder(
-                      builder: (context) {
-                        switch(_tabController.index){
-                          case 0:
-                            return MedicineSection();
-                          case 1:
-                            return EmployeesSection();
-                          case 2:
-                            return SupplierSection();
-                          case 3:
-                            return OrdersSection();
-                          case 4:
-                            return StockSection();
-                          case 5:
-                            return ExpenseSection();
-                          default:
-                            return  Text("Medicine");
-                        }
-                      }
+                ),
+                Container(
+                  height: 30,
+                  child:  TabBar(
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    controller: _tabController,
+                    indicator: const BoxDecoration(
+                      color: Colors.cyan,
                     ),
-
-                    
-                ],
-              ),
+                    tabs: [
+                       Tab(child: Text("Medicine")),
+                      Tab(
+                        child: Text("Employees"),
+                      ),
+                      Tab(
+                        child: Text("Supplier"),
+                      ),
+                      Tab(
+                        child: Text("Orders"),
+                      ),
+                      Tab(
+                        child: Text("Stock"),
+                      ),
+                      Tab(
+                        child: Text("Expense"),
+                      ),
+                    ],
+                  ),
+                ),
+                Builder(builder: (context) {
+                  switch (_tabController.index) {
+                    case 0:
+                      return MedicineSection();
+                    case 1:
+                      return EmployeesSection();
+                    case 2:
+                      return SupplierSection();
+                    case 3:
+                      return OrdersSection();
+                    case 4:
+                      return StockSection();
+                    case 5:
+                      return ExpenseSection();
+                    default:
+                      return Text("Medicine");
+                  }
+                }),
+              ],
             ),
-
-            
-
-
-          ),
-          body:  TabBarView(
-            controller: _tabController,
-            children: [
-             
-
-
-              MedicinePage(),
-              EmployeesPage(),
-              SupplierPage(),
-              OrdersPage(),
-              StockPage(),
-              ExpensePage(),
-            ]
           ),
         ),
-      );
-    
+        body: TabBarView(controller: _tabController, children: [
+          MedicinePage(),
+          EmployeesPage(),
+          SupplierPage(),
+          OrdersPage(),
+          StockPage(),
+          ExpensePage(),
+        ]),
+      ),
+    );
   }
 }
