@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class StockSection extends StatefulWidget {
+  ValueSetter<int> whichButtonClicked;
 
-  const StockSection({super.key});
+  StockSection({super.key, required this.whichButtonClicked});
 
   @override
   State<StockSection> createState() => _StockSectionState();
@@ -19,17 +20,28 @@ class _StockSectionState extends State<StockSection> {
       child: ButtonBar(
         alignment: MainAxisAlignment.spaceEvenly,
         children: [
-          OutlinedButton(onPressed: (){}, child: Text('Stock Ascending')),
-          OutlinedButton(onPressed: (){}, child: Text('View Desending')),
-          OutlinedButton(onPressed: (){}, child: Text('Expiry Ascending ')),
-          OutlinedButton(onPressed: (){}, child: Text('Expiry Descending')),
-          
-           
-           
-          
+          OutlinedButton(
+              onPressed: () {
+                widget.whichButtonClicked(1);
+              },
+              child: Text('Stock Ascending')),
+          OutlinedButton(
+              onPressed: () {
+                widget.whichButtonClicked(2);
+              },
+              child: Text('View Desending')),
+          OutlinedButton(
+              onPressed: () {
+                widget.whichButtonClicked(3);
+              },
+              child: Text('Expiry Ascending ')),
+          OutlinedButton(
+              onPressed: () {
+                widget.whichButtonClicked(4);
+              },
+              child: Text('Expiry Descending')),
         ],
       ),
-
-    ) ;
+    );
   }
 }

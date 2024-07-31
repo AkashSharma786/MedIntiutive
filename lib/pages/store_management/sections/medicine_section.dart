@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MedicineSection extends StatefulWidget {
+  ValueSetter<int> whichButtonClicked;
 
-  const MedicineSection({super.key});
+  MedicineSection({super.key, required this.whichButtonClicked});
 
   @override
   State<MedicineSection> createState() => _MedicineSectionState();
@@ -19,17 +20,28 @@ class _MedicineSectionState extends State<MedicineSection> {
       child: ButtonBar(
         alignment: MainAxisAlignment.spaceEvenly,
         children: [
-          OutlinedButton(onPressed: (){}, child: Text('Search')),
-          OutlinedButton(onPressed: (){}, child: Text('Add')),
-          OutlinedButton(onPressed: (){}, child: Text('Delete')),
-          OutlinedButton(onPressed: (){}, child: Text('View')),
-          
-           
-           
-          
+          OutlinedButton(
+              onPressed: () {
+                widget.whichButtonClicked(1);
+              },
+              child: Text('Search')),
+          OutlinedButton(
+              onPressed: () {
+                widget.whichButtonClicked(2);
+              },
+              child: Text('Add')),
+          OutlinedButton(
+              onPressed: () {
+                widget.whichButtonClicked(3);
+              },
+              child: Text('Delete')),
+          OutlinedButton(
+              onPressed: () {
+                widget.whichButtonClicked(4);
+              },
+              child: Text('View')),
         ],
       ),
-
-    ) ;
+    );
   }
 }

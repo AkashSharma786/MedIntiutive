@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class OrdersSection extends StatefulWidget {
+  ValueSetter<int> whichButtonClicked;
 
-  const OrdersSection({super.key});
+  OrdersSection({super.key, required this.whichButtonClicked});
 
   @override
   State<OrdersSection> createState() => _OrdersSectionState();
@@ -19,17 +20,23 @@ class _OrdersSectionState extends State<OrdersSection> {
       child: ButtonBar(
         alignment: MainAxisAlignment.spaceEvenly,
         children: [
-          OutlinedButton(onPressed: (){}, child: Text('New Order')),
-         
-          OutlinedButton(onPressed: (){}, child: Text('View')),
-          OutlinedButton(onPressed: (){}, child: Text('Cancel Orders')),
-          
-           
-           
-          
+          OutlinedButton(
+              onPressed: () {
+                widget.whichButtonClicked(1);
+              },
+              child: Text('New Order')),
+          OutlinedButton(
+              onPressed: () {
+                widget.whichButtonClicked(2);
+              },
+              child: Text('View')),
+          OutlinedButton(
+              onPressed: () {
+                widget.whichButtonClicked(3);
+              },
+              child: Text('Cancel Orders')),
         ],
       ),
-
-    ) ;
+    );
   }
 }

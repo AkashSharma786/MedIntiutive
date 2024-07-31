@@ -17,14 +17,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.deepPurple,
         highlightColor: const Color.fromARGB(255, 119, 3, 252),
-        
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
       home: HomePage(),
-      
     );
   }
 }
-

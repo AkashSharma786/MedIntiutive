@@ -60,11 +60,9 @@ class _ProfileState extends State<Profile> {
                 ),
                 borderRadius: BorderRadius.circular(18.0),
               ),
-              child :const Center(
+              child: const Center(
                 child: Text(" Your Profile",
-                             
                     style: TextStyle(
-                
                       color: Colors.white,
                       fontSize: 30,
                     )),
@@ -142,9 +140,7 @@ class _ProfileState extends State<Profile> {
                                 onTap: () {},
                               ),
                             ),
-                         
                             const SizedBox(height: 10),
-                         
                           ],
                         )),
                     const SizedBox(width: 10),

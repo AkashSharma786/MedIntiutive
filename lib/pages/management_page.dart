@@ -22,16 +22,27 @@ class ManagementPage extends StatefulWidget {
 
 class _ManagementState extends State<ManagementPage>
     with SingleTickerProviderStateMixin {
+  final GlobalKey<EmployeesPageState> _employeesPageKey =
+      GlobalKey<EmployeesPageState>();
+  final GlobalKey<ExpensePageState> _expensePageKey =
+      GlobalKey<ExpensePageState>();
+  final GlobalKey<MedicinePageState> _medicinePageKey =
+      GlobalKey<MedicinePageState>();
+  final GlobalKey<OrdersPageState> _ordersPageKey =
+      GlobalKey<OrdersPageState>();
+  final GlobalKey<StockPageState> _stockPageKey = GlobalKey<StockPageState>();
+  final GlobalKey<SupplierPageState> _supplierPageKey =
+      GlobalKey<SupplierPageState>();
+
   late TabController _tabController;
+  int sectionButtonsClicked = 0;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 6, vsync: this);
     _tabController.addListener(() {
-      if (_tabController.indexIsChanging) {
-        print("Selected Tab Index: ${_tabController.index}");
-      }
+      if (_tabController.indexIsChanging) {}
       setState(() {});
     });
   }
@@ -42,7 +53,34 @@ class _ManagementState extends State<ManagementPage>
     super.dispose();
   }
 
-  
+  void onButtonClicked(int whichButtonClicked) {
+    switch (_tabController.index) {
+      case 0:
+        _medicinePageKey.currentState!.updateColumn(whichButtonClicked);
+
+        break;
+      case 1:
+        _employeesPageKey.currentState!.updateColumn(whichButtonClicked);
+
+        break;
+      case 2:
+        _supplierPageKey.currentState!.updateColumn(whichButtonClicked);
+        break;
+      case 3:
+        _ordersPageKey.currentState!.updateColumn(whichButtonClicked);
+        break;
+      case 4:
+        _stockPageKey.currentState!.updateColumn(whichButtonClicked);
+        break;
+      case 5:
+        _expensePageKey.currentState!.updateColumn(whichButtonClicked);
+        break;
+    }
+  }
+
+  int getButtonClicked() {
+    return sectionButtonsClicked;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,14 +103,14 @@ class _ManagementState extends State<ManagementPage>
                 ),
                 Container(
                   height: 30,
-                  child:  TabBar(
+                  child: TabBar(
                     indicatorSize: TabBarIndicatorSize.tab,
                     controller: _tabController,
                     indicator: const BoxDecoration(
                       color: Colors.cyan,
                     ),
                     tabs: [
-                       Tab(child: Text("Medicine")),
+                      Tab(child: Text("Medicine")),
                       Tab(
                         child: Text("Employees"),
                       ),
@@ -94,17 +132,22 @@ class _ManagementState extends State<ManagementPage>
                 Builder(builder: (context) {
                   switch (_tabController.index) {
                     case 0:
-                      return MedicineSection();
+                      return MedicineSection(
+                        whichButtonClicked: onButtonClicked,
+                      );
                     case 1:
-                      return EmployeesSection();
+                      return EmployeesSection(
+                          whichButtonClicked: onButtonClicked);
                     case 2:
-                      return SupplierSection();
+                      return SupplierSection(
+                          whichButtonClicked: onButtonClicked);
                     case 3:
-                      return OrdersSection();
+                      return OrdersSection(whichButtonClicked: onButtonClicked);
                     case 4:
-                      return StockSection();
+                      return StockSection(whichButtonClicked: onButtonClicked);
                     case 5:
-                      return ExpenseSection();
+                      return ExpenseSection(
+                          whichButtonClicked: onButtonClicked);
                     default:
                       return Text("Medicine");
                   }
@@ -114,12 +157,18 @@ class _ManagementState extends State<ManagementPage>
           ),
         ),
         body: TabBarView(controller: _tabController, children: [
-          MedicinePage(),
-          EmployeesPage(),
-          SupplierPage(),
-          OrdersPage(),
-          StockPage(),
-          ExpensePage(),
+          MedicinePage(
+            key: _medicinePageKey,
+          ),
+          EmployeesPage(key: _employeesPageKey),
+          SupplierPage(
+            key: _supplierPageKey,
+          ),
+          OrdersPage(
+            key: _ordersPageKey,
+          ),
+          StockPage(key: _stockPageKey),
+          ExpensePage(key: _expensePageKey),
         ]),
       ),
     );

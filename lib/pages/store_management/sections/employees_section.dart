@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class EmployeesSection extends StatefulWidget {
+  ValueSetter<int> whichButtonClicked;
 
-  const EmployeesSection({super.key});
+  EmployeesSection({super.key, required this.whichButtonClicked});
 
   @override
   State<EmployeesSection> createState() => _EmployeesSectionState();
@@ -19,17 +20,28 @@ class _EmployeesSectionState extends State<EmployeesSection> {
       child: ButtonBar(
         alignment: MainAxisAlignment.spaceEvenly,
         children: [
-          OutlinedButton(onPressed: (){}, child: Text('Add Employee')),
-          OutlinedButton(onPressed: (){}, child: Text('View Employees')),
-          OutlinedButton(onPressed: (){}, child: Text('Edit Employees')),
-          OutlinedButton(onPressed: (){}, child: Text('Delete Employees')),
-          
-           
-           
-          
+          OutlinedButton(
+              onPressed: () {
+                widget.whichButtonClicked(1);
+              },
+              child: Text('Add Employee')),
+          OutlinedButton(
+              onPressed: () {
+                widget.whichButtonClicked(2);
+              },
+              child: Text('View Employees')),
+          OutlinedButton(
+              onPressed: () {
+                widget.whichButtonClicked(3);
+              },
+              child: Text('Edit Employees')),
+          OutlinedButton(
+              onPressed: () {
+                widget.whichButtonClicked(4);
+              },
+              child: Text('Delete Employees')),
         ],
       ),
-
-    ) ;
+    );
   }
 }

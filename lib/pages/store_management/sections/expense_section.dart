@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ExpenseSection extends StatefulWidget {
+  ValueSetter<int> whichButtonClicked;
 
-  const ExpenseSection({super.key});
+  ExpenseSection({super.key, required this.whichButtonClicked});
 
   @override
   State<ExpenseSection> createState() => _ExpenseSectionState();
@@ -19,17 +20,28 @@ class _ExpenseSectionState extends State<ExpenseSection> {
       child: ButtonBar(
         alignment: MainAxisAlignment.spaceEvenly,
         children: [
-          OutlinedButton(onPressed: (){}, child: Text('One Month')),
-          OutlinedButton(onPressed: (){}, child: Text('Six Monts')),
-          OutlinedButton(onPressed: (){}, child: Text('One Year')),
-          OutlinedButton(onPressed: (){}, child: Text('Select by Date')),
-          
-           
-           
-          
+          OutlinedButton(
+              onPressed: () {
+                widget.whichButtonClicked(1);
+              },
+              child: Text('One Month')),
+          OutlinedButton(
+              onPressed: () {
+                widget.whichButtonClicked(2);
+              },
+              child: Text('Six Monts')),
+          OutlinedButton(
+              onPressed: () {
+                widget.whichButtonClicked(3);
+              },
+              child: Text('One Year')),
+          OutlinedButton(
+              onPressed: () {
+                widget.whichButtonClicked(4);
+              },
+              child: Text('Select by Date')),
         ],
       ),
-
-    ) ;
+    );
   }
 }

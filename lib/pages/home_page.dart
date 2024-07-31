@@ -4,9 +4,6 @@ import 'package:flutter_application_1/pages/profile_page.dart';
 import 'package:flutter_application_1/pages/login_page.dart';
 import 'package:flutter_application_1/pages/management_page.dart';
 
-
-
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -19,14 +16,12 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _views = [
     const Center(child: Text('Home View')),
-
     const Center(child: BillingPage()),
     const Center(child: LoginPage()),
     const Center(child: ManagementPage()),
     const Center(child: Text('Settings View')),
     const Center(child: Text('Settings View')),
     const Center(child: Profile()),
-
   ];
 
   @override
@@ -36,7 +31,6 @@ class _HomePageState extends State<HomePage> {
         children: <Widget>[
           NavigationRail(
             backgroundColor: Colors.green.shade700,
-
             groupAlignment: 0.0,
             indicatorColor: Colors.white,
             selectedIndex: _selectedIndex,
@@ -45,11 +39,7 @@ class _HomePageState extends State<HomePage> {
                   elevation: WidgetStateProperty.all(10),
                   backgroundColor: WidgetStateProperty.all(Colors.white),
                 ),
-
-                onPressed: () {
-                
-                },
-
+                onPressed: () {},
                 child:
                     const Icon(Icons.person_2_outlined, color: Colors.black)),
             onDestinationSelected: (int index) {
@@ -59,17 +49,13 @@ class _HomePageState extends State<HomePage> {
             },
             labelType: NavigationRailLabelType.selected,
             destinations: const [
-              
               NavigationRailDestination(
                 icon: Icon(
                   Icons.home_max_outlined,
                   color: Colors.black,
                 ),
-                label:
-                    Text('Home', style: TextStyle(color: Colors.black)),
+                label: Text('Home', style: TextStyle(color: Colors.black)),
               ),
-
-
               NavigationRailDestination(
                 icon: Icon(
                   Icons.article,
@@ -84,8 +70,6 @@ class _HomePageState extends State<HomePage> {
                 ),
                 label: Text('Database', style: TextStyle(color: Colors.black)),
               ),
-
-
               NavigationRailDestination(
                 icon: Icon(
                   Icons.shopping_cart_outlined,
@@ -93,8 +77,6 @@ class _HomePageState extends State<HomePage> {
                 ),
                 label: Text('Order', style: TextStyle(color: Colors.black)),
               ),
-
-
               NavigationRailDestination(
                 icon: Icon(
                   Icons.money,
@@ -102,8 +84,6 @@ class _HomePageState extends State<HomePage> {
                 ),
                 label: Text('Expenses', style: TextStyle(color: Colors.black)),
               ),
-
-
               NavigationRailDestination(
                 icon: Icon(
                   Icons.notification_add_outlined,
@@ -112,7 +92,6 @@ class _HomePageState extends State<HomePage> {
                 label:
                     Text('Notification', style: TextStyle(color: Colors.black)),
               ),
-
               NavigationRailDestination(
                 icon: Icon(
                   Icons.person,
@@ -121,9 +100,6 @@ class _HomePageState extends State<HomePage> {
                 label:
                     Text('Notification', style: TextStyle(color: Colors.black)),
               ),
-
-
-
             ],
           ),
           Expanded(
