@@ -25,7 +25,7 @@ class _EmployeesPageState extends State<EmployeesPage> {
 
         Container(
           width: screenSize.width,
-          height: screenSize.height-160,
+          height: screenSize.height-146,
           color: Colors.red,
           child: Text("Employees Page",),
         )

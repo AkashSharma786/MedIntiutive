@@ -25,7 +25,7 @@ class _OrdersPageState extends State<OrdersPage> {
 
         Container(
           width: screenSize.width,
-          height: screenSize.height-160,
+          height: screenSize.height-146,
           color: Colors.pink,
           child: Text("Orders Page",),
         )

@@ -25,7 +25,7 @@ class _ExpensePageState extends State<ExpensePage> {
 
         Container(
           width: screenSize.width,
-          height: screenSize.height-160,
+          height: screenSize.height-146,
           color: Colors.cyan,
           child: Text("Expense Page",),
         )

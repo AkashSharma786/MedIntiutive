@@ -25,7 +25,7 @@ class _SupplierPageState extends State<SupplierPage> {
 
         Container(
           width: screenSize.width,
-          height: screenSize.height-160,
+          height: screenSize.height-146,
           color: Colors.yellow,
           child: Text("Supplier Page",),
         )
