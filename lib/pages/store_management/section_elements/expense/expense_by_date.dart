@@ -4,6 +4,12 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/material_styles/date_input.dart';
 
 class ExpenseByDate extends StatelessWidget {
+  TextEditingController fromDayController = TextEditingController();
+  TextEditingController fromMonthController = TextEditingController();
+  TextEditingController fromYearController = TextEditingController();
+  TextEditingController toDayController = TextEditingController();
+  TextEditingController toMonthController = TextEditingController();
+  TextEditingController toYearController = TextEditingController();
   ExpenseByDate({super.key});
 
   @override
@@ -20,13 +26,16 @@ class ExpenseByDate extends StatelessWidget {
         children: [
           Text("From:  "),
           
-          DateInput(),
+          DateInput( dayControl: fromDayController, monthControl: fromMonthController, yearControl: fromYearController),
 
           Text("to:  "),
-          DateInput(),
+          DateInput( dayControl: toDayController, monthControl: toMonthController, yearControl: toYearController),
          
           
-          ElevatedButton(onPressed: () {}, child: const Text("Evaluate"))
+          ElevatedButton(onPressed: () {
+            print(" from ${fromDayController.text}/${fromMonthController.text}/${fromYearController.text}");
+            print(" to ${toDayController.text}/${toMonthController.text}/${toYearController.text}");
+          }, child: const Text("Evaluate"))
         ],
       ),
     );

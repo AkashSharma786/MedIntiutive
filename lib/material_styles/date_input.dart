@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class DateInput extends StatelessWidget{
+  TextEditingController dayControl;
+  TextEditingController monthControl;
+  TextEditingController yearControl;
+
+  DateInput({super.key ,required this.dayControl, required this.monthControl, required this.yearControl});
 
   @override
   build(BuildContext context){ 
@@ -20,6 +25,7 @@ class DateInput extends StatelessWidget{
                   width: 55,
                   height: 40,
                   child: TextField(
+                    controller: dayControl,
                     maxLength: 4,
                     
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -39,6 +45,7 @@ class DateInput extends StatelessWidget{
                   width: 75,
                   height: 40,
                   child: TextField(
+                    controller: monthControl,
                     maxLength: 4,
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     keyboardType: TextInputType.number,
@@ -61,6 +68,7 @@ class DateInput extends StatelessWidget{
                   width: 60,
                   height: 40,
                   child: TextField(
+                    controller: yearControl,
                     maxLength: 4,
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     keyboardType: TextInputType.number,

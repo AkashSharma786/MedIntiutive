@@ -28,15 +28,7 @@ class EmployeesPageState extends State<EmployeesPage> {
          return Row(
            children: [
              EmployeesAdd(),
-             Container(
-                width: screenSize.width*0.6 - 87,
-                height: screenSize.height,
-                color: Colors.yellow,
-                child: Text(
-                  "Employees Page",
-                ),
-              )
-
+             
            ],
          );
        case 2:
@@ -66,7 +58,13 @@ class EmployeesPageState extends State<EmployeesPage> {
            ],
          );
        default: 
-       return const SizedBox();
+       return  Expanded(
+          child: Container(
+            width: screenSize.width,
+            
+            color: Colors.red,
+          ),
+        );
        }
     });
   }

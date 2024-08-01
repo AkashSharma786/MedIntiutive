@@ -29,23 +29,11 @@ class MedicinePageState extends State<MedicinePage> {
             return Row(
               children: [
                 MedicineSearch(),
-                Container(
-                width: screenSize.width*0.6 - 87,
-                height: screenSize.height,
-                color: Colors.yellow,
-                child: Text(
-                  "Supplier Page",
-                ),
-              )
-              ],
-            );
-          case 2:
-            return  Column(
-              children: [
-                MedicineAdd(),
-                        Expanded(
+
+                Expanded(
           child: Container(
             width: screenSize.width,
+            height: screenSize.height,
                  
             color: Colors.purple,
             child: Text(
@@ -55,13 +43,23 @@ class MedicinePageState extends State<MedicinePage> {
         )
               ],
             );
+          case 2:
+            return  Row(
+              children: [
+                MedicineAdd(),
+
+               
+              ],
+            );
           case 3:
-            return Column(
+            return Row(
               children: [
                 MedicineDelete(),
-                        Expanded(
+
+                Expanded(
           child: Container(
             width: screenSize.width,
+            height: screenSize.height,
                  
             color: Colors.purple,
             child: Text(
@@ -72,7 +70,16 @@ class MedicinePageState extends State<MedicinePage> {
               ],
             );
           default: 
-          return const SizedBox();
+          return Expanded(
+          child: Container(
+            width: screenSize.width,
+                 
+            color: Colors.purple,
+            child: Text(
+              "Medicine Page",
+            ),
+          ),
+        );
           }
        });
   }

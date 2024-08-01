@@ -5,6 +5,9 @@ import 'package:flutter_application_1/material_styles/button.dart';
 import 'package:flutter_application_1/material_styles/date_input.dart';
 
 class NewOrder extends StatelessWidget {
+  TextEditingController OrderDayController = TextEditingController();
+  TextEditingController OrderMonthController = TextEditingController();
+  TextEditingController OrderYearController = TextEditingController();
 
   NewOrder({super.key});
 
@@ -25,7 +28,7 @@ class NewOrder extends StatelessWidget {
           ElevatedButton(onPressed: (){}, child: Text("Select Medicines")),
           ElevatedButton(onPressed: (){}, child: Text("Select Supplier")),
           Text("Order Date: "),
-          DateInput(),
+          DateInput( dayControl: OrderDayController, monthControl: OrderMonthController, yearControl: OrderYearController),
 
           SizedBox(
                   width: 200,
@@ -48,7 +51,9 @@ class NewOrder extends StatelessWidget {
 
           
 
-          MyButtonStyle(text: "Place Order", width: 100, height: 40, onTap: (){})
+          MyButtonStyle(text: "Place Order", width: 100, height: 40, onTap: (){
+            print(" from ${OrderDayController.text}/${OrderMonthController.text}/${OrderYearController.text}");
+          })
 
 
 

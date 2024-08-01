@@ -15,10 +15,13 @@ class _DashBoardState extends State<DashBoard> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
+
         title: Text('Dashboard'),
         actions: [ 
 
           IconButton(
+            highlightColor: Colors.white,
+            
             onPressed:(){
               if(profilePageDisplayed == 1){
                 setState(() {

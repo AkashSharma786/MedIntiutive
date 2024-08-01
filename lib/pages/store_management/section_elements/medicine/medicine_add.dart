@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/material_styles/custom_labeled_text_field.dart';
+import 'package:flutter_application_1/material_styles/date_input.dart';
 
 class MedicineAdd extends StatelessWidget {
+
+  TextEditingController serialController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController sciNameController = TextEditingController();
+  TextEditingController brandController = TextEditingController();
+  TextEditingController typeController = TextEditingController();
+  TextEditingController mRPController = TextEditingController();
+  TextEditingController sellingPriceController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
+  TextEditingController imageController = TextEditingController();
+  TextEditingController usageDirectionController = TextEditingController();
+  TextEditingController rackDetailsController = TextEditingController();
 
   MedicineAdd({super.key});
 
@@ -12,15 +27,83 @@ class MedicineAdd extends StatelessWidget {
 
     return Container(
 
-      width: screenSize.width,
-      height: 50,
+      width: screenSize.width - 87,
+      height: screenSize.height*0.9,
       color: Colors.blue,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ElevatedButton(child: Text("Select Medicine"), onPressed: (){} ),
+
+          SizedBox(
+            width: screenSize.width * 0.02,),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomLabeledTextField(label: "Serial Number", hint: "563", widgetControl: serialController),
+              CustomLabeledTextField(label: "Name", hint: "Dolo 650", widgetControl: nameController),
+              SizedBox(height: screenSize.height*0.02,),
+              CustomLabeledTextField(label: "Scientific Name", hint: "Paracetamol 650mg", widgetControl: sciNameController),
+              SizedBox(height: screenSize.height*0.02,),
+              CustomLabeledTextField(label: "Brand", hint: "Cipla", widgetControl: brandController),
+              SizedBox(height: screenSize.height*0.02,),
+              CustomLabeledTextField(label: "Type" , hint: "Cipla", widgetControl: typeController),
+              SizedBox(height: screenSize.height*0.02,),
+              CustomLabeledTextField(label: "MRP", hint: "400.00", widgetControl: mRPController),
+              SizedBox(height: screenSize.height*0.02,),
+             
+
+              ElevatedButton(onPressed: (){
+                print("Serial Number : ${serialController.text}");
+                print("Name : ${nameController.text}");
+                print("Scientific Name : ${sciNameController.text}");
+                print("Brand : ${brandController.text}");
+                print("Type : ${typeController.text}");
+                print("MRP : ${mRPController.text}");
+                print("Selling Price : ${sellingPriceController.text}");
+                print("Description : ${descriptionController.text}");
+                print("Image : ${imageController.text}");
+                print("Usage Direction : ${usageDirectionController.text}");
+                print("Rack Details : ${rackDetailsController.text}");
+                
+
+                
+
+
+
+              }, child: Text("Add Employee")),
+
+
+            ],
+           
+            ),
+
+            SizedBox(width: screenSize.width*0.02,),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+
+
+            children: [
+
+              CustomLabeledTextField(label: "selling Price ", hint: "200.00", widgetControl: sellingPriceController),
+              SizedBox(height: screenSize.height*0.02,),
+
+              CustomLabeledTextField(label: "Description", hint: "two time a day", widgetControl: descriptionController),
+              SizedBox(height: screenSize.height*0.02,),
+              CustomLabeledTextField(label: "Image", hint: "D:/image/dolo650.jpg", widgetControl: imageController),
+              SizedBox(height: screenSize.height*0.02,),
+              CustomLabeledTextField(label: "usage", hint: "Used in fever ", widgetControl: usageDirectionController),
+              SizedBox(height: screenSize.height*0.04,),
+
+              CustomLabeledTextField(label: "Rack Details", hint: "Placed on rack 14 ", widgetControl: rackDetailsController),
+              SizedBox(height: screenSize.height*0.04,),
+             
+
+
+            ],
+
+          )
         ],
-      )
+      ),
+
 
     );
   }
