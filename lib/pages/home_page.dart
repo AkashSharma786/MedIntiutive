@@ -1,8 +1,17 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+
 import 'package:flutter_application_1/pages/billing_page.dart';
-import 'package:flutter_application_1/pages/profile_page.dart';
-import 'package:flutter_application_1/pages/login_page.dart';
+import 'package:flutter_application_1/pages/dashboard_page.dart';
+
 import 'package:flutter_application_1/pages/management_page.dart';
+import 'package:flutter_application_1/pages/notification_page.dart';
+
+import 'package:flutter_application_1/pages/order_page.dart';
+import 'package:flutter_application_1/pages/profile_page.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,13 +24,12 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   final List<Widget> _views = [
-    const Center(child: Text('Home View')),
-    const Center(child: BillingPage()),
-    const Center(child: LoginPage()),
+    const Center(child: DashBoard()),
     const Center(child: ManagementPage()),
-    const Center(child: Text('Settings View')),
-    const Center(child: Text('Settings View')),
-    const Center(child: Profile()),
+    const Center(child: BillingPage() ),
+    const Center(child: NotificationPage()),
+    const Center(child: Text("Settings")),
+  
   ];
 
   @override
@@ -30,77 +38,124 @@ class _HomePageState extends State<HomePage> {
       body: Row(
         children: <Widget>[
           NavigationRail(
-            backgroundColor: Colors.green.shade700,
-            groupAlignment: 0.0,
+            backgroundColor: Colors.black,
+            groupAlignment: 1,
             indicatorColor: Colors.white,
+            indicatorShape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(5)),
+            ),
             selectedIndex: _selectedIndex,
-            leading: ElevatedButton(
-                style: ButtonStyle(
-                  elevation: WidgetStateProperty.all(10),
-                  backgroundColor: WidgetStateProperty.all(Colors.white),
-                ),
-                onPressed: () {},
-                child:
-                    const Icon(Icons.person_2_outlined, color: Colors.black)),
             onDestinationSelected: (int index) {
               setState(() {
                 _selectedIndex = index;
               });
             },
-            labelType: NavigationRailLabelType.selected,
+            labelType: NavigationRailLabelType.all,
+            leading: Image.asset(
+              "assets/images/cropped_logo.png",
+              height: 80,
+              width: 80,
+            ),
+
+
             destinations: const [
+
               NavigationRailDestination(
-                icon: Icon(
-                  Icons.home_max_outlined,
+                selectedIcon: Icon(
+                  Icons.dashboard_customize_outlined,
                   color: Colors.black,
+                  size: 30,
                 ),
-                label: Text('Home', style: TextStyle(color: Colors.black)),
-              ),
-              NavigationRailDestination(
                 icon: Icon(
-                  Icons.article,
-                  color: Colors.black,
+                  Icons.dashboard_customize_outlined,
+                  color: Colors.white,
+                  size: 30,
                 ),
-                label: Text('Bill', style: TextStyle(color: Colors.black)),
+                label: Text('Dashboard', style: TextStyle(color: Colors.white)),
               ),
-              NavigationRailDestination(
+              
+                NavigationRailDestination(
+                selectedIcon: Icon(
+                  Icons.snippet_folder_sharp,
+                  color: Colors.black,
+                  size: 30,
+                ),
                 icon: Icon(
                   Icons.storage,
-                  color: Colors.black,
+                  color: Colors.white,
+                  size: 30,
                 ),
-                label: Text('Database', style: TextStyle(color: Colors.black)),
+                label: Text('Database', style: TextStyle(color: Colors.white)),
               ),
+
+
+
               NavigationRailDestination(
-                icon: Icon(
-                  Icons.shopping_cart_outlined,
+                selectedIcon: Icon(
+                  Icons.library_add_outlined,
                   color: Colors.black,
+                  size: 30,
                 ),
-                label: Text('Order', style: TextStyle(color: Colors.black)),
-              ),
-              NavigationRailDestination(
                 icon: Icon(
-                  Icons.money,
-                  color: Colors.black,
+                  Icons.article,
+                  color: Colors.white,
+                  size: 30,
                 ),
-                label: Text('Expenses', style: TextStyle(color: Colors.black)),
+                label: Text('Bill', style: TextStyle(color: Colors.white)),
               ),
+
+              
               NavigationRailDestination(
-                icon: Icon(
-                  Icons.notification_add_outlined,
+                selectedIcon: Icon(
+                  Icons.notifications_active_outlined,
                   color: Colors.black,
+                  size: 30,
+                ),
+                icon: Icon(
+                  Icons.notifications_none_outlined,
+                  color: Colors.white,
+                  size: 30,
                 ),
                 label:
-                    Text('Notification', style: TextStyle(color: Colors.black)),
+                    Text('Notification', style: TextStyle(color: Colors.white)),
               ),
+
+
+              
+            
+
+
               NavigationRailDestination(
-                icon: Icon(
-                  Icons.person,
+                selectedIcon: Icon(
+                  Icons.settings,
                   color: Colors.black,
+                  size: 30,
                 ),
-                label:
-                    Text('Notification', style: TextStyle(color: Colors.black)),
+                icon: Icon(
+                  Icons.settings_applications,
+                  color: Colors.white,
+                  size: 30,
+                ),
+                label: Text('Settings', style: TextStyle(color: Colors.white)),
               ),
+
+              
+             
+              
             ],
+
+            trailing: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: IconButton(icon:
+               Icon(Icons.logout),
+                onPressed: (){
+                  exit(0);
+                },
+                ),
+
+              
+              
+              ),
           ),
           Expanded(
             child: _views[_selectedIndex],
