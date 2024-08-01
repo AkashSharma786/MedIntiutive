@@ -1,5 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/store_management/section_elements/employees/employees_add.dart';
+import 'package:flutter_application_1/pages/store_management/section_elements/employees/employees_delete.dart';
+import 'package:flutter_application_1/pages/store_management/section_elements/employees/employees_edit.dart';
 
 class EmployeesPage extends StatefulWidget {
   EmployeesPage({super.key});
@@ -19,26 +22,52 @@ class EmployeesPageState extends State<EmployeesPage> {
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
-    return Column(
-      children: [
-        
-         
-            Container(
-              width: screenSize.width,
-              height: 50,
-              color: Colors.blue,
-              child: Text(
-                "$currentClickedButton",
-              ),
-            ),
-          
-        
-        Container(
-          width: screenSize.width,
-          height: screenSize.height - 146,
-          color: Colors.red,
+    return Builder(builder: (context){
+     switch(currentClickedButton){
+       case 1:
+         return Row(
+           children: [
+             EmployeesAdd(),
+             Container(
+                width: screenSize.width*0.6 - 87,
+                height: screenSize.height,
+                color: Colors.yellow,
+                child: Text(
+                  "Employees Page",
+                ),
+              )
+
+           ],
+         );
+       case 2:
+         return Column(
+           children: [
+             EmployeesEdit(),
+             Expanded(
+          child: Container(
+            width: screenSize.width,
+            
+            color: Colors.red,
+          ),
         )
-      ],
-    );
+           ],
+         );
+       case 3:
+         return Column(
+           children: [
+             EmployeesDelete(),
+             Expanded(
+          child: Container(
+            width: screenSize.width,
+            
+            color: Colors.red,
+          ),
+        )
+           ],
+         );
+       default: 
+       return const SizedBox();
+       }
+    });
   }
 }

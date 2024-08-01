@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/store_management/section_elements/orders/cancel_order.dart';
+import 'package:flutter_application_1/pages/store_management/section_elements/orders/modify_order.dart';
+import 'package:flutter_application_1/pages/store_management/section_elements/orders/new_order.dart';
 
 class OrdersPage extends StatefulWidget {
   const OrdersPage({super.key});
@@ -20,20 +23,31 @@ class OrdersPageState extends State<OrdersPage> {
     Size screenSize = MediaQuery.of(context).size;
     return Column(
       children: [
-        Container(
-          width: screenSize.width,
-          height: 50,
-          color: Colors.deepPurple,
-          child: Text(
-            "$currentClickedButton",
-          ),
-        ),
-        Container(
-          width: screenSize.width,
-          height: screenSize.height - 146,
-          color: Colors.pink,
-          child: Text(
-            "Orders Page",
+
+
+        Builder(builder: (context){
+            switch(currentClickedButton){
+              case 1:
+                return NewOrder();
+              case 2:
+                return ModifyOrder();
+              case 3:
+                return CancelOrder();
+              default: 
+              return const SizedBox();
+              }
+           }),
+
+
+
+        Expanded(
+          child: Container(
+            width: screenSize.width,
+           
+            color: Colors.pink,
+            child: Text(
+              "Orders Page",
+            ),
           ),
         )
       ],

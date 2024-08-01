@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/store_management/section_elements/expense/expense_by_date.dart';
 
 class ExpensePage extends StatefulWidget {
   const ExpensePage({super.key});
@@ -24,14 +25,8 @@ class ExpensePageState extends State<ExpensePage> {
           Builder(builder: (context){
             switch(currentClickedButton){
               case 4:
-                return Container(
-                  width: screenSize.width,
-                  height: 50,
-                  color: Colors.deepPurple,
-                  child: Text(
-                    "Expense Page",
-                  ),
-                );
+                return ExpenseByDate();
+                
                 default :
                 return SizedBox();
 

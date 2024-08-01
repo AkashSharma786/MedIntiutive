@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/store_management/section_elements/medicine/medicine_add.dart';
+import 'package:flutter_application_1/pages/store_management/section_elements/medicine/medicine_delete.dart';
+import 'package:flutter_application_1/pages/store_management/section_elements/medicine/medicine_search.dart';
 
 class MedicinePage extends StatefulWidget {
   //int  whichButtonClicked;
@@ -20,25 +23,57 @@ class MedicinePageState extends State<MedicinePage> {
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
-    return Column(
-      children: [
-        Container(
-          width: screenSize.width,
-          height: 50,
-          color: Colors.orange,
-          child: Text(
-            "$currentClickedButton",
-          ),
-        ),
-        Container(
-          width: screenSize.width,
-          height: screenSize.height - 146,
-          color: Colors.purple,
-          child: Text(
-            "Medicine Page",
+    return Builder(builder: (context){
+        switch(currentClickedButton){
+          case 1:
+            return Row(
+              children: [
+                MedicineSearch(),
+                Container(
+                width: screenSize.width*0.6 - 87,
+                height: screenSize.height,
+                color: Colors.yellow,
+                child: Text(
+                  "Supplier Page",
+                ),
+              )
+              ],
+            );
+          case 2:
+            return  Column(
+              children: [
+                MedicineAdd(),
+                        Expanded(
+          child: Container(
+            width: screenSize.width,
+                 
+            color: Colors.purple,
+            child: Text(
+              "Medicine Page",
+            ),
           ),
         )
-      ],
-    );
+              ],
+            );
+          case 3:
+            return Column(
+              children: [
+                MedicineDelete(),
+                        Expanded(
+          child: Container(
+            width: screenSize.width,
+                 
+            color: Colors.purple,
+            child: Text(
+              "Medicine Page",
+            ),
+          ),
+        )
+              ],
+            );
+          default: 
+          return const SizedBox();
+          }
+       });
   }
 }
