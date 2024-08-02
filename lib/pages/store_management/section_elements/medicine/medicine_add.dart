@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/database_service.dart';
 import 'package:flutter_application_1/material_styles/custom_labeled_text_field.dart';
 import 'package:flutter_application_1/material_styles/date_input.dart';
 
 class MedicineAdd extends StatelessWidget {
-
+  final database ;
   TextEditingController serialController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController sciNameController = TextEditingController();
@@ -18,7 +19,7 @@ class MedicineAdd extends StatelessWidget {
   TextEditingController usageDirectionController = TextEditingController();
   TextEditingController rackDetailsController = TextEditingController();
 
-  MedicineAdd({super.key});
+  MedicineAdd({super.key, required this.database});
 
   @override
   Widget build(BuildContext context) {
@@ -52,17 +53,29 @@ class MedicineAdd extends StatelessWidget {
              
 
               ElevatedButton(onPressed: (){
-                print("Serial Number : ${serialController.text}");
-                print("Name : ${nameController.text}");
-                print("Scientific Name : ${sciNameController.text}");
-                print("Brand : ${brandController.text}");
-                print("Type : ${typeController.text}");
-                print("MRP : ${mRPController.text}");
-                print("Selling Price : ${sellingPriceController.text}");
-                print("Description : ${descriptionController.text}");
-                print("Image : ${imageController.text}");
-                print("Usage Direction : ${usageDirectionController.text}");
-                print("Rack Details : ${rackDetailsController.text}");
+                // print("Serial Number : ${serialController.text}");
+                // print("Name : ${nameController.text}");
+                // print("Scientific Name : ${sciNameController.text}");
+                // print("Brand : ${brandController.text}");
+                // print("Type : ${typeController.text}");
+                // print("MRP : ${mRPController.text}");
+                // print("Selling Price : ${sellingPriceController.text}");
+                // print("Description : ${descriptionController.text}");
+                // print("Image : ${imageController.text}");
+                // print("Usage Direction : ${usageDirectionController.text}");
+                // print("Rack Details : ${rackDetailsController.text}");
+
+                DatabaseService.addMedicine(int.parse(serialController.text),
+                 nameController.text,
+                  sciNameController.text,
+                  double.parse(mRPController.text),
+                  typeController.text,
+                  brandController.text,
+                  double.parse(sellingPriceController.text),
+                  descriptionController.text,
+                  imageController.text,
+                  usageDirectionController.text,
+                  rackDetailsController.text);
                 
 
                 

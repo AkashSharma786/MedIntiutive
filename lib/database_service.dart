@@ -7,14 +7,18 @@ import 'package:path_provider/path_provider.dart';
 class DatabaseService {
   static Database? _database;
   static final tableName = ["medicine", "profile", "supplier", "buyer"];
-  static final medicineNields = [
+  static final medicineFields = [
     "id",
     "name",
-    "quantity",
-    "price",
-    "expiry_date",
-    "supplier_id",
-    "buyer_id"
+    "scientific_name",
+    "mrp",
+    "brand",
+    "type",
+    "selling_price",
+    "description",
+    "image",
+    "usage_direction",
+    "rack_details"
   ];
   static final profileFields = [
     "id",
@@ -51,28 +55,85 @@ class DatabaseService {
 
     var db = await databaseFactory.openDatabase(dbPath);
 
-    // await db.execute();
+    // await db.execute(
+    //    '''CREATE TABLE ${tableName[0]} (
+    //     ${medicineFields[0]} INTEGER PRIMARY KEY,
+    //     ${medicineFields[1]} TEXT NOT NULL,
+    //      ${medicineFields[2]} TEXT NOT NULL,
+    //       ${medicineFields[3]} REAL NOT NULL,
+    //        ${medicineFields[4]} TEXT NOT NULL,
+    //         ${medicineFields[5]} TEXT NOT NULL,
+    //          ${medicineFields[6]} REAL, ${medicineFields[7]} TEXT,
+    //          ${medicineFields[8]} TEXT, ${medicineFields[9]} TEXT,
+    //          ${medicineFields[10]} Text)'''
+    //   );
     return db;
   }
 
-  static void addItem(int id, String text) async {
+  static void addMedicine(
+    int id,
+    String name,
+    String scientificName,
+    double mrp,
+    String type,
+    String brand,
+    double? sellingPrice,
+    String? description,
+    String? image,
+    String? usageDetails,
+    String? rackDetails
+
+
+  ) async {
     final db = await database;
     print("item insertd");
-    //   await db.insert();
+    sellingPrice ??= 0.0;
+    description ??= 'No description available';
+    image ??= 'default_image.png';
+    usageDetails ??= 'No usage details available';
+    rackDetails ??= 'No rack details available';
+    await db.insert(
+      tableName[0],
+      {
+        medicineFields[0]:id,
+        medicineFields[1]:name,
+        medicineFields[2]:scientificName,
+        medicineFields[3]:mrp,
+        medicineFields[4]:type,
+        medicineFields[5]:brand,
+        medicineFields[6]:sellingPrice,
+        medicineFields[7]:description,
+        medicineFields[8]:image,
+        medicineFields[9]:usageDetails,
+        medicineFields[10]:rackDetails
+
+
+
+
+      }
+
+
+    );
   }
 
-  static void updateItem(int id, String newTask) async {
+  static void updateMedicine(int id, String newTask) async {
     final db = await database;
     print("item updated");
 
-    // await db.update();
+   // await db.update();
   }
 
-  static void showItems() async {
-    final db = await database;
+
+
+
+
+
+  static Future<List<Map<String, Object?>>> showMedicines() async  {
+    final db = await  database;
     print("Item shown");
 
-    //  var querydata = await db.rawQuery("SELECT * FROM $table_name");
+    return  db.rawQuery("SELECT * FROM ${tableName[0]}");
+      
   }
 
   static void deleteItem(int id) async {
