@@ -119,19 +119,27 @@ class DatabaseService {
   static Future<List<Map<String, Object?>>> searchItem(
       String tableName,
       String primaryField,
-      int primayKey,
+      int? primayKey,
       String secondaryField,
       String secondaryKey,
       String tertiaryField,
       String tertiaryKey) async {
+
+        print(primayKey);
+        print(secondaryKey);
+        print(tertiaryKey);
     final db = await database;
 
-    
+    if (primayKey == null) {
       return db.rawQuery(
-          '''SELECT * FROM ${tableName} WHERE $primaryField = $primayKey OR $secondaryField = $secondaryKey OR $tertiaryField = $tertiaryKey''');
+          '''SELECT * FROM ${tableName} WHERE $secondaryField LIKE '%$secondaryKey%' AND $tertiaryField LIKE '%$tertiaryKey%' ''');
+    } else 
+      return db.rawQuery(
+          '''SELECT * FROM ${tableName} WHERE ( $primaryField = $primayKey ) AND $secondaryField LIKE '%$secondaryKey%' AND $tertiaryField LIKE '%$tertiaryKey%' ''');
     
  
-  }
+  
+}
 
   static void updateMedicine(int id, String newTask) async {
     final db = await database;

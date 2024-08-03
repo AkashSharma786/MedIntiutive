@@ -32,25 +32,42 @@ class MedicinePageState extends State<MedicinePage> {
 
   void search() {
 
-    // print("${serialController.text}");
-    // print("${nameController.text}");
-    // print("${sciNameController.text}");
+    print("${serialController.text}");
+    print("${nameController.text}");
+    print("${sciNameController.text}");
+
+setState(() {
+  items = DatabaseService.searchItem(
+        "medicine",
+        fieldList[0],
+        
+        int.tryParse(serialController.text) ,
+        
+        fieldList[1],
+        nameController.text,
+       
+        fieldList[2],
+        sciNameController.text
+        
+        );
+  
+});
+    
+      items = DatabaseService.searchItem(
+        "medicine",
+        fieldList[0],
+        
+        int.tryParse(serialController.text) ,
+        
+        fieldList[1],
+        nameController.text,
+       
+        fieldList[2],
+        sciNameController.text
+        
+        );
 
     
-    //   items = DatabaseService.searchItem(
-    //     "medicine",
-    //     fieldList[0],
-        
-    //     int.parse(serialController.text) ,
-        
-    //     fieldList[1],
-    //     nameController.text,
-       
-    //     fieldList[2],
-    //     sciNameController.text
-        
-    //     );
-      
   
 
     
@@ -73,7 +90,7 @@ class MedicinePageState extends State<MedicinePage> {
                   ),
                   
               FutureBuilder(
-              future: DatabaseService.showItems("medicine"),
+              future: items,
               builder: (context, snapshot) {
                 late List<Map<String, Object?>> tableData;
                 if (snapshot.hasError) {
@@ -120,7 +137,7 @@ class MedicinePageState extends State<MedicinePage> {
                   ),
                   
               FutureBuilder(
-              future: DatabaseService.showItems("medicine"),
+              future: items,
               builder: (context, snapshot) {
                 late List<Map<String, Object?>> tableData;
                 if (snapshot.hasError) {
