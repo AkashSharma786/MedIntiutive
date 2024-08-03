@@ -7,14 +7,13 @@ import 'package:path_provider/path_provider.dart';
 
 class DatabaseService {
   static Database? _database;
-  static final tableName = ["medicine", "profile", "supplier", "orders", "employees", "stock"];
+  static final tableName = ["medicine", "profile", "supplier", "orders", "employees", "stock", "order_medicines"];
 
   static final ordersFields = [
     "id",
     "order_date",
     "status",
     "supplier_id",
-    "order_items_id",
     "message",
   ];
   static final medicineFields = [
@@ -70,6 +69,12 @@ class DatabaseService {
    
 
   ];
+  static final orderMedicines = [
+    "order_id",
+    "medicine_id",
+    "quantity",
+    "date_of_order"
+  ];
 
   static Future<Database> get database async {
     if (_database != null) return _database!;
@@ -88,30 +93,33 @@ class DatabaseService {
 
     var db = await databaseFactory.openDatabase(dbPath);
 
-//     await db.execute(
-//        '''CREATE TABLE ${tableName[0]} (
-//         ${medicineFields[0]} INTEGER PRIMARY KEY,
-//         ${medicineFields[1]} TEXT NOT NULL,
-//          ${medicineFields[2]} TEXT NOT NULL,
-//           ${medicineFields[3]} REAL NOT NULL,
-//            ${medicineFields[4]} TEXT NOT NULL,
-//             ${medicineFields[5]} TEXT NOT NULL,
-//              ${medicineFields[6]} REAL, ${medicineFields[7]} TEXT,
-//              ${medicineFields[8]} TEXT, ${medicineFields[9]} TEXT,
-//              ${medicineFields[10]} Text)'''
-//       );
 
-//     await db.execute(
-//         '''CREATE TABLE ${tableName[1]} (
-//         ${profileFields[0]} INTEGER PRIMARY KEY,
-//         ${profileFields[1]} TEXT NOT NULL,
-//         ${profileFields[2]} INTEGER NOT NULL,
-//         ${profileFields[3]} TEXT NOT NULL,
-//         ${profileFields[4]} TEXT ,
-//         ${profileFields[5]} TEXT NOT NULL,
-//         ${profileFields[6]} TEXT NOT NULL)''');
 
-        // await db.execute('''
+
+      // await db.execute(
+      //  '''CREATE TABLE ${tableName[0]} (
+      //   ${medicineFields[0]} INTEGER PRIMARY KEY,
+      //   ${medicineFields[1]} TEXT NOT NULL,
+      //    ${medicineFields[2]} TEXT NOT NULL,
+      //     ${medicineFields[3]} REAL NOT NULL,
+      //      ${medicineFields[4]} TEXT NOT NULL,
+      //       ${medicineFields[5]} TEXT NOT NULL,
+      //        ${medicineFields[6]} REAL, ${medicineFields[7]} TEXT,
+      //        ${medicineFields[8]} TEXT, ${medicineFields[9]} TEXT,
+      //        ${medicineFields[10]} Text)'''
+      // );
+
+        //   await db.execute(
+        // '''CREATE TABLE ${tableName[1]} (
+        // ${profileFields[0]} INTEGER PRIMARY KEY,
+        // ${profileFields[1]} TEXT NOT NULL,
+        // ${profileFields[2]} INTEGER NOT NULL,
+        // ${profileFields[3]} TEXT NOT NULL,
+        // ${profileFields[4]} TEXT ,
+        // ${profileFields[5]} TEXT NOT NULL,
+        // ${profileFields[6]} TEXT NOT NULL)''');
+
+        //     await db.execute('''
         // CREATE TABLE ${tableName[2]} (
         // ${supplierFields[0]} INTEGER PRIMARY KEY,
         // ${supplierFields[1]} TEXT NOT NULL,
@@ -119,17 +127,18 @@ class DatabaseService {
         // ${supplierFields[3]} TEXT,
         // ${supplierFields[4]} TEXT)''');
 
-//         await db.execute('''
+        //   await db.execute('''
 
-//         CREATE TABLE ${tableName[3]} (
-//         ${ordersFields[0]} INTEGER PRIMARY KEY,
-//         ${ordersFields[1]} INTEGER NOT NULL,
-//         ${ordersFields[2]} INTEGER NOT NULL,
-//         ${ordersFields[3]} INTEGER NOT NULL,
-//         ${ordersFields[4]} TEXT NOT NULL,
-//         ${ordersFields[5]} TEXT)''');
+        // CREATE TABLE ${tableName[3]} (
+        // ${ordersFields[0]} INTEGER PRIMARY KEY,
+        // ${ordersFields[1]} INTEGER NOT NULL,
+        // ${ordersFields[2]} INTEGER NOT NULL,
+        // ${ordersFields[3]} INTEGER NOT NULL,
+        // ${ordersFields[4]} TEXT,
+        // FOREIGN KEY (${ordersFields[3]}) REFERENCES ${tableName[2]}(${supplierFields[0]}))
+        // ''');
 
-        // await db.execute(
+        //   await db.execute(
         //   ''' CREATE TABLE ${tableName[4]}(
         // ${employeesField[0]} INTEGER PRIMARY KEY,
         // ${employeesField[1]} TEXT NOT NULL,
@@ -145,17 +154,29 @@ class DatabaseService {
         // ${employeesField[11]} TEXT NOT NULL)''');
 
 
-//        await db.execute('''
-//        CREATE TABLE ${tableName[5]}(
-//         ${stockFields[0]} INTEGER PRIMARY KEY,
-//         ${stockFields[1]} INTEGER NOT NULL,
-//         ${stockFields[2]} INTEGER NOT NULL,
-//         ${stockFields[3]} INTEGER NOT NULL,
-//         ${stockFields[4]} INTEGER NOT NULL
-        
-//         )
-// ''');
 
+    // await db.execute( '''
+
+    // CREATE TABLE ${tableName[6]} (
+    // ${orderMedicines[0]} INTEGER PRIMARY KEY,
+    // ${orderMedicines[1]} INTEGER NOT NULL,
+    // ${orderMedicines[2]} INTEGER NOT NULL,
+    // ${orderMedicines[3]} INTEGER NOT NULL,
+    // FOREIGN KEY (order_id) REFERENCES ${tableName[3]}(${ordersFields[0]}),
+    // FOREIGN KEY (medicine_id) REFERENCES ${tableName[0]}(${medicineFields[0]}))''');
+
+
+
+
+
+    
+
+      
+
+      
+
+
+  
      
     return db;
   }
