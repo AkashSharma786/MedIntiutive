@@ -116,6 +116,23 @@ class DatabaseService {
     );
   }
 
+  static Future<List<Map<String, Object?>>> searchItem(
+      String tableName,
+      String primaryField,
+      int primayKey,
+      String secondaryField,
+      String secondaryKey,
+      String tertiaryField,
+      String tertiaryKey) async {
+    final db = await database;
+
+    
+      return db.rawQuery(
+          '''SELECT * FROM ${tableName} WHERE $primaryField = $primayKey OR $secondaryField = $secondaryKey OR $tertiaryField = $tertiaryKey''');
+    
+ 
+  }
+
   static void updateMedicine(int id, String newTask) async {
     final db = await database;
     print("item updated");
@@ -127,13 +144,11 @@ class DatabaseService {
 
 
 
-
-  static Future<List<Map<String, Object?>>> showMedicines() async  {
-    final db = await  database;
+static Future<List<Map<String, Object?>>> showItems(String tableName) async {
+    final db = await database;
     print("Item shown");
 
-    return  db.rawQuery("SELECT * FROM ${tableName[0]}");
-      
+    return db.rawQuery("SELECT * FROM $tableName");
   }
 
   static void deleteItem(int id) async {
