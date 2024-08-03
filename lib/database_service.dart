@@ -6,7 +6,16 @@ import 'package:path_provider/path_provider.dart';
 
 class DatabaseService {
   static Database? _database;
-  static final tableName = ["medicine", "profile", "supplier", "buyer"];
+  static final tableName = ["medicine", "profile", "supplier", "orders", "employees", "stock"];
+
+  static final ordersFields = [
+    "id",
+    "order_date",
+    "status",
+    "supplier_id",
+    "order_items_id",
+    "message",
+  ];
   static final medicineFields = [
     "id",
     "name",
@@ -35,7 +44,29 @@ class DatabaseService {
     "phone",
     "email",
     "address",
-    "comany"
+  ];
+  static final stockFields = [
+    "serial_no",
+    "medicine_id",
+    "quantity",
+    "arraival_date",
+    "expiry_date",
+
+  ];
+  static final employeesField = [
+    "id",
+    "first_name",
+    "last_name",
+    "phone",
+    "email",
+    "address",
+    "dob",
+    "gender",
+    "photo",
+    "aadhar"
+    "experience"
+   
+
   ];
 
   static Future<Database> get database async {
@@ -70,51 +101,23 @@ class DatabaseService {
     return db;
   }
 
-  static void addMedicine(
-    int id,
-    String name,
-    String scientificName,
-    double mrp,
-    String type,
-    String brand,
-    double? sellingPrice,
-    String? description,
-    String? image,
-    String? usageDetails,
-    String? rackDetails
-
-
+  static void addItems(
+    String tableName,
+    Map<String, Object?> data,
   ) async {
     final db = await database;
-    print("item insertd");
-    sellingPrice ??= 0.0;
-    description ??= 'No description available';
-    image ??= 'default_image.png';
-    usageDetails ??= 'No usage details available';
-    rackDetails ??= 'No rack details available';
-    await db.insert(
-      tableName[0],
-      {
-        medicineFields[0]:id,
-        medicineFields[1]:name,
-        medicineFields[2]:scientificName,
-        medicineFields[3]:mrp,
-        medicineFields[4]:type,
-        medicineFields[5]:brand,
-        medicineFields[6]:sellingPrice,
-        medicineFields[7]:description,
-        medicineFields[8]:image,
-        medicineFields[9]:usageDetails,
-        medicineFields[10]:rackDetails
 
-
-
-
-      }
-
-
-    );
+    await db.insert(tableName,data,);
   }
+  
+  static void updateMedicine(String tableName, Map<String, Object?> data, int primayKey) async {
+    final db = await database;
+    print("item updated");
+
+   await db.update(tableName, data, where: "id = ?", whereArgs: [primayKey]);
+  }
+
+
 
   static Future<List<Map<String, Object?>>> searchItem(
       String tableName,
@@ -141,13 +144,6 @@ class DatabaseService {
   
 }
 
-  static void updateMedicine(int id, String newTask) async {
-    final db = await database;
-    print("item updated");
-
-   // await db.update();
-  }
-
 
 
 
@@ -159,10 +155,10 @@ static Future<List<Map<String, Object?>>> showItems(String tableName) async {
     return db.rawQuery("SELECT * FROM $tableName");
   }
 
-  static void deleteItem(int id) async {
+  static void deleteItem(String tableName, int id) async {
     final db = await database;
     print("Item deleted");
 
-    //await db.delete( );
+    await db.delete(tableName, where: "id = ?", whereArgs: [id]);
   }
 }

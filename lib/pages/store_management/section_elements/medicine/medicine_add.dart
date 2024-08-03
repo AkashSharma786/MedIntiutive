@@ -65,17 +65,18 @@ class MedicineAdd extends StatelessWidget {
                 // print("Usage Direction : ${usageDirectionController.text}");
                 // print("Rack Details : ${rackDetailsController.text}");
 
-                DatabaseService.addMedicine(int.parse(serialController.text),
-                 nameController.text,
-                  sciNameController.text,
-                  double.parse(mRPController.text),
-                  typeController.text,
-                  brandController.text,
-                  double.parse(sellingPriceController.text),
-                  descriptionController.text,
-                  imageController.text,
-                  usageDirectionController.text,
-                  rackDetailsController.text);
+                DatabaseService.addItems( DatabaseService.tableName[0],{
+                  DatabaseService.medicineFields[1] : nameController.text,
+                  DatabaseService.medicineFields[2] : sciNameController.text,
+                  DatabaseService.medicineFields[3] : double.parse(mRPController.text),
+                  DatabaseService.medicineFields[4] : brandController.text,
+                  DatabaseService.medicineFields[5] : typeController.text,
+                  DatabaseService.medicineFields[6] : double.parse(sellingPriceController.text),
+                  DatabaseService.medicineFields[7] : descriptionController.text,
+                  DatabaseService.medicineFields[8] : imageController.text,
+                  DatabaseService.medicineFields[9] : usageDirectionController.text,
+                  DatabaseService.medicineFields[10] : rackDetailsController.text,
+                });
                 
 
                 
