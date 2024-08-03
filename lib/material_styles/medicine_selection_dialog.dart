@@ -1,33 +1,73 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/database_service.dart';
 import 'package:flutter_application_1/material_styles/custom_labeled_text_field.dart';
 import 'package:flutter_application_1/material_styles/date_input.dart';
+import 'package:flutter_application_1/material_styles/medicine_selected_tile.dart';
 import 'package:flutter_application_1/material_styles/medicine_selection_tile.dart';
 import 'package:flutter_application_1/pages/store_management/sections/medicine_section.dart';
+import 'package:path/path.dart';
 
-class MedicineSelectionDialog extends StatelessWidget {
+class MedicineSelectionDialog extends StatefulWidget {
 
 
 
-  TextEditingController idController = TextEditingController() ;
-  TextEditingController nameController = TextEditingController();
-  TextEditingController sciNameController  = TextEditingController();
-  Future<List<Map<String, Object?>>> items = DatabaseService.showItems('medicine');
   final VoidCallback refresh;
 
  
-  List<String> fieldList = DatabaseService.medicineFields; 
-
-  
 
   MedicineSelectionDialog({super.key, required this.refresh});
+
+  @override
+  State<MedicineSelectionDialog> createState() => _MedicineSelectionDialogState();
+}
+
+class _MedicineSelectionDialogState extends State<MedicineSelectionDialog> {
+  TextEditingController idController = TextEditingController() ;
+
+  TextEditingController nameController = TextEditingController();
+
+  TextEditingController sciNameController  = TextEditingController();
+
+  Future<List<Map<String, Object?>>> items = DatabaseService.showItems('medicine');
+
+  List<String> fieldList = DatabaseService.medicineFields; 
+
   List<Map<String, Object?>> selectedMedicinesList = [];
 
   void addSelection(Map<String, Object?> data){
-    selectedMedicinesList.add(data);
+     bool contains = selectedMedicinesList.any((element) => mapEquals(element, data));
+     
+
+
+    if(!contains){
+      
+     selectedMedicinesList.add(data);
+
+    }
+  
+    setState(() {
+
+
+     
+   });
+      
+
+
+
+   
+
+
+    print(selectedMedicinesList);
+  }
+
+  void removeSelection(Map<String, Object?> data){
+    setState(() {
+      selectedMedicinesList.remove(data);
+    });
   }
 
   @override
@@ -65,7 +105,7 @@ class MedicineSelectionDialog extends StatelessWidget {
 
                 
 
-                 refresh();
+                 widget.refresh();
                  Navigator.pop(context);
                 
                  }, child: const Text("Update")),
@@ -92,7 +132,9 @@ class MedicineSelectionDialog extends StatelessWidget {
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
                       return MedicineSelectionTile(
-                          tableData: tableData[index], fieldList: fieldList);
+                          tableData: tableData[index], fieldList: fieldList,
+                          addSelection: addSelection,
+                          );
                     },
                   ),
                 );
@@ -105,12 +147,22 @@ class MedicineSelectionDialog extends StatelessWidget {
 
           SizedBox(width: screenSize.width*0.02,),
 
-          // ListView.builder(
-          //   itemCount: ,
-          //   itemBuilder: itemBuilder,
-
+          Container(
+            width: screenSize.width*0.3,
+            height: screenSize.height*0.8-96,
+            color: Colors.green,
+            child: ListView.builder(
+              itemCount: selectedMedicinesList.length,
+              itemBuilder: (context, index){
+                return MedicineSelectedTile(
+                  tableData: selectedMedicinesList[index], fieldList: fieldList,
+                  removeSelection: removeSelection,
+                );
+              },
             
-          //   )
+              
+              ),
+          )
           
          
         ],

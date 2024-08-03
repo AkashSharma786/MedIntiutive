@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class MedicineSelectionTile extends StatelessWidget {
+class MedicineSelectedTile extends StatelessWidget {
   final Map<String, Object?> tableData;
   final List<String> fieldList;
-  final Function addSelection;
-  MedicineSelectionTile({super.key, required this.tableData, required this.fieldList , required this.addSelection});  
+  final Function removeSelection;
+  MedicineSelectedTile({super.key, required this.tableData, required this.fieldList , required this.removeSelection});  
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +33,9 @@ class MedicineSelectionTile extends StatelessWidget {
               Text("${tableData[fieldList[1]]}"),
               Text("${tableData[fieldList[2]]}"),
               IconButton(onPressed: (){
-                addSelection(tableData);
+                removeSelection(tableData);
 
-              }, icon: Icon(Icons.add))
+              }, icon: Icon(Icons.remove))
             ],
           ),
         ),
