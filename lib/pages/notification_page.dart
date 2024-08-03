@@ -11,11 +11,11 @@ class _NotificationPageState extends State<NotificationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Notification Page'),
+        title: const Text('Notification Page'),
       ),
       body: Container(
-        // Add your widget content here
-      ),
+          // Add your widget content here
+          ),
     );
   }
 }

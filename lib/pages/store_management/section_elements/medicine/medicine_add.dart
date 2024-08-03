@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class MedicineAdd extends StatelessWidget {
 
-  MedicineAdd({super.key});
+  const MedicineAdd({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +17,7 @@ class MedicineAdd extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ElevatedButton(child: Text("Select Medicine"), onPressed: (){} ),
+          ElevatedButton(child: const Text("Select Medicine"), onPressed: (){} ),
         ],
       )
 

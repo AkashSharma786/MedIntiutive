@@ -25,10 +25,10 @@ class ExpensePageState extends State<ExpensePage> {
           Builder(builder: (context){
             switch(currentClickedButton){
               case 4:
-                return ExpenseByDate();
+                return const ExpenseByDate();
                 
                 default :
-                return SizedBox();
+                return const SizedBox();
 
             }
           }
@@ -47,7 +47,7 @@ class ExpensePageState extends State<ExpensePage> {
             width: screenSize.width,
             
             color: Colors.cyan,
-            child: Text(
+            child: const Text(
               "Expense Page",
             ),
           ),

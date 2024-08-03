@@ -24,22 +24,22 @@ class _ExpenseSectionState extends State<ExpenseSection> {
               onPressed: () {
                 widget.whichButtonClicked(1);
               },
-              child: Text('One Month')),
+              child: const Text('One Month')),
           OutlinedButton(
               onPressed: () {
                 widget.whichButtonClicked(2);
               },
-              child: Text('Six Monts')),
+              child: const Text('Six Monts')),
           OutlinedButton(
               onPressed: () {
                 widget.whichButtonClicked(3);
               },
-              child: Text('One Year')),
+              child: const Text('One Year')),
           OutlinedButton(
               onPressed: () {
                 widget.whichButtonClicked(4);
               },
-              child: Text('Select by Date')),
+              child: const Text('Select by Date')),
         ],
       ),
     );

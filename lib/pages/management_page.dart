@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/material_styles/drop_down_button.dart';
 import 'package:flutter_application_1/pages/store_management/employees_page.dart';
 import 'package:flutter_application_1/pages/store_management/expense_page.dart';
 import 'package:flutter_application_1/pages/store_management/medicine_page.dart';
@@ -94,14 +93,14 @@ class _ManagementState extends State<ManagementPage>
             preferredSize: Size(screenSize.width, 40),
             child: Column(
               children: [
-                Container(
+                const SizedBox(
                   height: 26,
-                  child: const Text(
+                  child: Text(
                     'Store Management',
                     style: TextStyle(fontSize: 15),
                   ),
                 ),
-                Container(
+                SizedBox(
                   height: 30,
                   child: TabBar(
                     indicatorSize: TabBarIndicatorSize.tab,
@@ -109,7 +108,7 @@ class _ManagementState extends State<ManagementPage>
                     indicator: const BoxDecoration(
                       color: Colors.cyan,
                     ),
-                    tabs: [
+                    tabs: const [
                       Tab(child: Text("Medicine")),
                       Tab(
                         child: Text("Employees"),
@@ -149,7 +148,7 @@ class _ManagementState extends State<ManagementPage>
                       return ExpenseSection(
                           whichButtonClicked: onButtonClicked);
                     default:
-                      return Text("Medicine");
+                      return const Text("Medicine");
                   }
                 }),
               ],

@@ -16,7 +16,7 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
     List<String> list = widget.dropdownText;
     
     String dropdownValue = list.first;
-    return Container(
+    return SizedBox(
       width: 30,
 
     

@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/material_styles/button.dart';
 import 'package:flutter_application_1/material_styles/date_input.dart';
 
 class NewOrder extends StatelessWidget {
 
-  NewOrder({super.key});
+  const NewOrder({super.key});
 
   @override
   Widget build(BuildContext context) {
 
     Size screenSize = MediaQuery.of(context).size;
 
-    return Container(
+    return SizedBox(
 
       width: screenSize.width,
       height: 50,
@@ -22,12 +20,12 @@ class NewOrder extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
 
-          ElevatedButton(onPressed: (){}, child: Text("Select Medicines")),
-          ElevatedButton(onPressed: (){}, child: Text("Select Supplier")),
-          Text("Order Date: "),
-          DateInput(),
+          ElevatedButton(onPressed: (){}, child: const Text("Select Medicines")),
+          ElevatedButton(onPressed: (){}, child: const Text("Select Supplier")),
+          const Text("Order Date: "),
+          const DateInput(),
 
-          SizedBox(
+          const SizedBox(
                   width: 200,
                   height: 40,
                   child: TextField(

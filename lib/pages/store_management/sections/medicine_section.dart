@@ -24,17 +24,17 @@ class _MedicineSectionState extends State<MedicineSection> {
               onPressed: () {
                 widget.whichButtonClicked(1);
               },
-              child: Text('Search')),
+              child: const Text('Search')),
           OutlinedButton(
               onPressed: () {
                 widget.whichButtonClicked(2);
               },
-              child: Text('Add')),
+              child: const Text('Add')),
           OutlinedButton(
               onPressed: () {
                 widget.whichButtonClicked(3);
               },
-              child: Text('Delete')),
+              child: const Text('Delete')),
           
         ],
       ),

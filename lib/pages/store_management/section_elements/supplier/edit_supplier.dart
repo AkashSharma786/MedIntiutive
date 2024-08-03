@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class EditSupplier extends StatelessWidget {
 
-  EditSupplier({super.key});
+  const EditSupplier({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class EditSupplier extends StatelessWidget {
       child: Center(
         child: ElevatedButton(
           onPressed: (){},
-           child: Text("Select Supplier"),
+           child: const Text("Select Supplier"),
            ),
       ),
 

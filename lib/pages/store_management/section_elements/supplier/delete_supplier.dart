@@ -18,7 +18,7 @@ class DeleteSupplier extends StatelessWidget {
       child: Center(
         child: ElevatedButton(
           onPressed: (){},
-           child: Text("Select Supplier"),
+           child: const Text("Select Supplier"),
            ),
       ),
 

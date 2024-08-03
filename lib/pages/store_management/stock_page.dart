@@ -28,7 +28,7 @@ class StockPageState extends State<StockPage> {
             width: screenSize.width,
             
             color: Colors.teal,
-            child: Text(
+            child: const Text(
               "Stock Page",
             ),
           ),

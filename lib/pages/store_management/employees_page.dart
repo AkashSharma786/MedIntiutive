@@ -1,11 +1,10 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/store_management/section_elements/employees/employees_add.dart';
 import 'package:flutter_application_1/pages/store_management/section_elements/employees/employees_delete.dart';
 import 'package:flutter_application_1/pages/store_management/section_elements/employees/employees_edit.dart';
 
 class EmployeesPage extends StatefulWidget {
-  EmployeesPage({super.key});
+  const EmployeesPage({super.key});
 
   @override
   State<EmployeesPage> createState() => EmployeesPageState();
@@ -27,12 +26,12 @@ class EmployeesPageState extends State<EmployeesPage> {
        case 1:
          return Row(
            children: [
-             EmployeesAdd(),
+             const EmployeesAdd(),
              Container(
                 width: screenSize.width*0.6 - 87,
                 height: screenSize.height,
                 color: Colors.yellow,
-                child: Text(
+                child: const Text(
                   "Employees Page",
                 ),
               )
@@ -42,7 +41,7 @@ class EmployeesPageState extends State<EmployeesPage> {
        case 2:
          return Column(
            children: [
-             EmployeesEdit(),
+             const EmployeesEdit(),
              Expanded(
           child: Container(
             width: screenSize.width,
@@ -55,7 +54,7 @@ class EmployeesPageState extends State<EmployeesPage> {
        case 3:
          return Column(
            children: [
-             EmployeesDelete(),
+             const EmployeesDelete(),
              Expanded(
           child: Container(
             width: screenSize.width,

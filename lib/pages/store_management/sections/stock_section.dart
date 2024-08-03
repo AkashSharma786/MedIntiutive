@@ -24,22 +24,22 @@ class _StockSectionState extends State<StockSection> {
               onPressed: () {
                 widget.whichButtonClicked(1);
               },
-              child: Text('Stock Ascending')),
+              child: const Text('Stock Ascending')),
           OutlinedButton(
               onPressed: () {
                 widget.whichButtonClicked(2);
               },
-              child: Text('Stock Desending')),
+              child: const Text('Stock Desending')),
           OutlinedButton(
               onPressed: () {
                 widget.whichButtonClicked(3);
               },
-              child: Text('Expiry Ascending ')),
+              child: const Text('Expiry Ascending ')),
           OutlinedButton(
               onPressed: () {
                 widget.whichButtonClicked(4);
               },
-              child: Text('Expiry Descending')),
+              child: const Text('Expiry Descending')),
         ],
       ),
     );

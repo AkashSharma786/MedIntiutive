@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/material_styles/date_input.dart';
 
 class ExpenseByDate extends StatelessWidget {
-  ExpenseByDate({super.key});
+  const ExpenseByDate({super.key});
 
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
 
-    return Container(
+    return SizedBox(
       width: screenSize.width,
       height: 50,
       //color: Colors.red,
@@ -18,12 +16,12 @@ class ExpenseByDate extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         
         children: [
-          Text("From:  "),
+          const Text("From:  "),
           
-          DateInput(),
+          const DateInput(),
 
-          Text("to:  "),
-          DateInput(),
+          const Text("to:  "),
+          const DateInput(),
          
           
           ElevatedButton(onPressed: () {}, child: const Text("Evaluate"))

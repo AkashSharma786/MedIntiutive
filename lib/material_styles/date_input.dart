@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class DateInput extends StatelessWidget{
+  const DateInput({super.key});
+
 
   @override
   build(BuildContext context){ 
@@ -23,7 +25,7 @@ class DateInput extends StatelessWidget{
                     maxLength: 4,
                     
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: "Day",
                       counterText: "",
                       border:  OutlineInputBorder(
@@ -42,7 +44,7 @@ class DateInput extends StatelessWidget{
                     maxLength: 4,
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: "Month",
                       counterText: "",
                       border: OutlineInputBorder(
@@ -64,7 +66,7 @@ class DateInput extends StatelessWidget{
                     maxLength: 4,
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: "Year",
                       counterText: "",
                       border:  OutlineInputBorder(

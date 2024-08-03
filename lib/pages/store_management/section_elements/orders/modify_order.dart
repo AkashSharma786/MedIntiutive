@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class ModifyOrder extends StatelessWidget {
 
-  ModifyOrder({super.key});
+  const ModifyOrder({super.key});
 
   @override
   Widget build(BuildContext context) {
 
     Size screenSize = MediaQuery.of(context).size;
 
-    return Container(
+    return SizedBox(
 
       width: screenSize.width,
       height: 50,
@@ -18,7 +17,7 @@ class ModifyOrder extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ElevatedButton(child: Text("Select Order"), onPressed: (){} ),
+          ElevatedButton(child: const Text("Select Order"), onPressed: (){} ),
         ],
       )
 

@@ -6,7 +6,7 @@ import 'package:flutter_application_1/pages/store_management/section_elements/me
 class MedicinePage extends StatefulWidget {
   //int  whichButtonClicked;
 
-  MedicinePage({super.key});
+  const MedicinePage({super.key});
 
   @override
   State<MedicinePage> createState() => MedicinePageState();
@@ -28,12 +28,12 @@ class MedicinePageState extends State<MedicinePage> {
           case 1:
             return Row(
               children: [
-                MedicineSearch(),
+                const MedicineSearch(),
                 Container(
                 width: screenSize.width*0.6 - 87,
                 height: screenSize.height,
                 color: Colors.yellow,
-                child: Text(
+                child: const Text(
                   "Supplier Page",
                 ),
               )
@@ -42,13 +42,13 @@ class MedicinePageState extends State<MedicinePage> {
           case 2:
             return  Column(
               children: [
-                MedicineAdd(),
+                const MedicineAdd(),
                         Expanded(
           child: Container(
             width: screenSize.width,
                  
             color: Colors.purple,
-            child: Text(
+            child: const Text(
               "Medicine Page",
             ),
           ),
@@ -58,13 +58,13 @@ class MedicinePageState extends State<MedicinePage> {
           case 3:
             return Column(
               children: [
-                MedicineDelete(),
+                const MedicineDelete(),
                         Expanded(
           child: Container(
             width: screenSize.width,
                  
             color: Colors.purple,
-            child: Text(
+            child: const Text(
               "Medicine Page",
             ),
           ),

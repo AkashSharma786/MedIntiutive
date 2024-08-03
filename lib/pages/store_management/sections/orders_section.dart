@@ -24,17 +24,17 @@ class _OrdersSectionState extends State<OrdersSection> {
               onPressed: () {
                 widget.whichButtonClicked(1);
               },
-              child: Text('New Order')),
+              child: const Text('New Order')),
           OutlinedButton(
               onPressed: () {
                 widget.whichButtonClicked(2);
               },
-              child: Text('Modify Order')),
+              child: const Text('Modify Order')),
           OutlinedButton(
               onPressed: () {
                 widget.whichButtonClicked(3);
               },
-              child: Text('Cancel Orders')),
+              child: const Text('Cancel Orders')),
         ],
       ),
     );

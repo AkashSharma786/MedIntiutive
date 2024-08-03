@@ -10,7 +10,7 @@ class CancelOrder extends StatelessWidget {
 
     Size screenSize = MediaQuery.of(context).size;
 
-    return Container(
+    return SizedBox(
 
       width: screenSize.width,
       height: 50,
@@ -18,7 +18,7 @@ class CancelOrder extends StatelessWidget {
       child:Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ElevatedButton(child: Text("Select Order"), onPressed: (){} ),
+          ElevatedButton(child: const Text("Select Order"), onPressed: (){} ),
         ],
       ),
 

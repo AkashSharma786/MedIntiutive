@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class EmployeesDelete extends StatelessWidget {
 
-  EmployeesDelete({super.key});
+  const EmployeesDelete({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +17,7 @@ class EmployeesDelete extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ElevatedButton(child: Text("Select Employee"), onPressed: (){} ),
+          ElevatedButton(child: const Text("Select Employee"), onPressed: (){} ),
         ],
       )
 ,

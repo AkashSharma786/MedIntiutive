@@ -1,310 +1,401 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/material_styles/button.dart';
-import 'package:flutter_application_1/material_styles/custom_text_field.dart';
-import 'package:flutter_application_1/material_styles/info_field.dart';
-import 'package:flutter_application_1/material_styles/bill_entry.dart';
+import 'package:flutter/widgets.dart';
 
-class BillingPage extends StatefulWidget {
-  const BillingPage({Key? key}) : super(key: key);
+class MyBillingPage extends StatefulWidget {
+  const MyBillingPage({super.key});
+
   @override
-  State<BillingPage> createState() => _BillingPageState();
+  State<MyBillingPage> createState() => _MyBillingPageState();
 }
 
-class _BillingPageState extends State<BillingPage> {
+class _MyBillingPageState extends State<MyBillingPage> {
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-    final _name_controller = TextEditingController();
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Generate Bill'),
-      ),
-      body: Container(
-        color: Colors.white,
-        child: Column(
+    return Container(
+      padding: const EdgeInsets.all(8),
+      color: Colors.black,
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Row(
           children: [
-            SizedBox(
-              height: screenHeight * 0.01,
-            ),
-            Container(
-              color: Colors.white,
-              height: screenHeight * 0.1,
-              width: screenWidth,
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: screenWidth * 0.02,
-                  ),
-                  Container(
-                    width: screenWidth * 0.6,
-                    height: screenHeight * 0.1,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.3),
-                          offset: const Offset(1, 1),
-                          blurRadius: 10,
-                          spreadRadius: 2,
-                        )
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        Text(
-                          'Tax Invoice',
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontFamily: "Arial",
-                            fontWeight: FontWeight.bold,
+            Column(
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      width: MediaQuery.of(context).size.width * 0.22,
+                      height: MediaQuery.of(context).size.height * 0.4,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          const Row(
+                            children: [
+                              Icon(
+                                Icons.receipt_long,
+                                color: Colors.black,
+                                size: 30,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(8, 8, 0, 0),
+                                child: Text(
+                                  "Invoice No:",
+                                  style: TextStyle(
+                                      fontFamily: "Consolas",
+                                      fontWeight: FontWeight.w900,
+                                      fontSize: 20),
+                                ),
+                              ),
+                              Spacer(),
+                              // Actual invoice data will be displayed here
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(0, 8, 8, 0),
+                                child: Text(
+                                  "#567/02082024",
+                                  style: TextStyle(
+                                      color: Colors.green,
+                                      fontSize: 20,
+                                      fontFamily: "Consolas",
+                                      fontWeight: FontWeight.w900),
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                        Text(
-                          'Date : 12/08/2021',
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            // developed team name
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
+                                child: Text("[Team Pixel Squad]",
+                                    style: TextStyle(
+                                        fontFamily: "Consolas",
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.w900)),
+                              )
+                            ],
                           ),
-                        )
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: screenWidth * 0.02,
-                  ),
-                  Container(
-                    width: screenWidth * 0.2,
-                    height: screenHeight * 0.1,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/bat_man.jpg'),
-                        fit: BoxFit.fitHeight,
+                          const Divider(
+                            color: Colors.black,
+                            thickness: 2,
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Icon(
+                                Icons.point_of_sale_outlined,
+                                color: Colors.black,
+                                size: 30,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
+                                child: Text("Bill From:",
+                                    style: TextStyle(
+                                        fontFamily: "Consolas",
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w900)),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          // create a drop down button for selecting the cashiers
+                          DropdownButtonFormField(
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(16)),
+                              ),
+                              labelText: "Select the Cashier",
+                              labelStyle: TextStyle(
+                                color: Colors.grey,
+                                fontFamily: "Consolas",
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                            items: const [
+                              DropdownMenuItem(
+                                value: 1,
+                                child: Text("Ayan Haldar"),
+                              ),
+                              DropdownMenuItem(
+                                value: 2,
+                                child: Text("Aditya Kumar"),
+                              ),
+                              DropdownMenuItem(
+                                value: 3,
+                                child: Text("Akash Sharma"),
+                              ),
+                            ],
+                            onChanged: (value) {},
+                          ),
+                          const SizedBox(
+                            height: 16,
+                          ),
+
+                          // Shop's Address
+                          const Row(
+                            children: [
+                              Icon(
+                                Icons.store,
+                                color: Colors.black,
+                                size: 30,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
+                                child: Text(
+                                  "Shop's Address",
+                                  style: TextStyle(
+                                      fontFamily: "Consolas",
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w900),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 4,
+                          ),
+                          const Row(
+                            children: [
+                              Icon(
+                                Icons.location_on,
+                                color: Colors.red,
+                                size: 30,
+                              ),
+                              SizedBox(
+                                width: 8,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
+                                child: Text(
+                                  "No. 1, Basanti Highwasy,\nBrahmapur Government Colony,\nBagdoba, Kolkata,\nHadia, West Bengal 700150",
+                                  style: TextStyle(
+                                      fontFamily: "Consolas",
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.normal),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          // Issued  on
+
+                          Container(),
+                        ],
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: screenHeight * 0.01,
-            ),
-            Container(
-                height: screenHeight * 0.1,
-                width: screenWidth * 0.9,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.3),
-                      offset: const Offset(1, 1),
-                      blurRadius: 10,
-                      spreadRadius: 2,
-                    )
+                    const SizedBox(
+                      width: 16,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      width: MediaQuery.of(context).size.width * 0.22,
+                      height: MediaQuery.of(context).size.height * 0.4,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              const Icon(Icons.description_sharp,
+                                  color: Colors.black, size: 30),
+                              Container(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(8, 8, 0, 8),
+                                  child: const Text("Details of Invoice:",
+                                      style: TextStyle(
+                                          fontFamily: "Consolas",
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w900,
+                                          fontSize: 16))),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                                child: Text(
+                                    "[Date: ${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+                                    style: const TextStyle(
+                                        fontFamily: "Consolas",
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.normal)),
+                              ),
+                              const Spacer(),
+                              Container(
+                                padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
+                                child: Text(
+                                    "Time: ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}]",
+                                    style: const TextStyle(
+                                        fontFamily: "Consolas",
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.normal)),
+                              ),
+                            ],
+                          ),
+                          const Divider(
+                            color: Colors.black,
+                            thickness: 2,
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
+                            child: const Row(
+                              children: [
+                                Icon(
+                                  Icons.person,
+                                  color: Colors.black,
+                                  size: 30,
+                                ),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                Text("Bill To:",
+                                    style: TextStyle(
+                                        fontFamily: "Consolas",
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w900)),
+                              ],
+                            ),
+                          ),
+                          const TextField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(16)),
+                              ),
+                              labelText: "Customer Name",
+                              labelStyle: TextStyle(
+                                color: Colors.grey,
+                                fontFamily: "Consolas",
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                            child: const Row(
+                              children: [
+                                Icon(
+                                  Icons.credit_card_outlined,
+                                  color: Colors.black,
+                                  size: 30,
+                                ),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                Text("Payment Type:",
+                                    style: TextStyle(
+                                        fontFamily: "Consolas",
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w900)),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          DropdownButtonFormField(
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(16)),
+                              ),
+                              labelText: "Select the Payment Type",
+                              labelStyle: TextStyle(
+                                color: Colors.grey,
+                                fontFamily: "Consolas",
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                            items: const [
+                              DropdownMenuItem(
+                                value: 1,
+                                child: Text("Cash"),
+                              ),
+                              DropdownMenuItem(
+                                value: 2,
+                                child: Text("Card"),
+                              ),
+                              DropdownMenuItem(
+                                value: 3,
+                                child: Text("UPI"),
+                              ),
+                            ],
+                            onChanged: (value) {},
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
-                child: Column(
-                  children: [
-                    Text(
-                      "ABC Company",
+                const SizedBox(
+                  height: 16,
+                ),
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  width: MediaQuery.of(context).size.width * 0.45,
+                  height: MediaQuery.of(context).size.height * 0.54,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              width: 16,
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              width: MediaQuery.of(context).size.width * 0.45,
+              height: MediaQuery.of(context).size.height * 1,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: const Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text("List of Items",
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: screenWidth * 0.05,
-                        ),
-                        Text(
-                          'Address : ',
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
-                        ),
-                        Text(
-                          "dkdjfkf sfs fsf, kdfsdjf, kjfdfkff, kfjkfggg, kdfjdf, dkfjfsld, kddfjflsd, fsdflf ",
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(
-                          width: screenHeight * 0.2,
-                        ),
-                        Text(
-                          'Phone Number : ',
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
-                        ),
-                        Text(
-                          '1234567890',
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
-                )),
-            SizedBox(
-              height: screenHeight * 0.01,
-            ),
-            Container(
-              height: screenHeight * 0.1,
-              width: screenWidth,
-              child: Row(
-                children: [
+                          fontFamily: "Consolas",
+                          color: Colors.black,
+                          fontWeight: FontWeight.w900,
+                          fontSize: 16)),
                   SizedBox(
-                    width: screenWidth * 0.05,
+                    height: 8,
                   ),
-                  CustomTextField(
-                      hintText: "Medicine Name",
-                      controller: _name_controller,
-                      width: screenWidth * 0.4,
-                      height: screenHeight * 0.06),
-                  SizedBox(
-                    width: screenWidth * 0.02,
-                  ),
-                  CustomTextField(
-                      hintText: "Quantity",
-                      controller: _name_controller,
-                      width: screenWidth * 0.1,
-                      height: screenHeight * 0.06),
-                  SizedBox(
-                    width: screenWidth * 0.02,
-                  ),
-                  CustomTextField(
-                      hintText: "Amount",
-                      controller: _name_controller,
-                      width: screenWidth * 0.1,
-                      height: screenHeight * 0.06),
-                  SizedBox(
-                    width: screenWidth * 0.02,
-                  ),
-                  MyButtonStyle(
-                      text: "Add ", width: 200, height: 50, onTap: () {})
+                  // create a dynamic table for the items
+                  
                 ],
               ),
-            ),
-            SizedBox(
-              height: screenHeight * 0.01,
-            ),
-            Container(
-              color: Color.fromARGB(255, 218, 208, 69),
-              height: screenHeight * 0.45,
-              width: screenWidth,
-              child: ListView(
-                children: [
-                  BillEntry(
-                      serialNumber: 1,
-                      itemName: "Paracetamol",
-                      price: 10,
-                      quantity: 2,
-                      total: 20),
-                  BillEntry(
-                      serialNumber: 2,
-                      itemName: "Paracetamol",
-                      price: 10,
-                      quantity: 2,
-                      total: 20),
-                  BillEntry(
-                      serialNumber: 3,
-                      itemName: "Paracetamol",
-                      price: 10,
-                      quantity: 2,
-                      total: 20),
-                  BillEntry(
-                      serialNumber: 4,
-                      itemName: "Paracetamol",
-                      price: 10,
-                      quantity: 2,
-                      total: 20),
-                  BillEntry(
-                      serialNumber: 5,
-                      itemName: "Paracetamol",
-                      price: 10,
-                      quantity: 2,
-                      total: 20),
-                  BillEntry(
-                      serialNumber: 6,
-                      itemName: "Paracetamol",
-                      price: 10,
-                      quantity: 2,
-                      total: 20),
-                  BillEntry(
-                      serialNumber: 7,
-                      itemName: "Paracetamol",
-                      price: 10,
-                      quantity: 2,
-                      total: 20),
-                  BillEntry(
-                      serialNumber: 8,
-                      itemName: "Paracetamol",
-                      price: 10,
-                      quantity: 2,
-                      total: 20),
-                  BillEntry(
-                      serialNumber: 9,
-                      itemName: "Paracetamol",
-                      price: 10,
-                      quantity: 2,
-                      total: 20),
-                  BillEntry(
-                      serialNumber: 10,
-                      itemName: "Paracetamol",
-                      price: 10,
-                      quantity: 2,
-                      total: 20),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: screenHeight * 0.01,
-            ),
-            Container(
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: screenWidth * 0.05,
-                  ),
-                  Text("Total Amount :"),
-                  Text("1000"),
-                  SizedBox(
-                    width: screenWidth * 0.05,
-                  ),
-                  CustomTextField(
-                      hintText: "Enter Discount",
-                      controller: _name_controller,
-                      width: screenWidth * 0.2,
-                      height: screenHeight * 0.06),
-                  SizedBox(
-                    width: screenHeight * 0.1,
-                  ),
-                  MyButtonStyle(
-                      text: "Give Discount",
-                      width: screenWidth * 0.1,
-                      height: screenHeight * 0.07,
-                      onTap: () {}),
-                  SizedBox(
-                    width: screenHeight * 0.35,
-                  ),
-                  MyButtonStyle(
-                      text: "Generate Bill",
-                      width: 200,
-                      height: 50,
-                      onTap: () {}),
-                ],
-              ),
-              color: Colors.white,
-              height: screenHeight * 0.1,
-              width: screenWidth,
             ),
           ],
         ),

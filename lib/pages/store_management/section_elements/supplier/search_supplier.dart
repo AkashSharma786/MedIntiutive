@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
 
 class SearchSupplier extends StatelessWidget {
 
-  SearchSupplier({super.key});
+  const SearchSupplier({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class SearchSupplier extends StatelessWidget {
             height: 40,
             child: TextField(
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: "ID",
                 
                 border: OutlineInputBorder(
@@ -39,7 +38,7 @@ class SearchSupplier extends StatelessWidget {
           ),
 
           
-          SizedBox(
+          const SizedBox(
             width: 125,
             height: 40,
             child: TextField(
@@ -56,7 +55,7 @@ class SearchSupplier extends StatelessWidget {
             ),
           ),
 
- SizedBox(
+ const SizedBox(
    width: 125,
    height: 40,
    child: TextField(
@@ -74,7 +73,7 @@ class SearchSupplier extends StatelessWidget {
  ),
 
 
-SizedBox(
+const SizedBox(
    width: 200,
    height: 40,
    child: TextField(
@@ -91,7 +90,7 @@ SizedBox(
    ),
  ),
 
-SizedBox(
+const SizedBox(
    width: 300,
    height: 40,
    child: TextField(
@@ -109,7 +108,7 @@ SizedBox(
  ),
 
 
- SizedBox(
+ const SizedBox(
    width: 150,
    height: 40,
    child: TextField(
@@ -131,7 +130,7 @@ SizedBox(
    height: 40,
    child: TextField(
      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-     decoration: InputDecoration(
+     decoration: const InputDecoration(
        hintText: "Phone Number",
        
        border: OutlineInputBorder(
@@ -143,7 +142,7 @@ SizedBox(
    ),
  ),
 
- IconButton(onPressed: (){}, icon: Icon(Icons.search))
+ IconButton(onPressed: (){}, icon: const Icon(Icons.search))
 
 
         ],

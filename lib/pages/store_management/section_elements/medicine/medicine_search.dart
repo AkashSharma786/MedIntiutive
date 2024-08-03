@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class MedicineSearch extends StatelessWidget {
 
-  MedicineSearch({super.key});
+  const MedicineSearch({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +14,7 @@ class MedicineSearch extends StatelessWidget {
       width: screenSize.width * 0.4,
       height: screenSize.height*0.9,
       color: Colors.blue,
-      child: Text("Search Medicine"),
+      child: const Text("Search Medicine"),
 
 
     );

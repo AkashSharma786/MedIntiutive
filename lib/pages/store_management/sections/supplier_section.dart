@@ -24,22 +24,22 @@ class _SupplierSectionState extends State<SupplierSection> {
               onPressed: () {
                 widget.whichButtonClicked(1);
               },
-              child: Text('Search')),
+              child: const Text('Search')),
           OutlinedButton(
               onPressed: () {
                 widget.whichButtonClicked(2);
               },
-              child: Text('Add')),
+              child: const Text('Add')),
           OutlinedButton(
               onPressed: () {
                 widget.whichButtonClicked(3);
               },
-              child: Text('Edit')),
+              child: const Text('Edit')),
           OutlinedButton(
               onPressed: () {
                 widget.whichButtonClicked(4);
               },
-              child: Text('Delete')),
+              child: const Text('Delete')),
         ],
       ),
     );

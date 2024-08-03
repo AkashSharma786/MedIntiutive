@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class AddSupplier extends StatelessWidget {
 
-  AddSupplier({super.key});
+  const AddSupplier({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class AddSupplier extends StatelessWidget {
       
     
       color: Colors.green,
-      child: Text("Add Supplier"),
+      child: const Text("Add Supplier"),
     
     
     );

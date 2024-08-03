@@ -28,11 +28,11 @@ class OrdersPageState extends State<OrdersPage> {
         Builder(builder: (context){
             switch(currentClickedButton){
               case 1:
-                return NewOrder();
+                return const NewOrder();
               case 2:
-                return ModifyOrder();
+                return const ModifyOrder();
               case 3:
-                return CancelOrder();
+                return const CancelOrder();
               default: 
               return const SizedBox();
               }
@@ -45,7 +45,7 @@ class OrdersPageState extends State<OrdersPage> {
             width: screenSize.width,
            
             color: Colors.pink,
-            child: Text(
+            child: const Text(
               "Orders Page",
             ),
           ),

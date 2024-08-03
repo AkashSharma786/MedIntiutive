@@ -24,18 +24,18 @@ class _EmployeesSectionState extends State<EmployeesSection> {
               onPressed: () {
                 widget.whichButtonClicked(1);
               },
-              child: Text('Add Employee')),
+              child: const Text('Add Employee')),
           OutlinedButton(
               onPressed: () {
                 widget.whichButtonClicked(2);
               },
-              child: Text('Edit Employees')),
+              child: const Text('Edit Employees')),
          
           OutlinedButton(
               onPressed: () {
                 widget.whichButtonClicked(3);
               },
-              child: Text('Delete Employees')),
+              child: const Text('Delete Employees')),
         ],
       ),
     );

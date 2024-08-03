@@ -27,12 +27,12 @@ class SupplierPageState extends State<SupplierPage> {
         case 1:
           return Column(
             children: [
-              SearchSupplier(),
+              const SearchSupplier(),
               Expanded(
                 child: Container(
                   width: screenSize.width,
                   color: Colors.yellow,
-                  child: Text(
+                  child: const Text(
                     "Supplier Page",
                   ),
                 ),
@@ -42,12 +42,12 @@ class SupplierPageState extends State<SupplierPage> {
         case 2:
           return Row(
             children: [
-              AddSupplier(),
+              const AddSupplier(),
               Container(
                 width: screenSize.width*0.6 - 87,
                 height: screenSize.height,
                 color: Colors.yellow,
-                child: Text(
+                child: const Text(
                   "Supplier Page",
                 ),
               )
@@ -56,12 +56,12 @@ class SupplierPageState extends State<SupplierPage> {
         case 3:
           return Column(
             children: [
-              EditSupplier(),
+              const EditSupplier(),
               Expanded(
                 child: Container(
                   width: screenSize.width,
                   color: Colors.yellow,
-                  child: Text(
+                  child: const Text(
                     "Supplier Page",
                   ),
                 ),
@@ -71,12 +71,12 @@ class SupplierPageState extends State<SupplierPage> {
         case 4:
           return Column(
             children: [
-              DeleteSupplier(),
+              const DeleteSupplier(),
               Expanded(
                 child: Container(
                   width: screenSize.width,
                   color: Colors.yellow,
-                  child: Text(
+                  child: const Text(
                     "Supplier Page",
                   ),
                 ),

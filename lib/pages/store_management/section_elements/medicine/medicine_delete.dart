@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class MedicineDelete extends StatelessWidget {
 
-  MedicineDelete({super.key});
+  const MedicineDelete({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +17,7 @@ class MedicineDelete extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ElevatedButton(child: Text("Select Medicine "), onPressed: (){} ),
+          ElevatedButton(child: const Text("Select Medicine "), onPressed: (){} ),
         ],
       ),
 
