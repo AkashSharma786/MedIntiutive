@@ -1,9 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/database_service.dart';
+import 'package:flutter_application_1/material_styles/employees_tile.dart';
+import 'package:flutter_application_1/material_styles/employees_tile_delete.dart';
+import 'package:flutter_application_1/material_styles/employees_tile_edit.dart';
 import 'package:flutter_application_1/pages/store_management/section_elements/employees/employees_add.dart';
-import 'package:flutter_application_1/pages/store_management/section_elements/employees/employees_delete.dart';
-import 'package:flutter_application_1/pages/store_management/section_elements/employees/employees_edit.dart';
+import 'package:flutter_application_1/pages/store_management/section_elements/employees/employees_search.dart';
 
 class EmployeesPage extends StatefulWidget {
   EmployeesPage({super.key});
@@ -13,7 +17,7 @@ class EmployeesPage extends StatefulWidget {
 
 class EmployeesPageState extends State<EmployeesPage> {
 
-    TextEditingController idController  = TextEditingController() ;
+  TextEditingController idController  = TextEditingController() ;
   TextEditingController firstNameController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController genderController = TextEditingController();
@@ -27,6 +31,10 @@ class EmployeesPageState extends State<EmployeesPage> {
   TextEditingController dobDayController = TextEditingController();
   TextEditingController dobMonthController = TextEditingController();
   TextEditingController dobYearController = TextEditingController();
+ List<String> fieldList = DatabaseService.employeesField;
+  Future<List<Map<String, Object?>>> items = DatabaseService.showItems('employees');
+  
+
 
 
   int currentClickedButton = 0;
@@ -35,25 +43,26 @@ class EmployeesPageState extends State<EmployeesPage> {
       currentClickedButton = num;
     });
   }
+void updateEmployee(){
+
+  showDialog(context: context, builder: (context){
+
+    return AlertDialog(
+      title: Text("Update Employee"),
+      content: Container(
+        width: 500,
+        height: 500,
+        color: Colors.green,
+        
+        ),
+    );
+  });
+
+
+}
+
 
   void addEmployees(){
-    List<String> fieldList = DatabaseService.employeesField;
-
-      print(idController.text);
-      print(firstNameController.text);
-      print(lastNameController.text);
-
-      print(phoneNumberController.text);
-      print(emailController.text);
-      print(addressController.text);
-      print(dobDayController.text);
-      print(dobMonthController.text);
-      print(dobYearController.text);
-      print(genderController.text);
-      print(photoLocationController.text);
-      print(experienceController.text);
-      print(weatherAdminController.text);
-
    
     DatabaseService.addItems("employees", {
       fieldList[0] : int.tryParse(idController.text),
@@ -76,6 +85,21 @@ class EmployeesPageState extends State<EmployeesPage> {
     });
     
   }
+
+  void searchEmployee(){
+
+    setState(() {
+       items = DatabaseService.searchItem("employees",
+     fieldList[0], int.tryParse(idController.text),
+     fieldList[1], firstNameController.text,
+     fieldList[2], lastNameController.text);
+      
+    });
+
+   
+
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -108,23 +132,83 @@ class EmployeesPageState extends State<EmployeesPage> {
        case 2:
          return Column(
            children: [
-             EmployeesEdit(),
-             Container(
-               width: screenSize.width,
-               
-               color: Colors.red,
-             )
+             EmployeesSearch( id: idController,
+             firstName: firstNameController,
+             lastName: lastNameController,
+             search: searchEmployee,
+            
+             ),
+             FutureBuilder(
+              future: items,
+              builder: (context, snapshot) {
+                late List<Map<String, Object?>> tableData;
+                if (snapshot.hasError) {
+                  const Center(
+                    child: Text("Error Occured"),
+                  );
+                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  return const Center(child: Text('No medicines found.'));
+                } else {
+                  tableData = snapshot.data!;
+                }
+
+                return Container(
+                  width: screenSize.width,
+                  height: screenSize.height * 0.8,
+                  color: Colors.purple,
+                  child: ListView.builder(
+                    itemCount: tableData.length,
+                    itemBuilder: (context, index) {
+                      return EmployeesTileEdit(tableData: tableData[index], fieldList: fieldList, update: updateEmployee,);
+                    },
+                  ),
+                );
+              })
+
+
+          
+
+
            ],
          );
        case 3:
          return Column(
            children: [
-             EmployeesDelete(),
-             Container(
-               width: screenSize.width,
-               
-               color: Colors.red,
-             )
+             EmployeesSearch( id: idController,
+             firstName: firstNameController,
+             lastName: lastNameController,
+             search: searchEmployee,
+             ),
+             FutureBuilder(
+              future: items,
+              builder: (context, snapshot) {
+                late List<Map<String, Object?>> tableData;
+                if (snapshot.hasError) {
+                  const Center(
+                    child: Text("Error Occured"),
+                  );
+                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  return const Center(child: Text('No medicines found.'));
+                } else {
+                  tableData = snapshot.data!;
+                }
+
+                return Container(
+                  width: screenSize.width,
+                  height: screenSize.height * 0.8,
+                  color: Colors.purple,
+                  child: ListView.builder(
+                    itemCount: tableData.length,
+                    itemBuilder: (context, index) {
+                      return EmployeesTileDelete(tableData: tableData[index], fieldList: fieldList, refresh: searchEmployee,);
+                    },
+                  ),
+                );
+              })
+
+           
+
+
            ],
          );
        default: 
@@ -148,7 +232,7 @@ class EmployeesPageState extends State<EmployeesPage> {
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
-                      return Text(tableData[index].toString());
+                      return EmployeesTile(tableData: tableData[index], fieldList: fieldList);
                     },
                   ),
                 );

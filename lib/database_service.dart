@@ -111,13 +111,13 @@ class DatabaseService {
 //         ${profileFields[5]} TEXT NOT NULL,
 //         ${profileFields[6]} TEXT NOT NULL)''');
 
-//         await db.execute('''
-//         CREATE TABLE ${tableName[2]} (
-//         ${supplierFields[0]} INTEGER PRIMARY KEY,
-//         ${supplierFields[1]} TEXT NOT NULL,
-//         ${supplierFields[2]} INTEGER,
-//         ${supplierFields[3]} TEXT,
-//         ${supplierFields[4]} TEXT)''');
+        // await db.execute('''
+        // CREATE TABLE ${tableName[2]} (
+        // ${supplierFields[0]} INTEGER PRIMARY KEY,
+        // ${supplierFields[1]} TEXT NOT NULL,
+        // ${supplierFields[2]} INTEGER,
+        // ${supplierFields[3]} TEXT,
+        // ${supplierFields[4]} TEXT)''');
 
 //         await db.execute('''
 

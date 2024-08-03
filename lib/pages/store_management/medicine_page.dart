@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/database_service.dart';
+import 'package:flutter_application_1/material_styles/medicine_delete_tile.dart';
 import 'package:flutter_application_1/material_styles/medicine_tile.dart';
 import 'package:flutter_application_1/pages/store_management/section_elements/medicine/medicine_add.dart';
-import 'package:flutter_application_1/pages/store_management/section_elements/medicine/medicine_delete.dart';
 import 'package:flutter_application_1/pages/store_management/section_elements/medicine/medicine_search.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
@@ -129,7 +129,7 @@ setState(() {
         case 3:
           return Column(
             children: [
-              MedicineDelete(
+              MedicineSearch(
                   serialController: serialController,
                   sciNameController: sciNameController,
                   nameController: nameController,
@@ -157,8 +157,8 @@ setState(() {
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
-                      return MedicineTile(
-                          tableData: tableData[index], fieldList: fieldList);
+                      return MedicineDeleteTile(
+                          tableData: tableData[index], fieldList: fieldList, refresh: search,);
                     },
                   ),
                 );
