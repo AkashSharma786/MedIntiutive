@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/database_service.dart';
+import 'package:flutter_application_1/material_styles/medicine_selected_tile.dart';
 import 'package:flutter_application_1/material_styles/medicine_selection_dialog.dart';
 import 'package:flutter_application_1/material_styles/orders_tile.dart';
 import 'package:flutter_application_1/pages/store_management/section_elements/orders/cancel_order.dart';
@@ -17,7 +18,7 @@ class OrdersPageState extends State<OrdersPage> {
   Future<List<Map<String, Object?>>> items = DatabaseService.showItems("orders");
   List<String> fieldList = DatabaseService.ordersFields;
   
-  late List<Map<String, Object?>> selectedMedicines;
+  List<Map<String, Object?>> selectedMedicines = [];
 
   int currentClickedButton = 0;
   void updateColumn(int num) {
@@ -26,8 +27,12 @@ class OrdersPageState extends State<OrdersPage> {
     });
   }
 
-  List<Map<String, Object?>> getSelected(List<Map<String, Object?>> data){
-    return data;
+  void getSelected(List<Map<String, Object?>> data){
+    selectedMedicines = data;
+    setState(() {
+      
+    });
+    print(data);
   }
 
   void searchOrders()
@@ -42,6 +47,13 @@ class OrdersPageState extends State<OrdersPage> {
   }
 
   
+  void removeSelection(Map<String, Object?> data){
+    setState(() {
+      selectedMedicines.remove(data);
+    });
+  }
+
+  
 
 
 void showSelectedDialog(){
@@ -50,7 +62,7 @@ void showSelectedDialog(){
 
     return AlertDialog(
       title: Text("Update Employee"),
-      content: MedicineSelectionDialog(refresh: searchOrders,)
+      content: MedicineSelectionDialog(refresh: searchOrders, getSelected: getSelected,),
       
     );
 
@@ -71,7 +83,27 @@ void showSelectedDialog(){
         Builder(builder: (context){
             switch(currentClickedButton){
               case 1:
-                return NewOrder(showSelectionDialog: showSelectedDialog,);
+                return Column(
+                  children: [
+                    NewOrder(showSelectionDialog: showSelectedDialog,),
+                    Container(
+            width: screenSize.width*0.3,
+            height: screenSize.height*0.8-96,
+            color: Colors.green,
+            child: ListView.builder(
+              itemCount: selectedMedicines.length,
+              itemBuilder: (context, index){
+                return MedicineSelectedTile(
+                  tableData: selectedMedicines[index], fieldList: fieldList,
+                  removeSelection: removeSelection,
+                );
+              },
+            
+              
+              ),
+          )
+                  ],
+                );
               case 2:
                 return ModifyOrder();
               case 3:

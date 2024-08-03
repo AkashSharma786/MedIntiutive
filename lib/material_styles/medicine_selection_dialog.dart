@@ -16,10 +16,11 @@ class MedicineSelectionDialog extends StatefulWidget {
 
 
   final VoidCallback refresh;
+  final Function getSelected;
 
  
 
-  MedicineSelectionDialog({super.key, required this.refresh});
+  MedicineSelectionDialog({super.key, required this.refresh , required this.getSelected});
 
   @override
   State<MedicineSelectionDialog> createState() => _MedicineSelectionDialogState();
@@ -37,6 +38,7 @@ class _MedicineSelectionDialogState extends State<MedicineSelectionDialog> {
   List<String> fieldList = DatabaseService.medicineFields; 
 
   List<Map<String, Object?>> selectedMedicinesList = [];
+  
 
   void addSelection(Map<String, Object?> data){
      bool contains = selectedMedicinesList.any((element) => mapEquals(element, data));
@@ -104,7 +106,7 @@ class _MedicineSelectionDialogState extends State<MedicineSelectionDialog> {
                  );
 
                 
-
+                widget.getSelected(selectedMedicinesList);
                  widget.refresh();
                  Navigator.pop(context);
                 
