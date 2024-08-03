@@ -8,8 +8,9 @@ class NewOrder extends StatelessWidget {
   TextEditingController OrderDayController = TextEditingController();
   TextEditingController OrderMonthController = TextEditingController();
   TextEditingController OrderYearController = TextEditingController();
+  VoidCallback showSelectionDialog;
 
-  NewOrder({super.key});
+  NewOrder({super.key , required this.showSelectionDialog});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,10 @@ class NewOrder extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
 
-          ElevatedButton(onPressed: (){}, child: Text("Select Medicines")),
+          ElevatedButton(onPressed: (){
+
+            showSelectionDialog();
+          }, child: Text("Select Medicines")),
           ElevatedButton(onPressed: (){}, child: Text("Select Supplier")),
           Text("Order Date: "),
           DateInput( dayControl: OrderDayController, monthControl: OrderMonthController, yearControl: OrderYearController),

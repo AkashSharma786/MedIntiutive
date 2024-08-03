@@ -92,16 +92,18 @@ setState(() {
               FutureBuilder(
               future: items,
               builder: (context, snapshot) {
-                late List<Map<String, Object?>> tableData;
+
+
+                List<Map<String, Object?>> tableData;
                 if (snapshot.hasError) {
-                  const Center(
+                  return const Center(
                     child: Text("Error Occured"),
                   );
                 } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
                   return const Center(child: Text('No medicines found.'));
                 } else {
                   tableData = snapshot.data!;
-                }
+               
 
                 return Container(
                   width: screenSize.width-87,
@@ -115,6 +117,11 @@ setState(() {
                     },
                   ),
                 );
+
+                }
+
+
+
               })
             ],
           );
@@ -173,14 +180,14 @@ setState(() {
               builder: (context, snapshot) {
                 late List<Map<String, Object?>> tableData;
                 if (snapshot.hasError) {
-                  const Center(
+                  return Center(
                     child: Text("Error Occured"),
                   );
                 } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
                   return const Center(child: Text('No medicines found.'));
                 } else {
                   tableData = snapshot.data!;
-                }
+              
 
                 return Container(
                   width: screenSize.width,
@@ -193,6 +200,7 @@ setState(() {
                     },
                   ),
                 );
+              }
               });
             }
 

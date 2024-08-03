@@ -96,62 +96,62 @@ class DatabaseService {
 
 
 
-      // await db.execute(
-      //  '''CREATE TABLE ${tableName[0]} (
-      //   ${medicineFields[0]} INTEGER PRIMARY KEY,
-      //   ${medicineFields[1]} TEXT NOT NULL,
-      //    ${medicineFields[2]} TEXT NOT NULL,
-      //     ${medicineFields[3]} REAL NOT NULL,
-      //      ${medicineFields[4]} TEXT NOT NULL,
-      //       ${medicineFields[5]} TEXT NOT NULL,
-      //        ${medicineFields[6]} REAL, ${medicineFields[7]} TEXT,
-      //        ${medicineFields[8]} TEXT, ${medicineFields[9]} TEXT,
-      //        ${medicineFields[10]} Text)'''
-      // );
+    //   await db.execute(
+    //    '''CREATE TABLE ${tableName[0]} (
+    //     ${medicineFields[0]} INTEGER PRIMARY KEY,
+    //     ${medicineFields[1]} TEXT NOT NULL,
+    //      ${medicineFields[2]} TEXT NOT NULL,
+    //       ${medicineFields[3]} REAL NOT NULL,
+    //        ${medicineFields[4]} TEXT NOT NULL,
+    //         ${medicineFields[5]} TEXT NOT NULL,
+    //          ${medicineFields[6]} REAL, ${medicineFields[7]} TEXT,
+    //          ${medicineFields[8]} TEXT, ${medicineFields[9]} TEXT,
+    //          ${medicineFields[10]} Text)'''
+    //   );
 
-        //   await db.execute(
-        // '''CREATE TABLE ${tableName[1]} (
-        // ${profileFields[0]} INTEGER PRIMARY KEY,
-        // ${profileFields[1]} TEXT NOT NULL,
-        // ${profileFields[2]} INTEGER NOT NULL,
-        // ${profileFields[3]} TEXT NOT NULL,
-        // ${profileFields[4]} TEXT ,
-        // ${profileFields[5]} TEXT NOT NULL,
-        // ${profileFields[6]} TEXT NOT NULL)''');
+    //       await db.execute(
+    //     '''CREATE TABLE ${tableName[1]} (
+    //     ${profileFields[0]} INTEGER PRIMARY KEY,
+    //     ${profileFields[1]} TEXT NOT NULL,
+    //     ${profileFields[2]} INTEGER NOT NULL,
+    //     ${profileFields[3]} TEXT NOT NULL,
+    //     ${profileFields[4]} TEXT ,
+    //     ${profileFields[5]} TEXT NOT NULL,
+    //     ${profileFields[6]} TEXT NOT NULL)''');
 
-        //     await db.execute('''
-        // CREATE TABLE ${tableName[2]} (
-        // ${supplierFields[0]} INTEGER PRIMARY KEY,
-        // ${supplierFields[1]} TEXT NOT NULL,
-        // ${supplierFields[2]} INTEGER,
-        // ${supplierFields[3]} TEXT,
-        // ${supplierFields[4]} TEXT)''');
+    //         await db.execute('''
+    //     CREATE TABLE ${tableName[2]} (
+    //     ${supplierFields[0]} INTEGER PRIMARY KEY,
+    //     ${supplierFields[1]} TEXT NOT NULL,
+    //     ${supplierFields[2]} INTEGER,
+    //     ${supplierFields[3]} TEXT,
+    //     ${supplierFields[4]} TEXT)''');
 
-        //   await db.execute('''
+    //       await db.execute('''
 
-        // CREATE TABLE ${tableName[3]} (
-        // ${ordersFields[0]} INTEGER PRIMARY KEY,
-        // ${ordersFields[1]} INTEGER NOT NULL,
-        // ${ordersFields[2]} INTEGER NOT NULL,
-        // ${ordersFields[3]} INTEGER NOT NULL,
-        // ${ordersFields[4]} TEXT,
-        // FOREIGN KEY (${ordersFields[3]}) REFERENCES ${tableName[2]}(${supplierFields[0]}))
-        // ''');
+    //     CREATE TABLE ${tableName[3]} (
+    //     ${ordersFields[0]} INTEGER PRIMARY KEY,
+    //     ${ordersFields[1]} INTEGER NOT NULL,
+    //     ${ordersFields[2]} INTEGER NOT NULL,
+    //     ${ordersFields[3]} INTEGER NOT NULL,
+    //     ${ordersFields[4]} TEXT,
+    //     FOREIGN KEY (${ordersFields[3]}) REFERENCES ${tableName[2]}(${supplierFields[0]}))
+    //     ''');
 
-        //   await db.execute(
-        //   ''' CREATE TABLE ${tableName[4]}(
-        // ${employeesField[0]} INTEGER PRIMARY KEY,
-        // ${employeesField[1]} TEXT NOT NULL,
-        // ${employeesField[2]} TEXT NOT NULL,
-        // ${employeesField[3]} INTEGER,
-        // ${employeesField[4]} TEXT,
-        // ${employeesField[5]} TEXT,
-        // ${employeesField[6]} INTEGER NOT NULL,
-        // ${employeesField[7]} TEXT NOT NULL,
-        // ${employeesField[8]} TEXT,
-        // ${employeesField[9]} TEXT,
-        // ${employeesField[10]} TEXT,
-        // ${employeesField[11]} TEXT NOT NULL)''');
+    //       await db.execute(
+    //       ''' CREATE TABLE ${tableName[4]}(
+    //     ${employeesField[0]} INTEGER PRIMARY KEY,
+    //     ${employeesField[1]} TEXT NOT NULL,
+    //     ${employeesField[2]} TEXT NOT NULL,
+    //     ${employeesField[3]} INTEGER,
+    //     ${employeesField[4]} TEXT,
+    //     ${employeesField[5]} TEXT,
+    //     ${employeesField[6]} INTEGER NOT NULL,
+    //     ${employeesField[7]} TEXT NOT NULL,
+    //     ${employeesField[8]} TEXT,
+    //     ${employeesField[9]} TEXT,
+    //     ${employeesField[10]} TEXT,
+    //     ${employeesField[11]} TEXT NOT NULL)''');
 
 
 
