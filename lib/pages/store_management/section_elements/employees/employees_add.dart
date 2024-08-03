@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -5,21 +6,39 @@ import 'package:flutter_application_1/material_styles/custom_labeled_text_field.
 import 'package:flutter_application_1/material_styles/date_input.dart';
 
 class EmployeesAdd extends StatelessWidget {
-    TextEditingController idController = TextEditingController();
-  TextEditingController firstNameController = TextEditingController();
-  TextEditingController addressController = TextEditingController();
-  TextEditingController genderController = TextEditingController();
-  TextEditingController photoLocationController = TextEditingController();
-  TextEditingController aadhaarController = TextEditingController();
-  TextEditingController phoneNumberController = TextEditingController();
-  TextEditingController lastNameController = TextEditingController();
-  TextEditingController experienceController = TextEditingController();
-  TextEditingController weatherAdminController = TextEditingController();
-  TextEditingController dobDayController = TextEditingController();
-  TextEditingController dobMonthController = TextEditingController();
-  TextEditingController dobYearController = TextEditingController();
+  TextEditingController idController ;
+  TextEditingController firstNameController;
+  TextEditingController addressController;
+  TextEditingController genderController;
+  TextEditingController photoLocationController;
+  TextEditingController emailController;
+  TextEditingController aadhaarController;
+  TextEditingController phoneNumberController;
+  TextEditingController lastNameController;
+  TextEditingController experienceController;
+  TextEditingController weatherAdminController;
+  TextEditingController dobDayController;
+  TextEditingController dobMonthController;
+  TextEditingController dobYearController;
+  final VoidCallback addEmployee;
 
-  EmployeesAdd({super.key});
+  EmployeesAdd({super.key,
+  required this.idController,
+  required this.firstNameController,
+  required this.addressController,
+  required this.genderController,
+  required this.photoLocationController,
+  required this.aadhaarController,
+  required this.phoneNumberController,
+  required this.lastNameController,
+  required this.emailController,
+  required this.experienceController,
+  required this.weatherAdminController,
+  required this.dobDayController,
+  required this.dobMonthController,
+  required this.dobYearController,
+  required this.addEmployee
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +63,8 @@ class EmployeesAdd extends StatelessWidget {
               SizedBox(height: screenSize.height*0.02,),
               CustomLabeledTextField(label: "Address", hint: "90/2 this road, kolkata, west Bengal - 700425", widgetControl: addressController),
               SizedBox(height: screenSize.height*0.02,),
+
+              CustomLabeledTextField(label: "Email", hint: "somemon@mail.com", widgetControl: emailController),
               CustomLabeledTextField(label: "Gender", hint: "Male", widgetControl: genderController),
               SizedBox(height: screenSize.height*0.02,),
               CustomLabeledTextField(label: "Photo location" , hint: "D:/directory/imaget/photo.jpg", widgetControl: photoLocationController),
@@ -52,24 +73,7 @@ class EmployeesAdd extends StatelessWidget {
               SizedBox(height: screenSize.height*0.02,),
              
 
-              ElevatedButton(onPressed: (){
-
-                print("Id : ${idController.text}");
-                print("First Name : ${firstNameController.text}");
-                print("Address : ${addressController.text}");
-                print("Gender : ${genderController.text}");
-                print("Photo Location : ${photoLocationController.text}");
-                print("Date of Birth : ${dobDayController.text}/${dobMonthController.text}/${dobYearController.text}");
-                print("Aadhaar : ${aadhaarController.text}");
-                print("Phone Number : ${phoneNumberController.text}");
-                print("Last Name : ${lastNameController.text}");
-                print("Experience : ${experienceController.text}");
-                print("Weather Admin : ${weatherAdminController.text}");
-                
-                
-
-
-              }, child: Text("Add Employee")),
+              ElevatedButton(onPressed: (){addEmployee();}, child: const Text("Add Employee")),
 
 
             ],
