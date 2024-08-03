@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class EmployeesTileEdit extends StatelessWidget{
   final Map<String, Object?> tableData;
   final List<String> fieldList;
-  final VoidCallback update;
+  final Function update;
   EmployeesTileEdit({super.key, required this.tableData , required this.fieldList, required this.update});
 
 
@@ -55,8 +55,9 @@ class EmployeesTileEdit extends StatelessWidget{
                             Text("${tableData[fieldList[11]]}"),
 
                             IconButton(onPressed: (){
+                              update(tableData)
 
-                              update();
+                              ;
 
                             }, icon: Icon(Icons.edit))
                             

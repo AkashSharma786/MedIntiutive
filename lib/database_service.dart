@@ -171,8 +171,9 @@ class DatabaseService {
     print("item added");
   }
   
-  static void updateMedicine(String tableName, Map<String, Object?> data, int primayKey) async {
+  static void updateItems(String tableName, Map<String, Object?> data, int primayKey) async {
     final db = await database;
+    print(data);
     print("item updated");
 
    await db.update(tableName, data, where: "id = ?", whereArgs: [primayKey]);

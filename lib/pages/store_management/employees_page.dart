@@ -6,6 +6,7 @@ import 'package:flutter_application_1/database_service.dart';
 import 'package:flutter_application_1/material_styles/employees_tile.dart';
 import 'package:flutter_application_1/material_styles/employees_tile_delete.dart';
 import 'package:flutter_application_1/material_styles/employees_tile_edit.dart';
+import 'package:flutter_application_1/material_styles/update_dialog.dart';
 import 'package:flutter_application_1/pages/store_management/section_elements/employees/employees_add.dart';
 import 'package:flutter_application_1/pages/store_management/section_elements/employees/employees_search.dart';
 
@@ -43,18 +44,20 @@ class EmployeesPageState extends State<EmployeesPage> {
       currentClickedButton = num;
     });
   }
-void updateEmployee(){
+
+
+
+
+
+
+  
+void updateDialog( Map<String, Object?> data ){
 
   showDialog(context: context, builder: (context){
 
     return AlertDialog(
       title: Text("Update Employee"),
-      content: Container(
-        width: 500,
-        height: 500,
-        color: Colors.green,
-        
-        ),
+      content: UpdateDialog( data: data, refresh: searchEmployee,)
     );
   });
 
@@ -159,7 +162,7 @@ void updateEmployee(){
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
-                      return EmployeesTileEdit(tableData: tableData[index], fieldList: fieldList, update: updateEmployee,);
+                      return EmployeesTileEdit(tableData: tableData[index], fieldList: fieldList, update: updateDialog,);
                     },
                   ),
                 );
