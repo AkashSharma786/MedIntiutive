@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/material_styles/button.dart';
+import 'package:flutter_application_1/material_styles/custom_labeled_text_field.dart';
 import 'package:flutter_application_1/material_styles/date_input.dart';
 
 class NewOrder extends StatelessWidget {
-  TextEditingController OrderDayController = TextEditingController();
-  TextEditingController OrderMonthController = TextEditingController();
-  TextEditingController OrderYearController = TextEditingController();
+  TextEditingController OrderDateController = TextEditingController();
+
   VoidCallback showSelectionDialog;
 
   NewOrder({super.key , required this.showSelectionDialog});
@@ -20,7 +20,7 @@ class NewOrder extends StatelessWidget {
     return Container(
 
       width: screenSize.width,
-      height: 50,
+      height: 64,
      
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -31,18 +31,25 @@ class NewOrder extends StatelessWidget {
             showSelectionDialog();
           }, child: Text("Select Medicines")),
           ElevatedButton(onPressed: (){}, child: Text("Select Supplier")),
-          Text("Order Date: "),
-          DateInput( dayControl: OrderDayController, monthControl: OrderMonthController, yearControl: OrderYearController),
+      
+
+          CustomLabeledTextField(label: "Date",
+           hint: "ddmmyyyy",
+            widgetControl: OrderDateController,
+            buttonWidth: screenSize.width*0.1,
+          
+            ),
+          
 
           SizedBox(
-                  width: 200,
+                  width: screenSize.width*0.3,
                   height: 40,
                   child: TextField(
                 
                     
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      hintText: "Month",
+                      hintText: "Message",
                       counterText: "",
                       border: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -55,10 +62,11 @@ class NewOrder extends StatelessWidget {
 
           
 
-          MyButtonStyle(text: "Place Order", width: 100, height: 40, onTap: (){
-            print(" from ${OrderDayController.text}/${OrderMonthController.text}/${OrderYearController.text}");
-          })
+          ElevatedButton(onPressed: (){
+            print(" from ${OrderDateController.text}");
+          }, child: Text("Place Order"))
 
+    
 
 
         ],),

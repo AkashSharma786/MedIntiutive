@@ -38,9 +38,10 @@ class _MedicineSelectionDialogState extends State<MedicineSelectionDialog> {
   List<String> fieldList = DatabaseService.medicineFields; 
 
   List<Map<String, Object?>> selectedMedicinesList = [];
+  List<int> quantity = [];
   
 
-  void addSelection(Map<String, Object?> data){
+  void addSelection(Map<String, Object?> data, int quantity){
      bool contains = selectedMedicinesList.any((element) => mapEquals(element, data));
      
 
@@ -48,6 +49,7 @@ class _MedicineSelectionDialogState extends State<MedicineSelectionDialog> {
     if(!contains){
       
      selectedMedicinesList.add(data);
+      this.quantity.add(quantity);
 
     }
   
@@ -66,9 +68,10 @@ class _MedicineSelectionDialogState extends State<MedicineSelectionDialog> {
     print(selectedMedicinesList);
   }
 
-  void removeSelection(Map<String, Object?> data){
+  void removeSelection(Map<String, Object?> data , int quantity){
     setState(() {
       selectedMedicinesList.remove(data);
+      this.quantity.remove(quantity);
     });
   }
 
@@ -106,7 +109,7 @@ class _MedicineSelectionDialogState extends State<MedicineSelectionDialog> {
                  );
 
                 
-                widget.getSelected(selectedMedicinesList);
+                widget.getSelected(selectedMedicinesList, quantity);
                  widget.refresh();
                  Navigator.pop(context);
                 
@@ -158,6 +161,7 @@ class _MedicineSelectionDialogState extends State<MedicineSelectionDialog> {
               itemBuilder: (context, index){
                 return MedicineSelectedTile(
                   tableData: selectedMedicinesList[index], fieldList: fieldList,
+                  quantity: quantity[index],
                   removeSelection: removeSelection,
                 );
               },

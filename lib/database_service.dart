@@ -14,6 +14,8 @@ class DatabaseService {
     "order_date",
     "status",
     "supplier_id",
+    "delivered_date",
+    "expiry_date",
     "message",
   ];
   static final medicineFields = [
@@ -94,7 +96,7 @@ class DatabaseService {
     var db = await databaseFactory.openDatabase(dbPath);
 
 
-
+   
 
     //   await db.execute(
     //    '''CREATE TABLE ${tableName[0]} (
@@ -127,16 +129,18 @@ class DatabaseService {
     //     ${supplierFields[3]} TEXT,
     //     ${supplierFields[4]} TEXT)''');
 
-    //       await db.execute('''
+        //   await db.execute('''
 
-    //     CREATE TABLE ${tableName[3]} (
-    //     ${ordersFields[0]} INTEGER PRIMARY KEY,
-    //     ${ordersFields[1]} INTEGER NOT NULL,
-    //     ${ordersFields[2]} INTEGER NOT NULL,
-    //     ${ordersFields[3]} INTEGER NOT NULL,
-    //     ${ordersFields[4]} TEXT,
-    //     FOREIGN KEY (${ordersFields[3]}) REFERENCES ${tableName[2]}(${supplierFields[0]}))
-    //     ''');
+        // CREATE TABLE ${tableName[3]} (
+        // ${ordersFields[0]} INTEGER PRIMARY KEY,
+        // ${ordersFields[1]} INTEGER NOT NULL,
+        // ${ordersFields[2]} INTEGER NOT NULL,
+        // ${ordersFields[3]} INTEGER NOT NULL,
+        // ${ordersFields[4]} INTEGER,
+        // ${ordersFields[5]} INTEGER,
+        // ${ordersFields[6]} TEXT,
+        // FOREIGN KEY (${ordersFields[3]}) REFERENCES ${tableName[2]}(${supplierFields[0]}))
+        // ''');
 
     //       await db.execute(
     //       ''' CREATE TABLE ${tableName[4]}(

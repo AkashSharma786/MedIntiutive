@@ -4,6 +4,7 @@ class MedicineSelectionTile extends StatelessWidget {
   final Map<String, Object?> tableData;
   final List<String> fieldList;
   final Function addSelection;
+  TextEditingController quantityController = TextEditingController();
   MedicineSelectionTile({super.key, required this.tableData, required this.fieldList , required this.addSelection});  
 
   @override
@@ -32,8 +33,15 @@ class MedicineSelectionTile extends StatelessWidget {
               Text("${tableData[fieldList[0]]}"),
               Text("${tableData[fieldList[1]]}"),
               Text("${tableData[fieldList[2]]}"),
+              Container(
+                width: 0.05 * screenSize.width,
+                child: TextField(
+                  decoration: InputDecoration(hintText: "Quantity"),
+                  controller: quantityController,
+                ),
+              ),
               IconButton(onPressed: (){
-                addSelection(tableData);
+                addSelection(tableData, int.parse(quantityController.text));
 
               }, icon: Icon(Icons.add))
             ],

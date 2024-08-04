@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 class MedicineSelectedTile extends StatelessWidget {
   final Map<String, Object?> tableData;
+  final int quantity;
   final List<String> fieldList;
   final Function removeSelection;
-  MedicineSelectedTile({super.key, required this.tableData, required this.fieldList , required this.removeSelection});  
+  MedicineSelectedTile({super.key, required this.tableData, required this.fieldList , required this.removeSelection, required this.quantity});  
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +33,9 @@ class MedicineSelectedTile extends StatelessWidget {
               Text("${tableData[fieldList[0]]}"),
               Text("${tableData[fieldList[1]]}"),
               Text("${tableData[fieldList[2]]}"),
+              Text(int.parse(quantity.toString()).toString()),
               IconButton(onPressed: (){
-                removeSelection(tableData);
+                removeSelection(tableData , quantity);
 
               }, icon: Icon(Icons.remove))
             ],

@@ -4,13 +4,30 @@ import 'package:flutter/services.dart';
 class CustomLabeledTextField extends StatelessWidget {
   String label;
   String hint;
+  double? buttonWidth;
+  double? buttonHeight;
   TextEditingController widgetControl;
 
-  CustomLabeledTextField({super.key, required this.label, required this.hint, required this.widgetControl});
+  CustomLabeledTextField({super.key, required this.label, required this.hint, required this.widgetControl, this.buttonWidth, 
+  this.buttonHeight});
+   
   
   @override
   Widget build(BuildContext context) {
-    Size screenSize = MediaQuery.of(context).size;
+
+     Size screenSize = MediaQuery.of(context).size;
+
+    if(buttonWidth == null)
+    {
+      buttonWidth =( screenSize.width*0.25);
+    }
+
+    if(buttonHeight == null)
+    {
+      buttonHeight = 40;
+    }
+     
+   
     return
               Container(
                 child: Column(
@@ -28,8 +45,8 @@ class CustomLabeledTextField extends StatelessWidget {
           
               
               SizedBox(
-                      width: screenSize.width*0.25,
-                      height: 40,
+                      width: buttonWidth,
+                      height: buttonHeight,
                       child: TextField(
                     
                         

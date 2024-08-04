@@ -16,9 +16,11 @@ class OrdersPage extends StatefulWidget {
 
 class OrdersPageState extends State<OrdersPage> {
   Future<List<Map<String, Object?>>> items = DatabaseService.showItems("orders");
+  List<String> fieldMedicineList = DatabaseService.medicineFields;
   List<String> fieldList = DatabaseService.ordersFields;
   
   List<Map<String, Object?>> selectedMedicines = [];
+  List<int> quantities = [];
 
   int currentClickedButton = 0;
   void updateColumn(int num) {
@@ -27,12 +29,13 @@ class OrdersPageState extends State<OrdersPage> {
     });
   }
 
-  void getSelected(List<Map<String, Object?>> data){
+  void getSelected(List<Map<String, Object?>> data, List<int> quantities){
     selectedMedicines = data;
+    this.quantities = quantities;
     setState(() {
       
     });
-    print(data);
+    print( "selection shown" + selectedMedicines.toString());
   }
 
   void searchOrders()
@@ -47,9 +50,10 @@ class OrdersPageState extends State<OrdersPage> {
   }
 
   
-  void removeSelection(Map<String, Object?> data){
+  void removeSelection(Map<String, Object?> data , int quantity){
     setState(() {
       selectedMedicines.remove(data);
+      quantities.remove(quantity);
     });
   }
 
@@ -93,8 +97,10 @@ void showSelectedDialog(){
             child: ListView.builder(
               itemCount: selectedMedicines.length,
               itemBuilder: (context, index){
+                print("medicines at index "+ selectedMedicines[index].toString());
                 return MedicineSelectedTile(
-                  tableData: selectedMedicines[index], fieldList: fieldList,
+                  tableData: selectedMedicines[index], fieldList: fieldMedicineList,
+                  quantity: quantities[index],
                   removeSelection: removeSelection,
                 );
               },
