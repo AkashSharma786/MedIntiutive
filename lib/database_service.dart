@@ -188,6 +188,29 @@ class DatabaseService {
     return db;
   }
 
+
+
+static Future<int> getLastIndex(String tableName, String primaryKeyColumn) async {
+  final db = await database;
+
+  List<Map<String, Object?>> result = await db.rawQuery(
+    'SELECT MAX($primaryKeyColumn) as lastIndex FROM $tableName'
+  );
+
+  if (result.isNotEmpty && result[0]['lastIndex'] != null) {
+    return result[0]['lastIndex'] as int;
+  } else {
+    return 0; // Return 0 if the table is empty
+  }
+}
+
+
+
+
+
+
+
+
   static void addItems(
     String tableName,
     Map<String, Object?> data,
@@ -207,6 +230,13 @@ class DatabaseService {
     print("item updated");
 
    await db.update(tableName, data, where: "id = ?", whereArgs: [primayKey]);
+  }
+
+  static Future<List<Map<String,Object?>>> searchByKey(String table, String keyField , int key) async
+  {
+     final db = await database;
+      return db.rawQuery("SELECT * FROM $table WHERE $keyField = $key");
+
   }
 
 
