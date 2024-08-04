@@ -4,18 +4,37 @@ class SupplierEditTile extends StatelessWidget{
   final Map<String, Object?> tableData;
   final List<String> fieldList;
   final Function update;
-  SupplierEditTile({super.key, required this.tableData , required this.fieldList, required this.update});
+  double? tileWidth;
+  double? tileHeight;
+  SupplierEditTile({super.key, required this.tableData ,
+   required this.fieldList,
+    required this.update,
+        this.tileWidth,
+        this.tileHeight
+
+
+    });
 
 
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
+
+     if(tileWidth == null)
+    {
+      tileWidth = MediaQuery.of(context).size.width-100;
+    }
+    if(tileHeight == null)
+    {
+      tileHeight = 40;
+    }
+
     return Column(
                     children: [
                       SizedBox(height: screenSize.height *0.02,),
                       Container(
-                        width: screenSize.width-100,
-                        height: 40,
+                        width: tileWidth,
+                        height: tileHeight,
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.black,
                           width: 1,

@@ -129,13 +129,15 @@ class DatabaseService {
     //     ${supplierFields[3]} TEXT,
     //     ${supplierFields[4]} TEXT)''');
 
+
+
         //   await db.execute('''
 
         // CREATE TABLE ${tableName[3]} (
-        // ${ordersFields[0]} INTEGER PRIMARY KEY,
-        // ${ordersFields[1]} INTEGER NOT NULL,
-        // ${ordersFields[2]} INTEGER NOT NULL,
-        // ${ordersFields[3]} INTEGER NOT NULL,
+        // ${ordersFields[0]} INTEGER PRIMARY KEY AUTOINCREMENT,
+        // ${ordersFields[1]} INTEGER,
+        // ${ordersFields[2]} INTEGER,
+        // ${ordersFields[3]} INTEGER,
         // ${ordersFields[4]} INTEGER,
         // ${ordersFields[5]} INTEGER,
         // ${ordersFields[6]} TEXT,
@@ -162,14 +164,15 @@ class DatabaseService {
     // await db.execute( '''
 
     // CREATE TABLE ${tableName[6]} (
-    // ${orderMedicines[0]} INTEGER PRIMARY KEY,
+    // ${orderMedicines[0]} INTEGER NOT NULL,
     // ${orderMedicines[1]} INTEGER NOT NULL,
     // ${orderMedicines[2]} INTEGER NOT NULL,
     // ${orderMedicines[3]} INTEGER NOT NULL,
+    // PRIMARY KEY (${orderMedicines[0]}, ${orderMedicines[1]}),
     // FOREIGN KEY (order_id) REFERENCES ${tableName[3]}(${ordersFields[0]}),
     // FOREIGN KEY (medicine_id) REFERENCES ${tableName[0]}(${medicineFields[0]}))''');
 
-
+   
 
 
 
@@ -190,10 +193,12 @@ class DatabaseService {
     Map<String, Object?> data,
   ) async {
     final db = await database;
+    print("item added");
 
     await db.insert(tableName,data,);
+    print("item not shown");
 
-    print("item added");
+    
   }
   
   static void updateItems(String tableName, Map<String, Object?> data, int primayKey) async {
@@ -244,7 +249,7 @@ static Future<List<Map<String, Object?>>> showItems(String tableName) async {
 
   static void deleteItem(String tableName, int id) async {
     final db = await database;
-    print("Item deleted");
+   
 
     await db.delete(tableName, where: "id = ?", whereArgs: [id]);
   }

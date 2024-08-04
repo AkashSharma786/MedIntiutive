@@ -6,18 +6,36 @@ class SupplierDeleteTile extends StatelessWidget{
   final Map<String, Object?> tableData;
   final List<String> fieldList;
   final VoidCallback refresh;
-  SupplierDeleteTile({super.key, required this.tableData , required this.fieldList , required this.refresh});
+  double? tileWidth;
+  double? tileHeight;
+  SupplierDeleteTile({super.key,
+   required this.tableData ,
+    required this.fieldList ,
+     required this.refresh,
+      this.tileWidth,
+        this.tileHeight
+     
+     });
 
 
   @override
   Widget build(BuildContext context) {
+    if(tileWidth == null)
+    {
+      tileWidth = MediaQuery.of(context).size.width-100;
+    }
+    if(tileHeight == null)
+    {
+      tileHeight = 40;
+    }
+
     Size screenSize = MediaQuery.of(context).size;
     return Column(
                     children: [
                       SizedBox(height: screenSize.height *0.02,),
                       Container(
-                        width: screenSize.width-100,
-                        height: 40,
+                        width: tileWidth,
+                        height: tileHeight,
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.black,
                           width: 1,

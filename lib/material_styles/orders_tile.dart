@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class OrdersTile extends StatelessWidget{
   final Map<String, Object?> tableData;
   final List<String> fieldList;
-  OrdersTile({super.key, required this.tableData , required this.fieldList});
+  Icon? icon;
+  Function? function;
+  OrdersTile({super.key, required this.tableData , required this.fieldList , this.icon , this.function});
 
 
   @override
@@ -33,11 +35,21 @@ class OrdersTile extends StatelessWidget{
                             
                             Text("${tableData[fieldList[1]]}"),
                             
-                            Text("${tableData[fieldList[2]]}"),
-                            
+                    
                             Text("${tableData[fieldList[3]]}"),
                             
-                            Text("${tableData[fieldList[4]]}"),   
+                            Text("${tableData[fieldList[6]]}"), 
+                            Builder(builder: (context){
+                              if(icon != null){
+                                return IconButton(
+                                  onPressed: (){
+                                    function!(tableData);
+                                  },
+                                  icon: icon!,
+                                );
+                              }
+                              return Container();
+                            })  
                           
                           ],
                         ),

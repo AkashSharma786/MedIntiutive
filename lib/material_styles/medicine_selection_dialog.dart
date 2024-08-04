@@ -65,7 +65,7 @@ class _MedicineSelectionDialogState extends State<MedicineSelectionDialog> {
    
 
 
-    print(selectedMedicinesList);
+   // print(selectedMedicinesList);
   }
 
   void removeSelection(Map<String, Object?> data , int quantity){
