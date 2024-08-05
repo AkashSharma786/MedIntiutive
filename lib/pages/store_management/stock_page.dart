@@ -18,22 +18,13 @@ class StockPageState extends State<StockPage> {
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
-    return Column(
-      children: [
-        
-
-
-        Expanded(
-          child: Container(
-            width: screenSize.width,
-            
-            color: Colors.teal,
-            child: Text(
-              "Stock Page",
-            ),
-          ),
-        )
-      ],
+    return Container(
+     
+      
+    
+      child: Text(
+        "Stock Page",
+      ),
     );
   }
 }

@@ -6,9 +6,7 @@ import 'package:flutter_application_1/database_service.dart';
 import 'package:flutter_application_1/material_styles/button.dart';
 import 'package:flutter_application_1/material_styles/custom_labeled_text_field.dart';
 import 'package:flutter_application_1/material_styles/date_input.dart';
-import 'package:flutter_application_1/material_styles/medicine_selected_tile.dart';
 import 'package:flutter_application_1/material_styles/medicine_selection_dialog.dart';
-import 'package:flutter_application_1/material_styles/medicine_selection_tile.dart';
 import 'package:flutter_application_1/material_styles/supplier_selection_dialog.dart';
 import 'package:flutter_application_1/material_styles/tile.dart';
 
@@ -187,7 +185,7 @@ class _NewOrderState extends State<NewOrder> {
           fieldList[1]: int.tryParse(widget.dateController.text),
           fieldList[2]: null,
           fieldList[3]:
-              int.tryParse('${selectedSupplier[supplierFieldList[0]]}'),
+          int.tryParse('${selectedSupplier[supplierFieldList[0]]}'),
           fieldList[4]: null,
           fieldList[5]: null,
           fieldList[6]: widget.messageController.text
@@ -271,11 +269,20 @@ class _NewOrderState extends State<NewOrder> {
                   itemBuilder: (context, index) {
                     print("medicines at index " +
                         selectedMedicines[index].toString());
-                    return MedicineSelectedTile(
+                    return Tile(
                       tableData: selectedMedicines[index],
-                      fieldList: fieldMedicineList,
-                      quantity: quantities[index],
-                      removeSelection: removeSelection,
+                      showData: {
+                       fieldMedicineList[0]: selectedMedicines[index][fieldMedicineList[0]],
+                      fieldMedicineList[1]: selectedMedicines[index][fieldMedicineList[1]],
+                      fieldMedicineList[2]: selectedMedicines[index][fieldMedicineList[2]],
+
+                        "quantity": quantities[index],
+                      },
+                      width: screenSize.width*0.3,
+                      icon: const Icon(Icons.remove),
+                      
+                     
+                      dataAndIntegerFunction: removeSelection,
                     );
                   },
                 ),

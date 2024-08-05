@@ -161,7 +161,7 @@ void updateDialog( Map<String, Object?> data ){
                 return Container(
                   width: screenSize.width,
                   height: screenSize.height * 0.8,
-                  color: Colors.purple,
+      
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
@@ -202,7 +202,7 @@ void updateDialog( Map<String, Object?> data ){
                 return Container(
                   width: screenSize.width,
                   height: screenSize.height * 0.8,
-                  color: Colors.purple,
+             
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
@@ -233,8 +233,7 @@ void updateDialog( Map<String, Object?> data ){
                 }
 
                 return Container(
-                  width: screenSize.width,
-                  color: Colors.purple,
+              
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {

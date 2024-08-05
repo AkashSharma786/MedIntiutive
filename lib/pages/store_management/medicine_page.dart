@@ -110,7 +110,7 @@ setState(() {
                 return Container(
                   width: screenSize.width-87,
                   height: screenSize.height*0.9-96,
-                  color: Colors.purple,
+          
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
@@ -162,7 +162,7 @@ setState(() {
                 return Container(
                   width: screenSize.width-87,
                   height: screenSize.height*0.9-96,
-                  color: Colors.purple,
+     
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
@@ -191,16 +191,12 @@ setState(() {
                   tableData = snapshot.data!;
               
 
-                return Container(
-                  width: screenSize.width,
-                  color: Colors.purple,
-                  child: ListView.builder(
-                    itemCount: tableData.length,
-                    itemBuilder: (context, index) {
-                      return Tile(
-                          tableData: tableData[index],);
-                    },
-                  ),
+                return ListView.builder(
+                  itemCount: tableData.length,
+                  itemBuilder: (context, index) {
+                    return Tile(
+                        tableData: tableData[index],);
+                  },
                 );
               }
               });

@@ -156,20 +156,35 @@ class _ManagementState extends State<ManagementPage>
             ),
           ),
         ),
-        body: TabBarView(controller: _tabController, children: [
-          MedicinePage(
-            key: _medicinePageKey,
-          ),
-          EmployeesPage(key: _employeesPageKey),
-          SupplierPage(
-            key: _supplierPageKey,
-          ),
-          OrdersPage(
-            key: _ordersPageKey,
-          ),
-          StockPage(key: _stockPageKey),
-          ExpensePage(key: _expensePageKey),
-        ]),
+        body: Stack(
+          children: [
+            
+              Container(
+              width: screenSize.width,
+              height: screenSize.height,
+              color: Colors.black,
+
+            ),
+
+            TabBarView(controller: _tabController, children: [
+              MedicinePage(
+                key: _medicinePageKey,
+              ),
+              EmployeesPage(key: _employeesPageKey),
+              SupplierPage(
+                key: _supplierPageKey,
+              ),
+              OrdersPage(
+                key: _ordersPageKey,
+              ),
+              StockPage(key: _stockPageKey),
+              ExpensePage(key: _expensePageKey),
+            ]),
+
+          
+          ],
+        ),
+        
       ),
     );
   }

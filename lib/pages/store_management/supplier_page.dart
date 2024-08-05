@@ -89,7 +89,7 @@ void updateDialog( Map<String, Object?> data ){
                 return Container(
                   width: screenSize.width-87,
                   height: screenSize.height*0.9-96,
-                  color: Colors.purple,
+                 
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
@@ -106,14 +106,6 @@ void updateDialog( Map<String, Object?> data ){
             children: [
               AddSupplier(),
 
-              Container(
-                width: screenSize.width*0.6 - 87,
-                height: screenSize.height,
-                color: Colors.yellow,
-                child: Text(
-                  "Supplier Page",
-                ),
-              )
             ],
           );
         case 3:
@@ -142,16 +134,11 @@ void updateDialog( Map<String, Object?> data ){
                   tableData = snapshot.data!;
                 }
 
-                return Container(
-                  width: screenSize.width-87,
-                  height: screenSize.height*0.9-96,
-                  color: Colors.purple,
-                  child: ListView.builder(
-                    itemCount: tableData.length,
-                    itemBuilder: (context, index) {
-                      return Tile(tableData: tableData[index],  editFunction: updateDialog, icon: Icon(Icons.edit));
-                    },
-                  ),
+                return ListView.builder(
+                  itemCount: tableData.length,
+                  itemBuilder: (context, index) {
+                    return Tile(tableData: tableData[index],  editFunction: updateDialog, icon: Icon(Icons.edit));
+                  },
                 );
               })
             ],
@@ -184,7 +171,7 @@ void updateDialog( Map<String, Object?> data ){
                 return Container(
                   width: screenSize.width-87,
                   height: screenSize.height*0.9-96,
-                  color: Colors.purple,
+               
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
@@ -213,7 +200,7 @@ void updateDialog( Map<String, Object?> data ){
                 return Container(
                   width: screenSize.width-87,
                   height: screenSize.height*0.9-96,
-                  color: Colors.purple,
+
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {

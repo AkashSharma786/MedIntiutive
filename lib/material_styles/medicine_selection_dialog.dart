@@ -5,9 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/database_service.dart';
 import 'package:flutter_application_1/material_styles/custom_labeled_text_field.dart';
+import 'package:flutter_application_1/material_styles/custom_text_field.dart';
 import 'package:flutter_application_1/material_styles/date_input.dart';
-import 'package:flutter_application_1/material_styles/medicine_selected_tile.dart';
-import 'package:flutter_application_1/material_styles/medicine_selection_tile.dart';
 import 'package:flutter_application_1/material_styles/tile.dart';
 import 'package:flutter_application_1/pages/store_management/sections/medicine_section.dart';
 import 'package:path/path.dart';
@@ -40,26 +39,24 @@ class _MedicineSelectionDialogState extends State<MedicineSelectionDialog> {
 
   List<Map<String, Object?>> selectedMedicinesList = [];
   List<int> quantity = [];
+  TextEditingController quantityController = TextEditingController();
   
 
-  void addSelection(Map<String, Object?> data, int quantity){
-     bool contains = selectedMedicinesList.any((element) => mapEquals(element, data));
-     
-
-
-    if(!contains){
+  void addSelection(Map<String, Object?> data, int quantityNumber){
+ 
       
-     selectedMedicinesList.add(data);
-      this.quantity.add(quantity);
+      selectedMedicinesList.add(data);
+      quantity.add(quantityNumber);
+  
 
-    }
+    
   
     setState(() {
 
-
      
    });
-      
+     
+     
 
 
 
@@ -137,9 +134,13 @@ class _MedicineSelectionDialogState extends State<MedicineSelectionDialog> {
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
-                      return MedicineSelectionTile(
-                          tableData: tableData[index], fieldList: fieldList,
-                          addSelection: addSelection,
+                      return Tile(
+                          tableData: tableData[index],
+                          icon: const Icon(Icons.add),
+                          width: screenSize.width*0.3,
+                          textField: 1,
+                          
+                          dataAndIntegerFunction: addSelection,
                           );
                     },
                   ),
@@ -160,11 +161,19 @@ class _MedicineSelectionDialogState extends State<MedicineSelectionDialog> {
             child: ListView.builder(
               itemCount: selectedMedicinesList.length,
               itemBuilder: (context, index){
-                return MedicineSelectedTile(
+                return Tile(
                   tableData: selectedMedicinesList[index],
-                  fieldList: fieldList,
-                  quantity: quantity[index],
-                  removeSelection: removeSelection,
+                  showData: {
+                    fieldList[0]: selectedMedicinesList[index][fieldList[0]],
+                    fieldList[1]: selectedMedicinesList[index][fieldList[1]],
+                    fieldList[2]: selectedMedicinesList[index][fieldList[2]],
+                    "quantity": quantity[index]
+                  },
+                  width: screenSize.width*0.3,
+                  icon: const Icon(Icons.remove),
+                
+                 
+                  dataAndIntegerFunction: removeSelection,
                 );
               },
             

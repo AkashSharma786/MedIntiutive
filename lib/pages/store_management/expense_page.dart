@@ -46,7 +46,7 @@ class ExpensePageState extends State<ExpensePage> {
           child: Container(
             width: screenSize.width,
             
-            color: Colors.cyan,
+         
             child: Text(
               "Expense Page",
             ),

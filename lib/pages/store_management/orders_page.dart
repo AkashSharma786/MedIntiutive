@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/database_service.dart';
-import 'package:flutter_application_1/material_styles/medicine_selected_tile.dart';
 import 'package:flutter_application_1/material_styles/medicine_selection_dialog.dart';
 import 'package:flutter_application_1/material_styles/supplier_selection_dialog.dart';
 import 'package:flutter_application_1/material_styles/tile.dart';
@@ -124,7 +123,7 @@ class OrdersPageState extends State<OrdersPage> {
                     return Container(
                       width: screenSize.width,
                       height: screenSize.height * 0.8,
-                      color: Colors.purple,
+                      
                       child: ListView.builder(
                         itemCount: tableData.length,
                         itemBuilder: (context, index) {
@@ -164,7 +163,7 @@ class OrdersPageState extends State<OrdersPage> {
                     return Container(
                       width: screenSize.width,
                       height: screenSize.height * 0.8,
-                      color: Colors.purple,
+                      
                       child: ListView.builder(
                         itemCount: tableData.length,
                         itemBuilder: (context, index) {
@@ -203,7 +202,7 @@ class OrdersPageState extends State<OrdersPage> {
                     return Container(
                       width: screenSize.width,
                       height: screenSize.height * 0.8,
-                      color: Colors.purple,
+                     
                       child: ListView.builder(
                         itemCount: tableData.length,
                         itemBuilder: (context, index) {
