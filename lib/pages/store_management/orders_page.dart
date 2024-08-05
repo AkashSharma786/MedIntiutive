@@ -3,11 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/database_service.dart';
 import 'package:flutter_application_1/material_styles/medicine_selected_tile.dart';
 import 'package:flutter_application_1/material_styles/medicine_selection_dialog.dart';
-import 'package:flutter_application_1/material_styles/orders_tile.dart';
-import 'package:flutter_application_1/material_styles/supplier_delete_tile.dart';
-import 'package:flutter_application_1/material_styles/supplier_edit_tile.dart';
 import 'package:flutter_application_1/material_styles/supplier_selection_dialog.dart';
-import 'package:flutter_application_1/material_styles/supplier_tile.dart';
+import 'package:flutter_application_1/material_styles/tile.dart';
 import 'package:flutter_application_1/pages/store_management/section_elements/orders/new_order.dart';
 import 'package:flutter_application_1/pages/store_management/section_elements/supplier/search_supplier.dart';
 
@@ -131,11 +128,11 @@ class OrdersPageState extends State<OrdersPage> {
                       child: ListView.builder(
                         itemCount: tableData.length,
                         itemBuilder: (context, index) {
-                          return OrdersTile(
+                          return Tile(
                             tableData: tableData[index],
-                            fieldList: fieldList,
+                
                             icon: Icon(Icons.edit),
-                            function: showOrderModifyingDialog,
+                            editFunction: showOrderModifyingDialog,
                             
 
                           );
@@ -171,11 +168,11 @@ class OrdersPageState extends State<OrdersPage> {
                       child: ListView.builder(
                         itemCount: tableData.length,
                         itemBuilder: (context, index) {
-                          return OrdersTile(
+                          return Tile(
                             tableData: tableData[index],
-                            fieldList: fieldList,
+                         
                             icon: Icon(Icons.delete),
-                            function: (data){
+                            deleteFunction: (data){
                               DatabaseService.deleteItem("orders",int.parse("${ data[fieldList[0]]}"));
                               refresh();
                             },
@@ -210,9 +207,9 @@ class OrdersPageState extends State<OrdersPage> {
                       child: ListView.builder(
                         itemCount: tableData.length,
                         itemBuilder: (context, index) {
-                          return OrdersTile(
+                          return Tile(
                             tableData: tableData[index],
-                            fieldList: fieldList,
+               
                           );
                         },
                       ),

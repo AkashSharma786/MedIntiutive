@@ -3,9 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/database_service.dart';
-import 'package:flutter_application_1/material_styles/employees_tile.dart';
-import 'package:flutter_application_1/material_styles/employees_tile_delete.dart';
-import 'package:flutter_application_1/material_styles/employees_tile_edit.dart';
+import 'package:flutter_application_1/material_styles/tile.dart';
 import 'package:flutter_application_1/material_styles/update_dialog.dart';
 import 'package:flutter_application_1/pages/store_management/section_elements/employees/employees_add.dart';
 import 'package:flutter_application_1/pages/store_management/section_elements/employees/employees_search.dart';
@@ -103,6 +101,11 @@ void updateDialog( Map<String, Object?> data ){
 
   }
 
+  void deleteEmployee(Map<String, Object?> tableData){
+    DatabaseService.deleteItem('employees',int.parse('${tableData[fieldList[0]]}'));
+    searchEmployee();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -162,7 +165,7 @@ void updateDialog( Map<String, Object?> data ){
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
-                      return EmployeesTileEdit(tableData: tableData[index], fieldList: fieldList, update: updateDialog,);
+                      return Tile(tableData: tableData[index],  editFunction: updateDialog, icon : Icon(Icons.edit),);
                     },
                   ),
                 );
@@ -203,7 +206,7 @@ void updateDialog( Map<String, Object?> data ){
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
-                      return EmployeesTileDelete(tableData: tableData[index], fieldList: fieldList, refresh: searchEmployee,);
+                      return Tile(tableData: tableData[index], deleteFunction: deleteEmployee, icon : Icon(Icons.delete),);
                     },
                   ),
                 );
@@ -235,7 +238,7 @@ void updateDialog( Map<String, Object?> data ){
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
-                      return EmployeesTile(tableData: tableData[index], fieldList: fieldList);
+                      return Tile(tableData: tableData[index], );
                     },
                   ),
                 );

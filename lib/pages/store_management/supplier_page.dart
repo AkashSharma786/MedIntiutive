@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/database_service.dart';
-import 'package:flutter_application_1/material_styles/supplier_delete_tile.dart';
-import 'package:flutter_application_1/material_styles/supplier_edit_tile.dart';
-import 'package:flutter_application_1/material_styles/supplier_tile.dart';
+import 'package:flutter_application_1/material_styles/tile.dart';
 import 'package:flutter_application_1/material_styles/update_dialog_supplier.dart';
 import 'package:flutter_application_1/pages/store_management/section_elements/supplier/add_supplier.dart';
 import 'package:flutter_application_1/pages/store_management/section_elements/supplier/search_supplier.dart';
@@ -36,6 +34,12 @@ class SupplierPageState extends State<SupplierPage> {
          );
       
     });
+  }
+
+  void deleteSupplier(Map<String, Object?> tableData){
+   DatabaseService.deleteItem('supplier',int.parse('${tableData[fieldList[0]]}'));
+
+    searchSupplier();
   }
 
 void updateDialog( Map<String, Object?> data ){
@@ -89,7 +93,7 @@ void updateDialog( Map<String, Object?> data ){
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
-                      return SupplierTile(tableData: tableData[index], fieldList: fieldList);
+                      return Tile(tableData: tableData[index],);
                     },
                   ),
                 );
@@ -145,7 +149,7 @@ void updateDialog( Map<String, Object?> data ){
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
-                      return SupplierEditTile(tableData: tableData[index], fieldList: fieldList, update: updateDialog);
+                      return Tile(tableData: tableData[index],  editFunction: updateDialog, icon: Icon(Icons.edit));
                     },
                   ),
                 );
@@ -184,7 +188,7 @@ void updateDialog( Map<String, Object?> data ){
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
-                      return SupplierDeleteTile(tableData: tableData[index], fieldList: fieldList, refresh: searchSupplier);
+                      return Tile(tableData: tableData[index], deleteFunction: deleteSupplier, icon : Icon(Icons.delete));
                     },
                   ),
                 );
@@ -213,7 +217,7 @@ void updateDialog( Map<String, Object?> data ){
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
-                      return SupplierTile(tableData: tableData[index], fieldList: fieldList);
+                      return Tile(tableData: tableData[index],);
                     },
                   ),
                 );

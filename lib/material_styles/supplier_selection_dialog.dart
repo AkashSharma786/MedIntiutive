@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/database_service.dart';
 import 'package:flutter_application_1/material_styles/custom_labeled_text_field.dart';
-import 'package:flutter_application_1/material_styles/supplier_delete_tile.dart';
-import 'package:flutter_application_1/material_styles/supplier_edit_tile.dart';
-import 'package:flutter_application_1/material_styles/supplier_tile.dart';
+import 'package:flutter_application_1/material_styles/tile.dart';
+
 
 class SupplierSelectionDialog extends StatefulWidget {
   Function selectSupplier;
@@ -106,7 +105,13 @@ class _SupplierSelectionDialogState extends State<SupplierSelectionDialog> {
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
-                      return SupplierEditTile(tableData: tableData[index], fieldList: fieldList, update: selectSupplier);  
+                      return Tile(tableData: tableData[index],
+                       fieldList: fieldList,
+                        editFunction: selectSupplier ,
+                         icon: Icon(Icons.edit),
+                         width: screenSize.width*0.7,
+                         
+                          );  
                     },
                   ),
                 );

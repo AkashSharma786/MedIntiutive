@@ -8,6 +8,7 @@ import 'package:flutter_application_1/material_styles/custom_labeled_text_field.
 import 'package:flutter_application_1/material_styles/date_input.dart';
 import 'package:flutter_application_1/material_styles/medicine_selected_tile.dart';
 import 'package:flutter_application_1/material_styles/medicine_selection_tile.dart';
+import 'package:flutter_application_1/material_styles/tile.dart';
 import 'package:flutter_application_1/pages/store_management/sections/medicine_section.dart';
 import 'package:path/path.dart';
 
@@ -68,7 +69,7 @@ class _MedicineSelectionDialogState extends State<MedicineSelectionDialog> {
    // print(selectedMedicinesList);
   }
 
-  void removeSelection(Map<String, Object?> data , int quantity){
+  void removeSelection(Map<String, Object?> data, int quantity){
     setState(() {
       selectedMedicinesList.remove(data);
       this.quantity.remove(quantity);
@@ -160,7 +161,8 @@ class _MedicineSelectionDialogState extends State<MedicineSelectionDialog> {
               itemCount: selectedMedicinesList.length,
               itemBuilder: (context, index){
                 return MedicineSelectedTile(
-                  tableData: selectedMedicinesList[index], fieldList: fieldList,
+                  tableData: selectedMedicinesList[index],
+                  fieldList: fieldList,
                   quantity: quantity[index],
                   removeSelection: removeSelection,
                 );

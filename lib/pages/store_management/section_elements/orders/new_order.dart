@@ -6,12 +6,11 @@ import 'package:flutter_application_1/database_service.dart';
 import 'package:flutter_application_1/material_styles/button.dart';
 import 'package:flutter_application_1/material_styles/custom_labeled_text_field.dart';
 import 'package:flutter_application_1/material_styles/date_input.dart';
-import 'package:flutter_application_1/material_styles/medicine_delete_tile.dart';
 import 'package:flutter_application_1/material_styles/medicine_selected_tile.dart';
 import 'package:flutter_application_1/material_styles/medicine_selection_dialog.dart';
 import 'package:flutter_application_1/material_styles/medicine_selection_tile.dart';
 import 'package:flutter_application_1/material_styles/supplier_selection_dialog.dart';
-import 'package:flutter_application_1/material_styles/supplier_tile.dart';
+import 'package:flutter_application_1/material_styles/tile.dart';
 
 class NewOrder extends StatefulWidget {
   TextEditingController messageController;
@@ -285,10 +284,10 @@ class _NewOrderState extends State<NewOrder> {
                 if (selectedSupplier.isEmpty) {
                   return SizedBox();
                 }
-                return SupplierTile(
+                return Tile(
                   tableData: selectedSupplier,
-                  fieldList: supplierFieldList,
-                  tileWidth: screenSize.width * 0.6,
+                  
+                  width: screenSize.width * 0.6,
                 );
               })
             ],

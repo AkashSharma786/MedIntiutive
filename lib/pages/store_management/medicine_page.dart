@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/database_service.dart';
-import 'package:flutter_application_1/material_styles/medicine_delete_tile.dart';
-import 'package:flutter_application_1/material_styles/medicine_tile.dart';
+import 'package:flutter_application_1/material_styles/tile.dart';
 import 'package:flutter_application_1/pages/store_management/section_elements/medicine/medicine_add.dart';
 import 'package:flutter_application_1/pages/store_management/section_elements/medicine/medicine_search.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
@@ -68,9 +67,12 @@ setState(() {
         );
 
     
-  
+  }
 
-    
+  void delete(Map<String, Object?> table){
+     DatabaseService.deleteItem('medicine',int.parse('${table[fieldList[0]]}'));
+     search();
+
   }
 
 
@@ -112,8 +114,8 @@ setState(() {
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
-                      return MedicineTile(
-                          tableData: tableData[index], fieldList: fieldList);
+                      return Tile(
+                          tableData: tableData[index],);
                     },
                   ),
                 );
@@ -164,8 +166,8 @@ setState(() {
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
-                      return MedicineDeleteTile(
-                          tableData: tableData[index], fieldList: fieldList, refresh: search,);
+                      return Tile(
+                          tableData: tableData[index],  deleteFunction: delete, icon:  Icon(Icons.delete),);
                     },
                   ),
                 );
@@ -195,8 +197,8 @@ setState(() {
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
-                      return MedicineTile(
-                          tableData: tableData[index], fieldList: fieldList);
+                      return Tile(
+                          tableData: tableData[index],);
                     },
                   ),
                 );
