@@ -106,7 +106,7 @@ class _SupplierSelectionDialogState extends State<SupplierSelectionDialog> {
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
                       return Tile(tableData: tableData[index],
-                       fieldList: fieldList,
+                     
                         editFunction: selectSupplier ,
                          icon: Icon(Icons.edit),
                          width: screenSize.width*0.7,
