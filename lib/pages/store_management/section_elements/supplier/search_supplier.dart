@@ -23,8 +23,9 @@ class SearchSupplier extends StatelessWidget {
     return Container(
       width: screenSize.width,
       height: screenSize.height*0.1,
-      color: Colors.blue,
+      color: Colors.black,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
      
         children: [
 

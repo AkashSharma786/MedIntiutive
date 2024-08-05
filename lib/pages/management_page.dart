@@ -90,6 +90,8 @@ class _ManagementState extends State<ManagementPage>
       length: 6,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.black,
+          foregroundColor: Colors.white,
           bottom: PreferredSize(
             preferredSize: Size(screenSize.width, 40),
             child: Column(
@@ -106,8 +108,10 @@ class _ManagementState extends State<ManagementPage>
                   child: TabBar(
                     indicatorSize: TabBarIndicatorSize.tab,
                     controller: _tabController,
+                    unselectedLabelColor: Colors.white,
+
                     indicator: const BoxDecoration(
-                      color: Colors.cyan,
+                      color: Colors.white,
                     ),
                     tabs: [
                       Tab(child: Text("Medicine")),

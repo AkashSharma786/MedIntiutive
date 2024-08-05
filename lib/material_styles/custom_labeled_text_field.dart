@@ -30,6 +30,17 @@ class CustomLabeledTextField extends StatelessWidget {
    
     return
               Container(
+
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                
+                 
+                  
+
+          
+                ),
+               
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -44,9 +55,10 @@ class CustomLabeledTextField extends StatelessWidget {
           
           
               
-              SizedBox(
+              Container(
                       width: buttonWidth,
                       height: buttonHeight,
+                      
                       child: TextField(
                     
                         
@@ -66,7 +78,7 @@ class CustomLabeledTextField extends StatelessWidget {
                       ),
                     ),
           
-
+              SizedBox(height: screenSize.height*0.01,)
 
 
              

@@ -206,6 +206,7 @@ class _NewOrderState extends State<NewOrder> {
     return Container(
       width: screenSize.width,
       height: screenSize.height * 0.8,
+      color: Colors.black,
       child: Column(
         children: [
           Row(
@@ -227,9 +228,10 @@ class _NewOrderState extends State<NewOrder> {
                 widgetControl: widget.dateController,
                 buttonWidth: screenSize.width * 0.1,
               ),
-              SizedBox(
+              Container(
                 width: screenSize.width * 0.3,
                 height: 40,
+                color: Colors.white,
                 child: TextField(
                   controller: widget.messageController,
                   keyboardType: TextInputType.number,
@@ -263,7 +265,7 @@ class _NewOrderState extends State<NewOrder> {
               Container(
                 width: screenSize.width * 0.3,
                 height: screenSize.height * 0.8 - 96,
-                color: Colors.green,
+                //color: Colors.green,
                 child: ListView.builder(
                   itemCount: selectedMedicines.length,
                   itemBuilder: (context, index) {

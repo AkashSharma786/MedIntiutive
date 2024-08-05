@@ -49,9 +49,9 @@ class EmployeesAdd extends StatelessWidget {
 
     return Container(
 
-      width: screenSize.width - 87,
+      width: screenSize.width*0.55,
       height: screenSize.height*0.9,
-      color: Colors.blue,
+      color: Colors.black,
       child: Row(
         children: [
 

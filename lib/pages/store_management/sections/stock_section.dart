@@ -16,7 +16,7 @@ class _StockSectionState extends State<StockSection> {
     return Container(
       height: 40,
       width: screenSize.width,
-      color: Colors.cyan,
+      color: Colors.white,
       child: ButtonBar(
         alignment: MainAxisAlignment.spaceEvenly,
         children: [

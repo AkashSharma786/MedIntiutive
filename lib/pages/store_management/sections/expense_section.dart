@@ -16,7 +16,7 @@ class _ExpenseSectionState extends State<ExpenseSection> {
     return Container(
       height: 40,
       width: screenSize.width,
-      color: Colors.cyan,
+      color: Colors.white,
       child: ButtonBar(
         alignment: MainAxisAlignment.spaceEvenly,
         children: [

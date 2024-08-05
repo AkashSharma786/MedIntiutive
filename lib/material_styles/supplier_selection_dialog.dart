@@ -53,7 +53,7 @@ class _SupplierSelectionDialogState extends State<SupplierSelectionDialog> {
     return Container(
       width: screenSize.width * 0.8 +19,
       height: screenSize.height*0.7,
-      color: Colors.blue,
+      color: Colors.black,
       child: Column(
         children: [
           Row(
@@ -101,7 +101,7 @@ class _SupplierSelectionDialogState extends State<SupplierSelectionDialog> {
                 return Container(
                   width: screenSize.width-87,
                   height: screenSize.height*0.6,
-                  color: Colors.purple,
+                 
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {

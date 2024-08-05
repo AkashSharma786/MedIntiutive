@@ -80,9 +80,9 @@ class _MedicineSelectionDialogState extends State<MedicineSelectionDialog> {
 
     return Container(
 
-      width: screenSize.width*0.8,
+      width: screenSize.width*0.65,
       height: screenSize.height*0.8,
-      color: Colors.blue,
+      color: Colors.white,
       child: Row(
         children: [
 
@@ -130,7 +130,7 @@ class _MedicineSelectionDialogState extends State<MedicineSelectionDialog> {
                 return Container(
                   width: screenSize.width*0.3,
                   height: screenSize.height*0.5-96,
-                  color: Colors.purple,
+                  color: Colors.black,
                   child: ListView.builder(
                     itemCount: tableData.length,
                     itemBuilder: (context, index) {
@@ -157,7 +157,7 @@ class _MedicineSelectionDialogState extends State<MedicineSelectionDialog> {
           Container(
             width: screenSize.width*0.3,
             height: screenSize.height*0.8-96,
-            color: Colors.green,
+            color: Colors.black,
             child: ListView.builder(
               itemCount: selectedMedicinesList.length,
               itemBuilder: (context, index){

@@ -26,8 +26,8 @@ class AddSupplier extends StatelessWidget {
     return Container(
 
       width: screenSize.width*0.3,
-      height: screenSize.height*0.9,
-      color: Colors.blue,
+      height: screenSize.height*0.6,
+      color: Colors.black,
       child: Row(
         children: [
 
