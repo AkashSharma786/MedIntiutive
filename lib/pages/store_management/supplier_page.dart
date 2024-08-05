@@ -23,6 +23,9 @@ class SupplierPageState extends State<SupplierPage> {
     setState(() {
       currentClickedButton = num;
     });
+    if(num == 2){
+      showSupplierAddingDialog();
+    }
   }
 
   void searchSupplier(){
@@ -33,6 +36,15 @@ class SupplierPageState extends State<SupplierPage> {
          fieldList[2], emailController.text,
          );
       
+    });
+  }
+
+  void showSupplierAddingDialog(){
+    showDialog(context: context, builder: (context){
+      return AlertDialog(
+        title: Text("Add Supplier"),
+        content: AddSupplier(refresh: searchSupplier,)
+      );
     });
   }
 
@@ -101,13 +113,7 @@ void updateDialog( Map<String, Object?> data ){
               
             ],
           );
-        case 2:
-          return Row(
-            children: [
-              AddSupplier(),
-
-            ],
-          );
+     
         case 3:
           return Column(
             children: [
@@ -134,11 +140,15 @@ void updateDialog( Map<String, Object?> data ){
                   tableData = snapshot.data!;
                 }
 
-                return ListView.builder(
-                  itemCount: tableData.length,
-                  itemBuilder: (context, index) {
-                    return Tile(tableData: tableData[index],  editFunction: updateDialog, icon: Icon(Icons.edit));
-                  },
+                return Container(
+                  width: screenSize.width,
+                  height: screenSize.height * 0.8-96,
+                  child: ListView.builder(
+                    itemCount: tableData.length,
+                    itemBuilder: (context, index) {
+                      return Tile(tableData: tableData[index],  editFunction: updateDialog, icon: Icon(Icons.edit));
+                    },
+                  ),
                 );
               })
             ],

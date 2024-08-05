@@ -41,6 +41,10 @@ class EmployeesPageState extends State<EmployeesPage> {
     setState(() {
       currentClickedButton = num;
     });
+
+    if(num == 1){
+      showEmployeesAddingDialog();
+    }
   }
 
 
@@ -101,6 +105,35 @@ void updateDialog( Map<String, Object?> data ){
 
   }
 
+  void showEmployeesAddingDialog(){
+    showDialog(context: context, builder: (context){
+      return AlertDialog(
+        title: Text("Add Employee"),
+        content: EmployeesAdd(
+          idController: idController,
+          firstNameController:firstNameController ,
+          lastNameController: lastNameController,
+          addressController:addressController ,
+          phoneNumberController: phoneNumberController,
+          photoLocationController: photoLocationController,
+          emailController: emailController,
+          aadhaarController: aadhaarController,
+          experienceController: experienceController,
+          weatherAdminController: weatherAdminController,
+          genderController: genderController,
+          dobDayController: dobDayController,
+          dobMonthController: dobMonthController,
+          dobYearController: dobYearController,
+          addEmployee: addEmployees,
+          refresh: searchEmployee,
+
+        ),
+      );
+    });
+  }
+
+
+
   void deleteEmployee(Map<String, Object?> tableData){
     DatabaseService.deleteItem('employees',int.parse('${tableData[fieldList[0]]}'));
     searchEmployee();
@@ -112,29 +145,7 @@ void updateDialog( Map<String, Object?> data ){
     Size screenSize = MediaQuery.of(context).size;
     return Builder(builder: (context){
      switch(currentClickedButton){
-       case 1:
-         return Row(
-           children: [
-             EmployeesAdd(
-                idController: idController,
-                firstNameController:firstNameController ,
-                lastNameController: lastNameController,
-                addressController:addressController ,
-                phoneNumberController: phoneNumberController,
-                photoLocationController: photoLocationController,
-                emailController: emailController,
-                aadhaarController: aadhaarController,
-                experienceController: experienceController,
-                weatherAdminController: weatherAdminController,
-                genderController: genderController,
-                dobDayController: dobDayController,
-                dobMonthController: dobMonthController,
-                dobYearController: dobYearController,
-                addEmployee: addEmployees,
-             ),
-             
-           ],
-         );
+       
        case 2:
          return Column(
            children: [

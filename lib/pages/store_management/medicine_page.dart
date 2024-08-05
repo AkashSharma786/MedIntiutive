@@ -27,6 +27,10 @@ class MedicinePageState extends State<MedicinePage> {
     setState(() {
       currentClickedButton = num;
     });
+
+    if(num == 2){
+      showMedicineAddingDialog();
+    }
   }
 
   void search() {
@@ -73,6 +77,21 @@ setState(() {
      DatabaseService.deleteItem('medicine',int.parse('${table[fieldList[0]]}'));
      search();
 
+  }
+
+  showMedicineAddingDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Add Medicine'),
+            content: MedicineAdd(
+              database: widget.database,
+              refresh: search,
+            
+            ),
+          );
+        });
   }
 
 
@@ -127,14 +146,7 @@ setState(() {
               })
             ],
           );
-        case 2:
-          return Row(
-            children: [
-              MedicineAdd(
-                database: widget.database,
-              ),
-            ],
-          );
+       
         case 3:
           return Column(
             children: [

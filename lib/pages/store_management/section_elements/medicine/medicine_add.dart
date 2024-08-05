@@ -18,8 +18,9 @@ class MedicineAdd extends StatelessWidget {
   TextEditingController imageController = TextEditingController();
   TextEditingController usageDirectionController = TextEditingController();
   TextEditingController rackDetailsController = TextEditingController();
+  VoidCallback refresh;
 
-  MedicineAdd({super.key, required this.database});
+  MedicineAdd({super.key, required this.database, required this.refresh});
 
   @override
   Widget build(BuildContext context) {
@@ -77,13 +78,17 @@ class MedicineAdd extends StatelessWidget {
                   DatabaseService.medicineFields[9] : usageDirectionController.text,
                   DatabaseService.medicineFields[10] : rackDetailsController.text,
                 });
+
+                refresh();
+
+                Navigator.pop(context);
                 
 
                 
 
 
 
-              }, child: Text("Add Employee")),
+              }, child: Text("Add Medicine")),
 
 
             ],

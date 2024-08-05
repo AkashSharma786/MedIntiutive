@@ -12,9 +12,10 @@ class AddSupplier extends StatelessWidget {
   TextEditingController phoneController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  final VoidCallback refresh;
 
 
-  AddSupplier({super.key});
+  AddSupplier({super.key , required this.refresh,});
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +60,9 @@ class AddSupplier extends StatelessWidget {
                   DatabaseService.supplierFields[4] : addressController.text,
                   
                 });
+
+                refresh();
+                Navigator.pop(context);
                 
 
                 

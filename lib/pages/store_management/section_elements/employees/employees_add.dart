@@ -21,6 +21,7 @@ class EmployeesAdd extends StatelessWidget {
   TextEditingController dobMonthController;
   TextEditingController dobYearController;
   final VoidCallback addEmployee;
+  final VoidCallback refresh;
 
   EmployeesAdd({super.key,
   required this.idController,
@@ -37,7 +38,8 @@ class EmployeesAdd extends StatelessWidget {
   required this.dobDayController,
   required this.dobMonthController,
   required this.dobYearController,
-  required this.addEmployee
+  required this.addEmployee,
+  required this.refresh
   });
 
   @override
@@ -73,7 +75,11 @@ class EmployeesAdd extends StatelessWidget {
               SizedBox(height: screenSize.height*0.02,),
              
 
-              ElevatedButton(onPressed: (){addEmployee();}, child: const Text("Add Employee")),
+              ElevatedButton(onPressed: (){
+                addEmployee();
+                refresh();
+                Navigator.pop(context);
+                }, child: const Text("Add Employee")),
 
 
             ],
