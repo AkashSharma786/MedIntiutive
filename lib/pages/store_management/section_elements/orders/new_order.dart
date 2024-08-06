@@ -177,6 +177,7 @@ class _NewOrderState extends State<NewOrder> {
     });
   }
 
+
   void modifyOrder() {
     DatabaseService.updateItems(
         'orders',
@@ -191,6 +192,16 @@ class _NewOrderState extends State<NewOrder> {
           fieldList[6]: widget.messageController.text
         },
         int.parse("${widget.data?[fieldList[0]]}"));
+  }
+
+  bool Validate()
+  {
+    if(widget.dateController.text.isEmpty || widget.messageController.text.isEmpty || selectedMedicines.isEmpty || selectedSupplier.isEmpty)
+    {
+      return false;
+    }
+    else
+      return true;
   }
 
   @override
@@ -225,6 +236,7 @@ class _NewOrderState extends State<NewOrder> {
               CustomLabeledTextField(
                 label: "Date",
                 hint: "ddmmyyyy",
+                isInteger: true,
                 widgetControl: widget.dateController,
                 buttonWidth: screenSize.width * 0.1,
               ),
@@ -248,7 +260,9 @@ class _NewOrderState extends State<NewOrder> {
               ),
               ElevatedButton(
                   onPressed: () {
-                    if (widget.data != null) {
+                    if(Validate())
+                    {
+                       if (widget.data != null) {
                       modifyOrder();
                     } else {
                       placeOrder();
@@ -256,6 +270,9 @@ class _NewOrderState extends State<NewOrder> {
 
                     widget.refresh();
                     Navigator.pop(context);
+
+                    }
+                   
                   },
                   child: Text(widget.buttonName ?? "Place Order"))
             ],

@@ -31,6 +31,8 @@ class Tile extends StatelessWidget {
       this.textField,
       });
 
+   
+
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -113,6 +115,10 @@ class Tile extends StatelessWidget {
 
                       if (dataAndIntegerFunction != null) {
                         if(textField != null){
+                          if(quantityController.text.isEmpty){
+                            return;
+                          }
+                          else
                           dataAndIntegerFunction!(
                             tableData, int.parse(quantityController.text));
                         } else {
