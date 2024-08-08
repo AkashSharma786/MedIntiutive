@@ -15,12 +15,12 @@ class MedicineSelectionDialog extends StatefulWidget {
 
 
 
-  final VoidCallback refresh;
+  final VoidCallback? refresh;
   final Function getSelected;
 
  
 
-  MedicineSelectionDialog({super.key, required this.refresh , required this.getSelected});
+  MedicineSelectionDialog({super.key, this.refresh , required this.getSelected});
 
   @override
   State<MedicineSelectionDialog> createState() => _MedicineSelectionDialogState();
@@ -106,10 +106,15 @@ class _MedicineSelectionDialogState extends State<MedicineSelectionDialog> {
                  
                  );
 
+                  widget.getSelected(selectedMedicinesList, quantity);
+
+                  if(widget.refresh != null)
+                  {
+                    widget.refresh??();
+                    Navigator.pop(context);
+                  }
                 
-                widget.getSelected(selectedMedicinesList, quantity);
-                 widget.refresh();
-                 Navigator.pop(context);
+                 
                 
                  }, child: const Text("Update")),
               SizedBox(height: screenSize.height*0.02,),

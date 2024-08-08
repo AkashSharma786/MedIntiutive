@@ -26,15 +26,12 @@ class MyButtonStyle extends StatefulWidget {
 class _MyButtonStyleState extends State<MyButtonStyle> {
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
+    return Container(
       constraints: BoxConstraints(
         maxHeight: widget.height,
         maxWidth: widget.width,
 
       ),
-
-    
-      child: Container(
         decoration: BoxDecoration(
            gradient: const LinearGradient(
               colors: [Color.fromARGB(255, 39, 3, 141), Color.fromARGB(248, 91, 231, 250)],
@@ -43,22 +40,35 @@ class _MyButtonStyleState extends State<MyButtonStyle> {
             ),
           borderRadius: BorderRadius.circular(30),
         ),
+   
+         
+
+       
+    
+      child: Ink(
+
+         
+
+      
         
        
-        child: InkWell(
-          onTap: () {
-
-            widget.onTap();
-       
-          },
-          child: Center(
-            child: Text(
-              widget.text,
-              style: const TextStyle(color: Colors.white),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+           
+            
+            onTap: () { widget.onTap();},
+          
+            child: Center(
+              child: Text(
+                widget.text,
+                style: const TextStyle(color: Colors.white,),
+              ),
             ),
           ),
         ),
       ),
-    );
+      );
+    
   }
 }
